@@ -10,4 +10,5 @@ public class OurNeighborApplication {
 		SpringApplication.run(OurNeighborApplication.class, args);
 	}
 
+
 }
