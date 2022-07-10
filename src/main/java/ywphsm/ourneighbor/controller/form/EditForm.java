@@ -10,7 +10,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class MemberForm {
+public class EditForm {
+
+    private Long id;
 
     @NotBlank
     private String username;
@@ -18,20 +20,8 @@ public class MemberForm {
     @NotNull
     private Integer age;
 
-    @NotNull
+    @NotBlank
     private String phoneNumber;
-
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
-
-    @NotBlank
-    private String loginId;
-
-    @NotBlank
-    private String password;
-
-    @NotBlank
-    private String passwordCheck;
 
     @Email
     @NotBlank

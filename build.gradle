@@ -33,6 +33,9 @@ dependencies {
 	// Spring Validation
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+	// Spring Security 비밀번호 보안
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+
 	// H2 데이터 베이스
 	runtimeOnly 'com.h2database:h2'
 
