@@ -18,9 +18,6 @@ public class MemberForm {
     @NotNull
     private Integer age;
 
-    @NotNull
-    private String phoneNumber;
-
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
@@ -39,4 +36,10 @@ public class MemberForm {
 
     @NotBlank
     private String name;
+
+    @NotBlank
+    private String phoneNumber;
+
+    @NotBlank
+    private String certifiedNumber;
 }

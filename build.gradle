@@ -59,6 +59,9 @@ dependencies {
 	//테스트에서 lombok 사용
 	testCompileOnly 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
+
+	//휴대폰인증
+	implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2'
 }
 
 tasks.named('test') {
