@@ -24,32 +24,32 @@ public class EmailToken {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @Column(length = 36)
-    private String id;
+    private String id;  //토큰 PK
 
-    private LocalDateTime expirationDate;
+    private LocalDateTime expirationDate;   //만료시간
 
-    private boolean expired;
+    private boolean expired;    //만료여부
 
-    private String userId;
+    private Long memberId;      //user의 PK값
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createDate;
+    private LocalDateTime createDate;   //생성 시간
 
     @LastModifiedDate
-    private LocalDateTime lastModifiedDate;
+    private LocalDateTime lastModifiedDate; //마지막 변경 시간
 
     /**
      * 이메일 인증 토큰 생성
-     * @param userId
+     * @param memberId
      * @return
      */
-    public static EmailToken createEmailConfirmationToken(String userId){
-        EmailToken confirmationToken = new EmailToken();
-        confirmationToken.expirationDate = LocalDateTime.now().plusMinutes(EMAIL_TOKEN_TIME); // 5분후 만료
-        confirmationToken.userId = userId;
-        confirmationToken.expired = false;
-        return confirmationToken;
+    public static EmailToken createEmailToken(Long memberId){
+        EmailToken emailToken = new EmailToken();
+        emailToken.expirationDate = LocalDateTime.now().plusMinutes(EMAIL_TOKEN_TIME); // 5분후 만료
+        emailToken.memberId = memberId;
+        emailToken.expired = false;
+        return emailToken;
     }
 
     /**

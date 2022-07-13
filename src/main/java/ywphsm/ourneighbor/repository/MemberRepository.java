@@ -7,7 +7,6 @@ import ywphsm.ourneighbor.entity.Member;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
     List<Member> findByUsername(String username);
 

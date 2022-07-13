@@ -7,6 +7,8 @@ import org.json.simple.JSONObject;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ywphsm.ourneighbor.email.EmailToken;
+import ywphsm.ourneighbor.email.TokenService;
 import ywphsm.ourneighbor.entity.Gender;
 import ywphsm.ourneighbor.entity.Member;
 import ywphsm.ourneighbor.repository.MemberRepository;
@@ -24,6 +26,8 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
     private final EntityManager em;
+
+    private final TokenService tokenService;
 
     //회원가입
     @Transactional
@@ -111,5 +115,15 @@ public class MemberService {
             System.out.println(e.getCode());
         }
 
+    }
+
+    //이메일 인증 로직
+    public void confirmEmail(String tokenId) {
+        EmailToken findToken = tokenService.findByIdAndExpirationDateAfterAndExpired(tokenId);
+        findToken.useToken();
+        Member member = findOne(findToken.getMemberId()).orElse(null);
+//        if (member != null) {
+//            member.updateEmailCertified();
+//        }
     }
 }
