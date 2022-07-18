@@ -27,11 +27,11 @@
                th:text="${err}">전체 오류 메시지</p>
         </div>
         <div>
-            <label for="loginId">아이디</label>
-            <input type="text" id="loginId" th:field="*{loginId}"
+            <label for="userId">아이디</label>
+            <input type="text" id="userId" th:field="*{userId}"
                    class="form-control"
                    th:errorclass="field-error">
-            <div class="field-error" th:errors="*{loginId}" />
+            <div class="field-error" th:errors="*{userId}" />
         </div>
         <div>
             <label for="password">비밀번호</label>
@@ -47,21 +47,13 @@
                    th:errorclass="field-error">
             <div class="field-error" th:errors="*{passwordCheck}" />
         </div>
+        <label for="cd1"><input type="radio" id="cd1" name="cd" value="01" th:checked="${data.cd eq '01'}">
+        </label>
         <div>
-            <label for="name">이름</label>
-            <input type="text" id="name" th:field="*{name}"
-                   class="form-control"
-                   th:errorclass="field-error">
-            <div class="field-error" th:errors="*{name}" />
-        </div>
-        <!-- radio button -->
-        <div>
-            <div th:each="type : ${genders}" class="form-check form-check-inline">
-                <input type="radio" th:checked="*{gender eq 'MAN'}" th:field="*{gender}" th:value="${type.name()}" class="form-check-input">
-                <label th:for="${#ids.prev('gender')}" th:text="${type.description}"
-                       class="form-check-label"> 남자
-                </label>
-            </div>
+            <input type="radio" th:checked="*{gender eq 0}" th:field="*{gender}" th:value="0" class="form-check-input">
+            <label th:for="gender" th:text="남자" class="form-check-label"></label>
+            <input type="radio" th:field="*{gender}" th:value="1" class="form-check-input">
+            <label th:for="gender" th:text="여자" class="form-check-label"></label>
         </div>
         <div>
             <label for="username">닉네임</label>
@@ -86,20 +78,6 @@
             <div class="field-error" th:errors="*{phoneNumber}" />
         </div>
         <br>
-        <div class="col">
-            <button class="w-100 btn btn-secondary btn-lg"
-                    onclick="location.href='phone_certified.html'"
-                    th:onclick="|location.href='@{/sign_up/certified_phone}'|"
-                    type="button">전화번호 인증</button>
-        </div>
-        <br>
-        <div>
-            <label for="certifiedNumber">인증번호</label>
-            <input type="text" id="certifiedNumber" th:field="*{certifiedNumber}"
-                   class="form-control"
-                   th:errorclass="field-error">
-            <div class="field-error" th:errors="*{certifiedNumber}" />
-        </div>
         <div>
             <label for="email">이메일</label>
             <input type="text" id="email" th:field="*{email}"

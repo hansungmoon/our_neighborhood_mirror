@@ -1,10 +1,7 @@
 package ywphsm.ourneighbor.controller.form;
 
 import lombok.Data;
-import ywphsm.ourneighbor.entity.Gender;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -16,10 +13,10 @@ public class MemberForm {
     private String username;
 
     @NotNull
-    private Integer age;
+    private int age;
 
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    @NotNull
+    private int gender;
 
     @NotBlank
     private String loginId;
@@ -39,7 +36,4 @@ public class MemberForm {
 
     @NotBlank
     private String phoneNumber;
-
-    @NotBlank
-    private String certifiedNumber;
 }
