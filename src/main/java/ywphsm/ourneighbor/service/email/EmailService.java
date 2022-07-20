@@ -1,4 +1,4 @@
-package ywphsm.ourneighbor.email;
+package ywphsm.ourneighbor.service.email;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;

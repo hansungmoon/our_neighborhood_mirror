@@ -47,20 +47,27 @@
                    th:errorclass="field-error">
             <div class="field-error" th:errors="*{passwordCheck}" />
         </div>
-        <label for="cd1"><input type="radio" id="cd1" name="cd" value="01" th:checked="${data.cd eq '01'}">
-        </label>
         <div>
-            <input type="radio" th:checked="*{gender eq 0}" th:field="*{gender}" th:value="0" class="form-check-input">
-            <label th:for="gender" th:text="남자" class="form-check-label"></label>
-            <input type="radio" th:field="*{gender}" th:value="1" class="form-check-input">
-            <label th:for="gender" th:text="여자" class="form-check-label"></label>
-        </div>
-        <div>
-            <label for="username">닉네임</label>
+            <label for="username">이름</label>
             <input type="text" id="username" th:field="*{username}"
                    class="form-control"
                    th:errorclass="field-error">
             <div class="field-error" th:errors="*{username}" />
+        </div>
+        <div>
+            <input type="radio" th:checked="*{gender eq 0}" th:field="*{gender}" th:value="0" class="form-check-input">
+            <label th:for="gender" th:text="남 " class="form-check-label"></label>
+        </div>
+        <div>
+            <input type="radio" th:field="*{gender}" th:value="1" class="form-check-input">
+            <label th:for="gender" th:text=" 여" class="form-check-label"></label>
+        </div>
+        <div>
+            <label for="nickname">닉네임</label>
+            <input type="text" id="nickname" th:field="*{nickname}"
+                   class="form-control"
+                   th:errorclass="field-error">
+            <div class="field-error" th:errors="*{nickname}" />
         </div>
         <div>
             <label for="age">나이</label>

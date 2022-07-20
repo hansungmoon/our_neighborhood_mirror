@@ -1,9 +1,11 @@
-package ywphsm.ourneighbor.email;
+package ywphsm.ourneighbor.service.email;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ywphsm.ourneighbor.domain.member.EmailToken;
+import ywphsm.ourneighbor.repository.email.EmailTokenRepository;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -34,6 +36,5 @@ public class TokenService {
     public EmailToken findByIdAndExpirationDateAfterAndExpired(String confirmationTokenId){
         Optional<EmailToken> confirmationToken = emailTokenRepository.findByIdAndExpirationDateAfterAndExpired(confirmationTokenId, LocalDateTime.now(), false);
         return confirmationToken.orElse(null);
-//        return confirmationToken.orElseThrow(()-> new BadRequestException(ValidationConstant.TOKEN_NOT_FOUND));
     };
 }

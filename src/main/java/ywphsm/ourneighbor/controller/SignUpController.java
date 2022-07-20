@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ywphsm.ourneighbor.controller.form.MemberForm;
 import ywphsm.ourneighbor.domain.member.Member;
 import ywphsm.ourneighbor.service.MemberService;
+import ywphsm.ourneighbor.service.email.TokenService;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 public class SignUpController {
 
     private final MemberService memberService;
+    private final TokenService tokenService;
 
     @GetMapping
     public String signUp(@ModelAttribute MemberForm memberForm) {
@@ -25,16 +27,15 @@ public class SignUpController {
     }
 
     @PostMapping
-    public String saveMember(@Valid @ModelAttribute MemberForm memberForm,
-                             BindingResult bindingResult) {
+    public String signUp(@Valid @ModelAttribute MemberForm memberForm,
+                         BindingResult bindingResult) {
 
         if (!memberForm.getPassword().equals(memberForm.getPasswordCheck())) {
             bindingResult.reject("passwordCheck");
         }
 
-
-        if (memberService.doubleCheck(memberForm.getUsername()) == null) {
-            bindingResult.reject("doubleCheck", new Object[]{memberForm.getUsername()}, null);
+        if (memberService.doubleCheck(memberForm.getUsername()) != null) {
+            bindingResult.reject("doubleCheck", new Object[]{memberForm.getNickname()}, null);
         }
 
         if (bindingResult.hasErrors()) {
@@ -45,10 +46,18 @@ public class SignUpController {
         String encodedPassword = memberService.encodedPassword(memberForm.getPassword());
 
         Member member = new Member(memberForm.getUsername(), memberForm.getAge(), memberForm.getPhoneNumber(),
-                memberForm.getGender(), memberForm.getLoginId(), encodedPassword,
-                memberForm.getEmail());
+                memberForm.getGender(), memberForm.getUserId(), encodedPassword,
+                memberForm.getEmail(), memberForm.getNickname());
 
         memberService.join(member);
+        tokenService.createEmailToken(member.getId(), member.getEmail());
         return "redirect:/";
+    }
+
+    @GetMapping("/confirm-email")
+    public String viewConfirmEmail(@RequestParam String tokenId) {
+        memberService.confirmEmail(tokenId);
+
+        return "redirect:/login";
     }
 }

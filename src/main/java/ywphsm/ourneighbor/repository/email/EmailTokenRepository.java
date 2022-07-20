@@ -1,7 +1,8 @@
-package ywphsm.ourneighbor.email;
+package ywphsm.ourneighbor.repository.email;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ywphsm.ourneighbor.domain.member.EmailToken;
 
 import java.time.LocalDateTime;
 import java.util.Optional;

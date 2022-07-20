@@ -1,4 +1,4 @@
-package ywphsm.ourneighbor.email;
+package ywphsm.ourneighbor.domain.member;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -56,6 +56,6 @@ public class EmailToken {
      * 토큰 사용으로 인한 만료
      */
     public void useToken(){
-        expired = true;
+        this.expired = true;
     }
 }

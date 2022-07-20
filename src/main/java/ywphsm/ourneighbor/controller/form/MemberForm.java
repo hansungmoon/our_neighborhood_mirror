@@ -12,6 +12,9 @@ public class MemberForm {
     @NotBlank
     private String username;
 
+    @NotBlank
+    private String nickname;
+
     @NotNull
     private int age;
 
@@ -19,7 +22,7 @@ public class MemberForm {
     private int gender;
 
     @NotBlank
-    private String loginId;
+    private String userId;
 
     @NotBlank
     private String password;
@@ -30,9 +33,6 @@ public class MemberForm {
     @Email
     @NotBlank
     private String email;
-
-    @NotBlank
-    private String name;
 
     @NotBlank
     private String phoneNumber;
