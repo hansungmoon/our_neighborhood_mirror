@@ -50,6 +50,9 @@ public class Member extends BaseTimeEntity {
     @NotNull
     private int age;
 
+    @NotBlank
+    private String birthDate;
+
     @NotNull
     private int gender;         // 0 : 남자, 1 : 여자
 
@@ -82,8 +85,9 @@ public class Member extends BaseTimeEntity {
     }
 
     //회원가입때 사용
-    public Member(String username, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname) {
+    public Member(String username, String birthDate, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname) {
         this.username = username;
+        this.birthDate = birthDate;
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.gender = gender;

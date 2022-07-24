@@ -11,6 +11,7 @@ import ywphsm.ourneighbor.service.MemberService;
 import ywphsm.ourneighbor.service.email.TokenService;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 
 @Slf4j
 @Controller
@@ -42,10 +43,14 @@ public class SignUpController {
             return "sign/signUpForm";
         }
 
+        //나이계산
+        int age = memberService.ChangeBirthToAge(memberForm.getBirthDate());
+
         //패스워드 암호화
         String encodedPassword = memberService.encodedPassword(memberForm.getPassword());
 
-        Member member = new Member(memberForm.getUsername(), memberForm.getAge(), memberForm.getPhoneNumber(),
+        Member member = new Member(memberForm.getUsername(), memberForm.getBirthDate(),
+                age, memberForm.getPhoneNumber(),
                 memberForm.getGender(), memberForm.getUserId(), encodedPassword,
                 memberForm.getEmail(), memberForm.getNickname());
 
@@ -55,9 +60,11 @@ public class SignUpController {
     }
 
     @GetMapping("/confirm-email")
-    public String viewConfirmEmail(@RequestParam String tokenId) {
-        memberService.confirmEmail(tokenId);
+    public String viewConfirmEmail(@RequestParam String token) {
+        if (memberService.confirmEmail(token)) {
+            return "redirect:/login";
+        }
 
-        return "redirect:/login";
+        return "redirect:/";    //나중에 이메일 인증 실패 페이지로 바꿔야함(회원수정에서 재인증)
     }
 }

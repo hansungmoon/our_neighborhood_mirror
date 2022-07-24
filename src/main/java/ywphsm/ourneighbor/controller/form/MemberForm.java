@@ -2,9 +2,7 @@ package ywphsm.ourneighbor.controller.form;
 
 import lombok.Data;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Data
 public class MemberForm {
@@ -15,8 +13,8 @@ public class MemberForm {
     @NotBlank
     private String nickname;
 
-    @NotNull
-    private int age;
+    @NotBlank
+    private String birthDate;
 
     @NotNull
     private int gender;
@@ -25,6 +23,8 @@ public class MemberForm {
     private String userId;
 
     @NotBlank
+    @Pattern(regexp="(?=.*[0-9])(?=.*[a-z])(?=.*\\W)(?=\\S+$).{6,12}",
+            message = "비밀번호는 영문자와 숫자, 특수기호가 적어도 1개 이상 포함된 6자~12자의 비밀번호여야 합니다.")
     private String password;
 
     @NotBlank
