@@ -36,6 +36,10 @@ public class MemberService {
         return memberRepository.findById(memberId).orElseThrow(NoSuchElementException::new);
     }
 
+    public Member findOneV2(Long memberId) {
+        return memberRepository.findById(memberId).orElse(null);
+    }
+
     // 회원 전체 조회
     public List<Member> findMembers() {
         return memberRepository.findAll();
@@ -74,4 +78,6 @@ public class MemberService {
 
         return false;
     }
+
+
 }

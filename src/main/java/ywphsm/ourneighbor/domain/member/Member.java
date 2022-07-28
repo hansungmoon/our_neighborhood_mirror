@@ -97,6 +97,13 @@ public class Member extends BaseTimeEntity {
         this.nickname = nickname;
     }
 
+    public Member(Long id, String email, String username, int gender) {
+        this.id = id;
+        this.email = email;
+        this.username = username;
+        this.gender = gender;
+    }
+
     public void emailConfirmSuccess() {
         this.emailConfirm = true;
     }
