@@ -8,10 +8,10 @@ import ywphsm.ourneighbor.domain.member.EmailToken;
 import ywphsm.ourneighbor.domain.member.Member;
 import ywphsm.ourneighbor.repository.member.MemberRepository;
 import ywphsm.ourneighbor.service.email.TokenService;
-
 import javax.persistence.EntityManager;
 import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
+import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -52,9 +52,9 @@ public class MemberService {
     public int ChangeBirthToAge(String birthDate) {
 
         int nowYear = LocalDateTime.now().getYear();
-        String birthYear = birthDate.substring(0, 3);
+        String birthYear = birthDate.substring(0, 4);
 
-        return nowYear - Integer.parseInt(birthYear);
+        return nowYear - Integer.parseInt(birthYear) + 1;
     }
 
     //비밀번호 인코딩
@@ -86,8 +86,6 @@ public class MemberService {
         Member member = memberRepository.findById(id).get();
 
         member.update(nickname, phoneNumber);
-        em.flush();
-        em.clear();
     }
 
     //비밀번호 확인
@@ -95,12 +93,25 @@ public class MemberService {
         return passwordEncoder.matches(beforePassword, password);
     }
 
-    //비밀번호 수정 변경 감지
+    //비밀번호 수정 변경 감지(회원수정)
+    @Transactional
     public void updatePassword(Long id, String encodedPassword) {
         Member member = memberRepository.findById(id).get();
 
         member.updatePassword(encodedPassword);
-        em.flush();
-        em.clear();
     }
+
+    //비밀번호 찾기 수정 변경 감지(비밀번호 찾기)
+    @Transactional
+    public void updatePassword(String userId, String encodedPassword) {
+        Member member = memberRepository.findByUserId(userId).get();
+
+        member.updatePassword(encodedPassword);
+    }
+
+    //비밀번호 찾기시 있는 아이디인지 확인
+    public Member userIdCheck(String userId) {
+        return memberRepository.findByUserId(userId).orElse(null);
+    }
+
 }

@@ -1,8 +1,11 @@
 package ywphsm.ourneighbor.controller.form;
 
 import lombok.Data;
-
 import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 @Data
 public class MemberForm {
@@ -14,6 +17,8 @@ public class MemberForm {
     private String nickname;
 
     @NotBlank
+    @Pattern(regexp = "([0-9]).{8}",
+            message = "8자리의 숫자여야합니다")
     private String birthDate;
 
     @NotNull

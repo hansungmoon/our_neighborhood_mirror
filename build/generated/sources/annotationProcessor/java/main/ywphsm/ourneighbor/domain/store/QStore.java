@@ -26,11 +26,11 @@ public class QStore extends EntityPathBase<Store> {
 
     public final ywphsm.ourneighbor.domain.QAddress address;
 
-    public final DateTimePath<java.time.LocalDateTime> breakEnd = createDateTime("breakEnd", java.time.LocalDateTime.class);
+    public final TimePath<java.time.LocalTime> breakEnd = createTime("breakEnd", java.time.LocalTime.class);
 
-    public final DateTimePath<java.time.LocalDateTime> breakStart = createDateTime("breakStart", java.time.LocalDateTime.class);
+    public final TimePath<java.time.LocalTime> breakStart = createTime("breakStart", java.time.LocalTime.class);
 
-    public final DateTimePath<java.time.LocalDateTime> closingTime = createDateTime("closingTime", java.time.LocalDateTime.class);
+    public final TimePath<java.time.LocalTime> closingTime = createTime("closingTime", java.time.LocalTime.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
@@ -42,9 +42,9 @@ public class QStore extends EntityPathBase<Store> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
 
-    public final NumberPath<Long> latitude = createNumber("latitude", Long.class);
+    public final NumberPath<Double> lat = createNumber("lat", Double.class);
 
-    public final NumberPath<Long> longitude = createNumber("longitude", Long.class);
+    public final NumberPath<Double> lon = createNumber("lon", Double.class);
 
     public final ywphsm.ourneighbor.domain.member.QMember member;
 
@@ -56,7 +56,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public final NumberPath<Integer> offDay = createNumber("offDay", Integer.class);
 
-    public final DateTimePath<java.time.LocalDateTime> openingTime = createDateTime("openingTime", java.time.LocalDateTime.class);
+    public final TimePath<java.time.LocalTime> openingTime = createTime("openingTime", java.time.LocalTime.class);
 
     public final StringPath phoneNumber = createString("phoneNumber");
 
