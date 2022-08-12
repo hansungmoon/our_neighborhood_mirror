@@ -19,9 +19,11 @@ public class QAddress extends BeanPath<Address> {
 
     public static final QAddress address = new QAddress("address");
 
-    public final StringPath city = createString("city");
+    public final StringPath detail = createString("detail");
 
-    public final StringPath street = createString("street");
+    public final StringPath numberAddr = createString("numberAddr");
+
+    public final StringPath roadAddr = createString("roadAddr");
 
     public final StringPath zipcode = createString("zipcode");
 
