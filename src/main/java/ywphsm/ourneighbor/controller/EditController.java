@@ -34,9 +34,11 @@ public class EditController {
     }
 
     @PostMapping
-    public String memberEdit(@Valid @ModelAttribute EditForm editForm, BindingResult bindingResult) {
+    public String memberEdit(@Valid @ModelAttribute EditForm editForm, BindingResult bindingResult,
+                             @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member member) {
 
-        if (memberService.doubleCheck(editForm.getNickname()) != null) {
+        if (memberService.doubleCheck(editForm.getNickname()) != null &&
+        !member.getNickname().equals(editForm.getNickname())) {
             bindingResult.reject("doubleCheck", new Object[]{editForm.getNickname()}, null);
 
             if (bindingResult.hasErrors()) {

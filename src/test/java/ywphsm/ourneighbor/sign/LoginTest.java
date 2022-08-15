@@ -12,9 +12,6 @@ public class LoginTest {
     @Autowired
     MemberService memberService;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
-
     @Test
     void sign_up() {
         //given

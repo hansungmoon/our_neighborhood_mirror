@@ -65,7 +65,11 @@ public class SignUpController {
         }
 
         if (memberService.findByPhoneNumber(memberForm.getPhoneNumber()) != null) {
-            bindingResult.reject("PhoneDoubleCheck");
+            bindingResult.reject("phoneDoubleCheck");
+        }
+
+        if (memberService.findByEmail(memberForm.getEmail()) != null) {
+            bindingResult.reject("emailDoubleCheck");
         }
 
         if (bindingResult.hasErrors()) {
