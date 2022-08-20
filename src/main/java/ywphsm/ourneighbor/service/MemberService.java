@@ -89,12 +89,20 @@ public class MemberService {
         return memberRepository.findByEmail(email).orElse(null);
     }
 
-    //회원수정 변경 감지
+    //회원수정시 닉네임 변경
     @Transactional
-    public void update(Long id, String nickname, String phoneNumber) {
+    public void updateNickname(Long id, String nickname) {
         Member member = memberRepository.findById(id).get();
 
-        member.update(nickname, phoneNumber);
+        member.updateNickname(nickname);
+    }
+
+    //회원수정시 전화번호 변경
+    @Transactional
+    public void updatePhoneNumber(Long id, String phoneNumber) {
+        Member member = memberRepository.findById(id).get();
+
+        member.updatePhoneNumber(phoneNumber);
     }
 
     //비밀번호 확인
@@ -165,5 +173,11 @@ public class MemberService {
         }
 
         return userId;
+    }
+
+    //회원탈퇴
+    @Transactional
+    public void withdrawal(Long id) {
+        memberRepository.findById(id).ifPresent(memberRepository::delete);
     }
 }

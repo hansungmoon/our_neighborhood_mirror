@@ -30,14 +30,14 @@ public class LoginController {
     public String login(@Valid @ModelAttribute LoginForm loginForm, BindingResult bindingResult,
                         HttpServletRequest request) {
 
-        if (bindingResult.hasErrors()) {
-            return "login/loginForm";
-        }
-
         Member loginMember = loginService.login(loginForm.getUserId(), loginForm.getPassword());
 
         if (loginMember == null) {
             bindingResult.reject("loginFail", "아이디 또는 비밀번호가 맞지 않습니다");
+            return "login/loginForm";
+        }
+
+        if (bindingResult.hasErrors()) {
             return "login/loginForm";
         }
 
@@ -47,12 +47,13 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @PostMapping("/logout")
+
+    @GetMapping("/logout2")
     public String logout(HttpServletRequest request) {
         HttpSession session = request.getSession(false);    //session이 없어도 생성 X
 
         if (session != null) {
-            session.invalidate();
+            session.invalidate();   //세션 삭제
         }
         return "redirect:/";
     }
