@@ -134,6 +134,7 @@ public class EditController {
 
         memberService.updatePhoneNumber(member.getId(), phoneCertifiedForm.getPhoneNumber());
 
+
         return "redirect:/logout";
     }
 
