@@ -1,11 +1,10 @@
 <!DOCTYPE HTML>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/header :: common_header(~{::title}, ~{::style}) ">
+<head th:replace="layout/header :: common_header(~{::title}) ">
     <meta charset="utf-8"/>
     <title>로그인</title>
 </head>
 <body>
-<nav th:replace="layout/navbar :: common_navbar"></nav>
 <div class="container" style="max-width: 600px">
     <div class="py-5 text-center">
         <h2>홈 화면</h2>
@@ -13,14 +12,14 @@
     <div class="row">
         <div class="col">
             <button class="w-100 btn btn-secondary btn-lg" type="button"
-                    th:onclick="|location.href='@{/sign_up/certifiedPhone}'|">
+                    th:onclick="|location.href='@{/sign_up}'|">
                 회원 가입
             </button>
         </div>
         <div class="col">
             <button class="w-100 btn btn-dark btn-lg"
                     onclick="location.href='items.html'"
-                    th:onclick="|location.href='@{/sign_in}'|" type="button">
+                    th:onclick="|location.href='@{/login}'|" type="button">
                 로그인
             </button>
         </div>

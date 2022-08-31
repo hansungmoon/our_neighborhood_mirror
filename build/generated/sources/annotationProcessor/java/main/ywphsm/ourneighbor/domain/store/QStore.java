@@ -46,13 +46,15 @@ public class QStore extends EntityPathBase<Store> {
 
     public final NumberPath<Double> lon = createNumber("lon", Double.class);
 
+    public final ywphsm.ourneighbor.domain.member.QMember member;
+
     public final ListPath<ywphsm.ourneighbor.domain.Menu, ywphsm.ourneighbor.domain.QMenu> menuList = this.<ywphsm.ourneighbor.domain.Menu, ywphsm.ourneighbor.domain.QMenu>createList("menuList", ywphsm.ourneighbor.domain.Menu.class, ywphsm.ourneighbor.domain.QMenu.class, PathInits.DIRECT2);
 
     public final StringPath name = createString("name");
 
     public final StringPath notice = createString("notice");
 
-    public final ListPath<String, StringPath> offDays = this.<String, StringPath>createList("offDays", String.class, StringPath.class, PathInits.DIRECT2);
+    public final NumberPath<Integer> offDay = createNumber("offDay", Integer.class);
 
     public final TimePath<java.time.LocalTime> openingTime = createTime("openingTime", java.time.LocalTime.class);
 
@@ -79,6 +81,7 @@ public class QStore extends EntityPathBase<Store> {
     public QStore(Class<? extends Store> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.address = inits.isInitialized("address") ? new ywphsm.ourneighbor.domain.QAddress(forProperty("address")) : null;
+        this.member = inits.isInitialized("member") ? new ywphsm.ourneighbor.domain.member.QMember(forProperty("member")) : null;
     }
 
 }

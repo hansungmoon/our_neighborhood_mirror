@@ -1,29 +1,32 @@
 package ywphsm.ourneighbor.domain.store;
 
-import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import ywphsm.ourneighbor.domain.Address;
 import ywphsm.ourneighbor.domain.BaseTimeEntity;
+import ywphsm.ourneighbor.domain.CategoryOfStore;
 import ywphsm.ourneighbor.domain.Menu;
-import ywphsm.ourneighbor.domain.store.days.DaysOfStore;
+import ywphsm.ourneighbor.domain.member.Member;
 
 import javax.persistence.*;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-@Slf4j
+@Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {
         "id", "name", "lon", "lat",
         "phoneNumber", "openingTime", "closingTime",
-        "breakStart", "breakEnd", "notice", "intro", "status"})
-@Entity
+        "breakStart", "breakEnd", "notice", "intro",
+        "offDay", "status"
+})
 public class Store extends BaseTimeEntity {
 
     @Id
@@ -31,17 +34,23 @@ public class Store extends BaseTimeEntity {
     @Column(name = "store_id")
     private Long id;
 
+    @NotBlank
     private String name;
 
-    private Double lat;                // 위도
+    @NotNull
     private Double lon;                // 경도
+
+    @NotNull
+    private Double lat;                 // 위도
 
     private String phoneNumber;
 
     @Column(name = "opening_time")
+    @NotNull
     private LocalTime openingTime;            // 여는 시간
 
     @Column(name = "closing_time")
+    @NotNull
     private LocalTime closingTime;            // 닫는 시간
 
     @Column(name = "break_start")
@@ -53,11 +62,7 @@ public class Store extends BaseTimeEntity {
     private String notice;                    // 가게 소식
     private String intro;                     // 가게 소개
 
-//    @OneToMany(mappedBy = "store")
-//    private List<DaysOfStore> daysOfStore;
-
-    @ElementCollection(fetch = FetchType.LAZY)
-    private List<String> offDays;
+    private Integer offDay;                   // 쉬는 날 (0 : 일요일 ~ 6 : 토요일)
 
     @Enumerated(EnumType.STRING)
     private StoreStatus status;               // 가게 오픈 상황
@@ -83,9 +88,9 @@ public class Store extends BaseTimeEntity {
     private List<Menu> menuList = new ArrayList<>();
 
     // Many To Many인듯
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "member_id")
-//    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     // Category와 양방향은 보류
 
@@ -94,11 +99,10 @@ public class Store extends BaseTimeEntity {
     /*
         생성자
      */
-    @Builder
     public Store(String name, Double lat, Double lon,
                  String phoneNumber, LocalTime openingTime, LocalTime closingTime,
                  LocalTime breakStart, LocalTime breakEnd, String notice, String intro,
-                 List<String> offDays, StoreStatus status, Address address) {
+                 Integer offDay, StoreStatus status, Address address) {
         this.name = name;
         this.lat = lat;
         this.lon = lon;
@@ -109,7 +113,7 @@ public class Store extends BaseTimeEntity {
         this.breakEnd = breakEnd;
         this.notice = notice;
         this.intro = intro;
-        this.offDays = offDays;
+        this.offDay = offDay;
         this.status = status;
         this.address = address;
     }
@@ -123,56 +127,21 @@ public class Store extends BaseTimeEntity {
     }
 
 
+
+
+
     /*
         === 생성 메소드 ===
     */
+
 
     /*
         비즈니스 로직 추가
      */
 
-    public void updateStatus(StoreStatus status) {
-        this.status = status;
-    }
 
-    // Status 업데이트 구문 (검색시 반영되게 만듬)
-    public void autoUpdateStatus(List<String> offDays, LocalTime openingTime, LocalTime closingTime, LocalTime breakStart, LocalTime breakEnd) {
 
-        // 오늘의 요일을 한글로 바꿔주는 로직
-        String today = LocalDate.now().getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.KOREAN);
 
-        // 현재 시간
-        LocalTime time = LocalTime.now();
 
-        for (String offDay : offDays) {
-            if (today.equals(offDay)) {
 
-                updateStatus(StoreStatus.CLOSED);
-                return;
-            }
-        }
-
-        // null인 경우를 처리하지 않으면 에러 발생 (검색 결과가 2개 이상인 경우 그냥 터져버림)
-        if (openingTime == null || closingTime == null) {
-            return;
-        }
-
-        if (openingTime.equals(closingTime)) {
-            updateStatus(StoreStatus.OPEN);
-            return;
-        }
-
-        if (!(time.isAfter(openingTime) && time.isBefore(closingTime))) {
-            updateStatus(StoreStatus.CLOSED);
-            return;
-        }
-
-        if (breakStart == null) {
-            return;
-        }
-
-        if (time.isAfter(breakStart) && time.isBefore(breakEnd)) {
-            updateStatus(StoreStatus.BREAK);
-        }
-    }
 }

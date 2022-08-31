@@ -1,20 +1,8 @@
-body{
-    -ms-overflow-style: none;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-.OPEN {
-    background: #fd7e14;
-}
-
-.BREAK {
-    background: #0c4128;
-}
-
-.CLOSED {
-    background: #6c757d;
-    color: #0b1526;
+.sidebar {
+    height: 100vh;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 5px 7px 25px #999;
 }

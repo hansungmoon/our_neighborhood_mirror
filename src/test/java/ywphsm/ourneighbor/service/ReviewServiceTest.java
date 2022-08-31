@@ -36,6 +36,7 @@ import static ywphsm.ourneighbor.domain.store.QStore.*;
 
 @SpringBootTest
 @Transactional
+@Rollback(false)
 class ReviewServiceTest {
 
     @Autowired
@@ -74,11 +75,11 @@ class ReviewServiceTest {
 
         Store store1 = new Store("칸다 소바", 35.1612928, 129.1600985, "0517311660",
                 LocalTime.of(9, 00, 00), LocalTime.of(20, 00, 00), LocalTime.of(15, 30, 00), LocalTime.of(17, 00, 00),
-                null, "안녕하세요 칸다 소바입니다.", null, StoreStatus.OPEN, null);
+                null, "안녕하세요 칸다 소바입니다.", null, StoreStatus.OPEN, new Address("부산 광역시", "해운대구 구남로 30번길 8-3 1층", "48094"));
 
         Store store2 = new Store("맥도날드", 35.1600985, 129.1596415, "07072091629",
                 LocalTime.of(00, 00, 00), LocalTime.of(00, 00, 00), null, null,
-                null, "맥도날드로 오세요.", null, StoreStatus.OPEN, null);
+                null, "맥도날드로 오세요.", null, StoreStatus.OPEN, new Address("부산 광역시", "해운대구 해운대로 570번길 51", "48094"));
 
         em.persist(store1);
         em.persist(store2);
@@ -129,6 +130,21 @@ class ReviewServiceTest {
         em.persist(review5);
     }
 
+    @Test
+    @DisplayName("리뷰 등록")
+    void saveReview() {
+        Member findMember = findMember("JJJ");
+
+        Store visitedStore = findStore("칸다 소바");
+
+        Review review = new Review("맛있어요", 5, findMember, visitedStore);
+
+        Long reviewId = reviewService.saveReview(review);
+
+        Long findReviewId = reviewService.findOne(reviewId).getId();
+
+        assertThat(reviewId).isEqualTo(findReviewId);
+    }
 
     @Test
     @DisplayName("Querydsl 사용해서 리뷰의 내용, 작성자, 가게 이름 불러오기")
@@ -137,10 +153,6 @@ class ReviewServiceTest {
                 .select(review.content, review.member.username, review.store.name)
                 .from(review)
                 .fetch();
-
-        for (Tuple tuple : result) {
-            System.out.println("tuple = " + tuple);
-        }
 
         assertThat(result.size()).isEqualTo(5);
     }
@@ -151,7 +163,7 @@ class ReviewServiceTest {
         List<Review> reviewList = queryFactory
                 .select(review)
                 .from(review)
-                .where(review.member.username.eq("user2"))
+                .where(review.member.username.eq("JJJ"))
                 .fetch();
 
         assertThat(reviewList).extracting("content")
