@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ywphsm.ourneighbor.domain.member.Member;
-import ywphsm.ourneighbor.domain.member.MemberRole;
 
 import java.util.ArrayList;
 import java.util.Collection;

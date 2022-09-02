@@ -2,7 +2,6 @@ package ywphsm.ourneighbor.service;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.jni.Local;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ywphsm.ourneighbor.domain.Address;
 import ywphsm.ourneighbor.domain.member.Member;
@@ -33,10 +32,8 @@ public class InitDB {
 
         private final EntityManager em;
 
-        private final PasswordEncoder passwordEncoder;
-
         public void dbInit() {
-            Member member1 = new Member("ailey", passwordEncoder.encode("12341234"), "박양원", "양갱",
+            Member member1 = new Member("ailey", "12341234", "박양원", "양갱",
                     "ywonp9405@gmail.com", "01067731582", 29, 0);
 
             Member member2 = new Member("hansung", "12341234", "문한성", "한성",
