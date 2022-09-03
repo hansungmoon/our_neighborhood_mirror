@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="028ea644-c8a3-41dc-a18e-d952bd98942d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/config/WebConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/config/WebSecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/interceptor/LogInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/interceptor/LoginCheckInterceptor.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/EditControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +16,14 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,13 +40,21 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/security_basic",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/our_nieghborhood",
     "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HOME\Desktop\JAVA\our_nieghborhood\src\main\java\ywphsm\ourneighbor" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ywphsm.ourneighbor.controller" />
     </key>
   </component>
   <component name="RunManager">
@@ -79,6 +88,8 @@
       <option name="presentableId" value="Default" />
       <updated>1662094970894</updated>
       <workItem from="1662094972851" duration="885000" />
+      <workItem from="1662216011633" duration="882000" />
+      <workItem from="1662216911382" duration="36000" />
     </task>
     <servers />
   </component>
