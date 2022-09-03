@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+<<<<<<< HEAD
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +17,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+=======
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
+import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.web.client.RestTemplate;
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 import ywphsm.ourneighbor.controller.form.google.GoogleOAuthRequest;
 import ywphsm.ourneighbor.controller.form.google.GoogleOAuthResponse;
 import ywphsm.ourneighbor.domain.member.Member;
@@ -38,7 +51,11 @@ public class GoogleService {
     @Value("${google.token.url}")
     private String GOOGLE_SNS_TOKEN_BASE_URL;
 
+<<<<<<< HEAD
     public Member getUserInfo(String code, Model model) throws JsonProcessingException {
+=======
+    public Member getUserInfo(String code, Model model) throws JsonProcessingException, ParseException {
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 
         //Google OAuth Access Token 요청을 위한 파라미터 세팅
         GoogleOAuthRequest googleOAuthRequest = GoogleOAuthRequest
@@ -59,7 +76,10 @@ public class GoogleService {
         ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+<<<<<<< HEAD
         log.info("ObjectMapper");
+=======
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 
         //AccessToken 발급 요청
         ResponseEntity<String> resultEntity = restTemplate.postForEntity(GOOGLE_SNS_TOKEN_BASE_URL, googleOAuthRequest, String.class);
@@ -69,6 +89,7 @@ public class GoogleService {
         GoogleOAuthResponse result = mapper.readValue(resultEntity.getBody(), new TypeReference<GoogleOAuthResponse>() {
         });
 
+<<<<<<< HEAD
         //ID Token만 추출 (사용자의 정보는 jwt로 인코딩 되어있다)
         String jwtToken = result.getIdToken();
         String requestUrl = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com/tokeninfo")
@@ -94,14 +115,53 @@ public class GoogleService {
         boolean email_verified = model.getAttribute("email_verified").equals("true");
 
         Member member = new Member(email, name, email_verified);
+=======
+        String access_token = result.getAccessToken();
+        log.info("accessToken = {}", access_token);
+
+        //프로필 요청 헤더 작성
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "Bearer " + access_token);
+        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+
+        //프로필정보 요청
+        ResponseEntity<String> googleUserInfo = restTemplate.exchange(
+                "https://people.googleapis.com/v1/people/me?personFields=genders,names,emailAddresses,phoneNumbers",
+                HttpMethod.GET,
+                new HttpEntity<>(headers),
+                String.class
+        );
+        log.info("naverUserInfo:{}", googleUserInfo);
+
+        JsonParser jsonParser = new JsonParser();
+        JsonElement parse = jsonParser.parse(googleUserInfo.getBody());
+
+        String name = parse.getAsJsonObject().get("names").getAsJsonArray().get(0).getAsJsonObject().get("displayName").getAsString();
+        String genders = parse.getAsJsonObject().get("genders").getAsJsonArray().get(0).getAsJsonObject().get("value").getAsString();
+        String email = parse.getAsJsonObject().get("emailAddresses").getAsJsonArray().get(0).getAsJsonObject().get("value").getAsString();
+        String emailVerified = parse.getAsJsonObject().get("emailAddresses").getAsJsonArray().get(0).getAsJsonObject().get("metadata").getAsJsonObject().get("verified").getAsString();
+
+        log.info("name:{}", name);
+        log.info("gender:{}", genders);
+        log.info("email:{}", email);
+        log.info("emailVerified:{}", emailVerified);
+        boolean email_verified = emailVerified.equals("true");
+        int gender = genders.equals("male") ? 0 : 1;
+
+        Member member = new Member(email, name, email_verified, gender);
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
         Member findMember = memberService.findByEmail(email);
         if (findMember == null) {
             memberService.join(member);
         }
 
         return member;
+<<<<<<< HEAD
 
     }
 
 
+=======
+    }
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 }

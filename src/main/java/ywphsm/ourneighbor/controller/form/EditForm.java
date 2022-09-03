@@ -12,6 +12,4 @@ public class EditForm {
     @NotBlank
     private String nickname;
 
-    @NotBlank
-    private String phoneNumber;
 }

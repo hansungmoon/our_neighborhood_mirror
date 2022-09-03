@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<<<<<<< HEAD
 <head th:replace="layout/header :: common_header(~{::title}) ">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>우리 동네 홈화면</title>
+=======
+<head th:replace="layout/header :: common_header(~{::title}, ~{::style}) ">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>우리 동네</title>
+    <style>
+
+    </style>
+>>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 </head>
 <body>
-
+<nav th:replace="layout/navbar :: common_navbar"></nav>
 <footer th:replace="layout/footer :: common_footer">
-템플릿 푸터
+    템플릿 푸터
 </footer>
+<script th:replace="layout/footer :: common_js(~{::script})"></script>
 </body>
 </html>

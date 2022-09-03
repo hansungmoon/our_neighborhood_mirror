@@ -113,6 +113,13 @@ public class Member extends BaseTimeEntity {
         this.emailConfirm = emailConfirm;
     }
 
+    public Member(String email, String username, boolean emailConfirm, int gender) {
+        this.email = email;
+        this.username = username;
+        this.emailConfirm = emailConfirm;
+        this.gender = gender;
+    }
+
     //네이버 로그인시 회원 저장
     public Member(String username, int gender, String email, String phoneNumber, String birthDate, int age) {
         this.username = username;
@@ -132,8 +139,11 @@ public class Member extends BaseTimeEntity {
 
 
     //회원 수정
-    public void update(String nickname, String phoneNumber) {
+    public void updateNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public void updatePhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

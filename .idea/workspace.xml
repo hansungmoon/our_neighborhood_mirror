@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="028ea644-c8a3-41dc-a18e-d952bd98942d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/EditControllerTest.java" afterDir="false" />
+    <list default="true" id="05e3e811-7582-43f9-9cbb-c19f533487fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,60 +17,26 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="JUnit5 Test Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2ECMAREurzc7Kv0uxGA91lnADV6" />
+  <component name="ProjectId" id="2EGNAV50vacvOS89kQLyyNGt47s" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/our_nieghborhood",
-    "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/our_nieghborhood&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7130eb1fe8be9e65aec547fef9a6cef6&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HOME\Desktop\JAVA\our_nieghborhood\src\main\java\ywphsm\ourneighbor" />
-    </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="ywphsm.ourneighbor.controller" />
-    </key>
-  </component>
+}</component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="our_nieghborhood" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="our_nieghborhood" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OurNeighborApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="ourneighbor.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ywphsm.ourneighbor.OurNeighborApplication" />
@@ -82,29 +48,17 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="028ea644-c8a3-41dc-a18e-d952bd98942d" name="Changes" comment="" />
-      <created>1662094970894</created>
+      <changelist id="05e3e811-7582-43f9-9cbb-c19f533487fe" name="Changes" comment="" />
+      <created>1662217817524</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662094970894</updated>
-      <workItem from="1662094972851" duration="885000" />
-      <workItem from="1662216011633" duration="882000" />
-      <workItem from="1662216911382" duration="36000" />
+      <updated>1662217817524</updated>
+      <workItem from="1662217818824" duration="40000" />
+      <workItem from="1662218134743" duration="260000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
