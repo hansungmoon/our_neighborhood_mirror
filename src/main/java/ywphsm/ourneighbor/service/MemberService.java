@@ -116,28 +116,14 @@ public class MemberService {
         Member member = memberRepository.findById(id).get();
 
         member.updatePassword(encodedPassword);
-<<<<<<< HEAD
-        em.flush();
-        em.clear();
-    }
-
-    //비밀번호 찾기 수정 변경 감지
-=======
     }
 
     //비밀번호 찾기 수정 변경 감지(비밀번호 찾기)
     @Transactional
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
     public void updatePassword(String userId, String encodedPassword) {
         Member member = memberRepository.findByUserId(userId).get();
 
         member.updatePassword(encodedPassword);
-<<<<<<< HEAD
-        em.flush();
-        em.clear();
-    }
-
-=======
     }
 
     //비밀번호 찾기시 있는 아이디인지 확인
@@ -194,5 +180,4 @@ public class MemberService {
     public void withdrawal(Long id) {
         memberRepository.findById(id).ifPresent(memberRepository::delete);
     }
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 }

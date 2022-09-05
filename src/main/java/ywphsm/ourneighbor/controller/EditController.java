@@ -67,7 +67,7 @@ public class EditController {
         }
 
         if (bindingResult.hasErrors()) {
-            return "edit/passwordEditForm";
+            return "/edit/passwordEditForm";
         }
 
         String encodedPassword = memberService.encodedPassword(passwordEditForm.getAfterPassword());

@@ -19,8 +19,6 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class LoginController {
 
-<<<<<<< HEAD:src/main/java/ywphsm/ourneighbor/controller/LoginController.java
-=======
     private final LoginService loginService;
 
     @GetMapping("/login")
@@ -48,7 +46,6 @@ public class LoginController {
 
         return "redirect:/";
     }
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97:src/main/java/ywphsm/ourneighbor/controller/login/LoginController.java
 
 
     @GetMapping("/logout2")

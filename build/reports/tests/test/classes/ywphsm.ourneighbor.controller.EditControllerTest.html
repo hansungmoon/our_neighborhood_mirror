@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - EditControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>EditControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/ywphsm.ourneighbor.controller.html">ywphsm.ourneighbor.controller</a> &gt; EditControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">6</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">5.961s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">83%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="비밀번호_수정()"></a>
+<h3 class="failures">비밀번호_수정()</h3>
+<span class="code">
+<pre>java.lang.AssertionError: Range for response status value 400 expected:&lt;REDIRECTION&gt; but was:&lt;CLIENT_ERROR&gt;
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:59)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:122)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers.lambda$is3xxRedirection$4(StatusResultMatchers.java:86)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:212)
+	at ywphsm.ourneighbor.controller.EditControllerTest.비밀번호_수정(EditControllerTest.java:88)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:725)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
+	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:214)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:210)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:135)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:66)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:108)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:88)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:67)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:52)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:96)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:75)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
+	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">닉네임_수정()</td>
+<td class="success">0.426s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="failures">비밀번호_수정()</td>
+<td class="failures">0.018s</td>
+<td class="failures">failed</td>
+</tr>
+<tr>
+<td class="success">이메일인증_Get()</td>
+<td class="success">1.158s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">이메일인증_Post()</td>
+<td class="success">4.164s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">전화번호인증_Post()</td>
+<td class="success">0.099s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">회원탈퇴()</td>
+<td class="success">0.096s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>20:03:12.783 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+20:03:12.801 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+20:03:12.849 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [ywphsm.ourneighbor.controller.EditControllerTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+20:03:12.867 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [ywphsm.ourneighbor.controller.EditControllerTest], using SpringBootContextLoader
+20:03:12.872 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [ywphsm.ourneighbor.controller.EditControllerTest]: class path resource [ywphsm/ourneighbor/controller/EditControllerTest-context.xml] does not exist
+20:03:12.873 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [ywphsm.ourneighbor.controller.EditControllerTest]: class path resource [ywphsm/ourneighbor/controller/EditControllerTestContext.groovy] does not exist
+20:03:12.873 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [ywphsm.ourneighbor.controller.EditControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+20:03:12.874 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [ywphsm.ourneighbor.controller.EditControllerTest]: EditControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:03:12.953 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [ywphsm.ourneighbor.controller.EditControllerTest]
+20:03:13.045 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [C:\Users\HOME\Desktop\JAVA\our_nieghborhood\build\classes\java\main\ywphsm\ourneighbor\OurNeighborApplication.class]
+20:03:13.047 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration ywphsm.ourneighbor.OurNeighborApplication for test class ywphsm.ourneighbor.controller.EditControllerTest
+20:03:13.189 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [ywphsm.ourneighbor.controller.EditControllerTest]: using defaults.
+20:03:13.190 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+20:03:13.217 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@737edcfa, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3ecedf21, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@74cf8b28, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@36c54a56, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3359c978, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7ba63fe5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@73386d72, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6f330eb9, org.springframework.test.context.event.EventPublishingTestExecutionListener@125c082e, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@584f5497, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@68ace111, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1f9d6c7b, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6df20ade, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@4fbb001b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4010d494]
+20:03:13.224 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@33a053d testClass = EditControllerTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@14a54ef6 testClass = EditControllerTest, locations = '{}', classes = '{class ywphsm.ourneighbor.OurNeighborApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@42a9e5d1, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@38f57b3d, [ImportsContextCustomizer@20921b9b key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration, org.springframework.boot.test.autoconfigure.web.reactive.WebTestClientAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@34a75079, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1643d68f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@21005f6c, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@31920ade], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false]], class annotated with @DirtiesContext [false] with mode [null].
+20:03:13.238 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@33a053d testClass = EditControllerTest, testInstance = ywphsm.ourneighbor.controller.EditControllerTest@57f64f5e, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@14a54ef6 testClass = EditControllerTest, locations = '{}', classes = '{class ywphsm.ourneighbor.OurNeighborApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@42a9e5d1, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@4b3fa0b3, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@38f57b3d, [ImportsContextCustomizer@20921b9b key = [org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration, org.springframework.boot.test.autoconfigure.web.reactive.WebTestClientAutoConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@34a75079, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1643d68f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@21005f6c, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@31920ade], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; false, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.5)
+
+2022-09-04 20:03:13.828  INFO 17512 --- [    Test worker] y.o.controller.EditControllerTest        : Starting EditControllerTest using Java 11.0.13 on DESKTOP-MQ11A40 with PID 17512 (started by HOME in C:\Users\HOME\Desktop\JAVA\our_nieghborhood)
+2022-09-04 20:03:13.830  INFO 17512 --- [    Test worker] y.o.controller.EditControllerTest        : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2022-09-04 20:03:15.013  INFO 17512 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-04 20:03:15.178  INFO 17512 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 153 ms. Found 6 JPA repository interfaces.
+2022-09-04 20:03:16.404  INFO 17512 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2022-09-04 20:03:16.425  INFO 17512 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-09-04 20:03:16.426  INFO 17512 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.60]
+2022-09-04 20:03:16.766  INFO 17512 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-09-04 20:03:16.766  INFO 17512 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2907 ms
+2022-09-04 20:03:17.359  INFO 17512 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-04 20:03:17.468  INFO 17512 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.5.Final
+2022-09-04 20:03:17.766  INFO 17512 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-04 20:03:17.965  INFO 17512 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-09-04 20:03:18.068  INFO 17512 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-09-04 20:03:18.129  INFO 17512 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2022-09-04 20:03:19.445 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists category CASCADE 
+2022-09-04 20:03:19.455  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399455 | took 5ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists category CASCADE 
+
+    drop table if exists category CASCADE ;
+2022-09-04 20:03:19.455 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists category_of_store CASCADE 
+2022-09-04 20:03:19.456  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399456 | took 1ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists category_of_store CASCADE 
+
+    drop table if exists category_of_store CASCADE ;
+2022-09-04 20:03:19.457 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists email_token CASCADE 
+2022-09-04 20:03:19.458  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399458 | took 0ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists email_token CASCADE 
+
+    drop table if exists email_token CASCADE ;
+2022-09-04 20:03:19.458 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists member CASCADE 
+2022-09-04 20:03:19.459  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399459 | took 1ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists member CASCADE 
+
+    drop table if exists member CASCADE ;
+2022-09-04 20:03:19.460 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists menu CASCADE 
+2022-09-04 20:03:19.461  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399461 | took 0ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists menu CASCADE 
+
+    drop table if exists menu CASCADE ;
+2022-09-04 20:03:19.461 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists review CASCADE 
+2022-09-04 20:03:19.462  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399462 | took 0ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists review CASCADE 
+
+    drop table if exists review CASCADE ;
+2022-09-04 20:03:19.462 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists store CASCADE 
+2022-09-04 20:03:19.465  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399464 | took 2ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists store CASCADE 
+
+    drop table if exists store CASCADE ;
+2022-09-04 20:03:19.465 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop table if exists store_off_days CASCADE 
+2022-09-04 20:03:19.466  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399466 | took 1ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop table if exists store_off_days CASCADE 
+
+    drop table if exists store_off_days CASCADE ;
+2022-09-04 20:03:19.466 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    drop sequence if exists hibernate_sequence
+2022-09-04 20:03:19.467  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399467 | took 0ms | statement | connection 1| url jdbc:h2:tcp://localhost/~/neighbor
+
+    drop sequence if exists hibernate_sequence
+
+    drop sequence if exists hibernate_sequence;
+2022-09-04 20:03:19.471 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : create sequence hibernate_sequence start with 1 increment by 1
+2022-09-04 20:03:19.472  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399472 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+create sequence hibernate_sequence start with 1 increment by 1
+create sequence hibernate_sequence start with 1 increment by 1;
+2022-09-04 20:03:19.473 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    )
+2022-09-04 20:03:19.475  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399475 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    )
+
+    create table category (
+       category_id bigint not null,
+        name varchar(255),
+        parent_id bigint,
+        primary key (category_id)
+    );
+2022-09-04 20:03:19.475 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table category_of_store (
+       id bigint not null,
+        category_id bigint,
+        store_id bigint,
+        primary key (id)
+    )
+2022-09-04 20:03:19.476  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399476 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table category_of_store (
+       id bigint not null,
+        category_id bigint,
+        store_id bigint,
+        primary key (id)
+    )
+
+    create table category_of_store (
+       id bigint not null,
+        category_id bigint,
+        store_id bigint,
+        primary key (id)
+    );
+2022-09-04 20:03:19.477 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table email_token (
+       id varchar(36) not null,
+        create_date timestamp,
+        expiration_date timestamp,
+        expired boolean not null,
+        last_modified_date timestamp,
+        member_id bigint,
+        primary key (id)
+    )
+2022-09-04 20:03:19.479  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399479 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table email_token (
+       id varchar(36) not null,
+        create_date timestamp,
+        expiration_date timestamp,
+        expired boolean not null,
+        last_modified_date timestamp,
+        member_id bigint,
+        primary key (id)
+    )
+
+    create table email_token (
+       id varchar(36) not null,
+        create_date timestamp,
+        expiration_date timestamp,
+        expired boolean not null,
+        last_modified_date timestamp,
+        member_id bigint,
+        primary key (id)
+    );
+2022-09-04 20:03:19.479 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table member (
+       member_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        age integer not null,
+        birth_date varchar(255),
+        email varchar(255),
+        email_confirm boolean not null,
+        gender integer not null,
+        member_role varchar(255),
+        nickname varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        user_id varchar(255),
+        username varchar(255),
+        primary key (member_id)
+    )
+2022-09-04 20:03:19.482  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399481 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table member (
+       member_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        age integer not null,
+        birth_date varchar(255),
+        email varchar(255),
+        email_confirm boolean not null,
+        gender integer not null,
+        member_role varchar(255),
+        nickname varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        user_id varchar(255),
+        username varchar(255),
+        primary key (member_id)
+    )
+
+    create table member (
+       member_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        age integer not null,
+        birth_date varchar(255),
+        email varchar(255),
+        email_confirm boolean not null,
+        gender integer not null,
+        member_role varchar(255),
+        nickname varchar(255),
+        password varchar(255),
+        phone_number varchar(255),
+        user_id varchar(255),
+        username varchar(255),
+        primary key (member_id)
+    );
+2022-09-04 20:03:19.483 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table menu (
+       menu_id bigint not null,
+        discount_end timestamp,
+        discount_price integer not null,
+        discount_start timestamp,
+        name varchar(255),
+        price integer,
+        store_id bigint,
+        primary key (menu_id)
+    )
+2022-09-04 20:03:19.484  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399484 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table menu (
+       menu_id bigint not null,
+        discount_end timestamp,
+        discount_price integer not null,
+        discount_start timestamp,
+        name varchar(255),
+        price integer,
+        store_id bigint,
+        primary key (menu_id)
+    )
+
+    create table menu (
+       menu_id bigint not null,
+        discount_end timestamp,
+        discount_price integer not null,
+        discount_start timestamp,
+        name varchar(255),
+        price integer,
+        store_id bigint,
+        primary key (menu_id)
+    );
+2022-09-04 20:03:19.485 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table review (
+       review_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        created_by varchar(255),
+        last_modified_by varchar(255),
+        content varchar(255),
+        rating integer not null,
+        member_id bigint,
+        store_id bigint,
+        primary key (review_id)
+    )
+2022-09-04 20:03:19.487  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399487 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table review (
+       review_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        created_by varchar(255),
+        last_modified_by varchar(255),
+        content varchar(255),
+        rating integer not null,
+        member_id bigint,
+        store_id bigint,
+        primary key (review_id)
+    )
+
+    create table review (
+       review_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        created_by varchar(255),
+        last_modified_by varchar(255),
+        content varchar(255),
+        rating integer not null,
+        member_id bigint,
+        store_id bigint,
+        primary key (review_id)
+    );
+2022-09-04 20:03:19.488 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table store (
+       store_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        detail varchar(255),
+        number_addr varchar(255),
+        road_addr varchar(255),
+        zipcode varchar(255),
+        break_end time,
+        break_start time,
+        closing_time time,
+        intro varchar(255),
+        lat double,
+        lon double,
+        name varchar(255),
+        notice varchar(255),
+        opening_time time,
+        phone_number varchar(255),
+        status varchar(255),
+        primary key (store_id)
+    )
+2022-09-04 20:03:19.490  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399490 | took 1ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table store (
+       store_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        detail varchar(255),
+        number_addr varchar(255),
+        road_addr varchar(255),
+        zipcode varchar(255),
+        break_end time,
+        break_start time,
+        closing_time time,
+        intro varchar(255),
+        lat double,
+        lon double,
+        name varchar(255),
+        notice varchar(255),
+        opening_time time,
+        phone_number varchar(255),
+        status varchar(255),
+        primary key (store_id)
+    )
+
+    create table store (
+       store_id bigint not null,
+        created_date timestamp,
+        last_modified_date timestamp,
+        detail varchar(255),
+        number_addr varchar(255),
+        road_addr varchar(255),
+        zipcode varchar(255),
+        break_end time,
+        break_start time,
+        closing_time time,
+        intro varchar(255),
+        lat double,
+        lon double,
+        name varchar(255),
+        notice varchar(255),
+        opening_time time,
+        phone_number varchar(255),
+        status varchar(255),
+        primary key (store_id)
+    );
+2022-09-04 20:03:19.490 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    create table store_off_days (
+       store_store_id bigint not null,
+        off_days varchar(255)
+    )
+2022-09-04 20:03:19.491  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399491 | took 0ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    create table store_off_days (
+       store_store_id bigint not null,
+        off_days varchar(255)
+    )
+
+    create table store_off_days (
+       store_store_id bigint not null,
+        off_days varchar(255)
+    );
+2022-09-04 20:03:19.492 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category
+2022-09-04 20:03:19.497  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399497 | took 4ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category
+
+    alter table category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category;
+2022-09-04 20:03:19.499 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table category_of_store 
+       add constraint FKkp3ecmrd4irrkr0ikxyxwy9i8 
+       foreign key (category_id) 
+       references category
+2022-09-04 20:03:19.503  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399503 | took 2ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table category_of_store 
+       add constraint FKkp3ecmrd4irrkr0ikxyxwy9i8 
+       foreign key (category_id) 
+       references category
+
+    alter table category_of_store 
+       add constraint FKkp3ecmrd4irrkr0ikxyxwy9i8 
+       foreign key (category_id) 
+       references category;
+2022-09-04 20:03:19.503 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table category_of_store 
+       add constraint FKbypjbohv6isgc1ebmtbh826qi 
+       foreign key (store_id) 
+       references store
+2022-09-04 20:03:19.506  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399506 | took 2ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table category_of_store 
+       add constraint FKbypjbohv6isgc1ebmtbh826qi 
+       foreign key (store_id) 
+       references store
+
+    alter table category_of_store 
+       add constraint FKbypjbohv6isgc1ebmtbh826qi 
+       foreign key (store_id) 
+       references store;
+2022-09-04 20:03:19.507 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table menu 
+       add constraint FK4sgenfcmk1jajhgctnkpn5erg 
+       foreign key (store_id) 
+       references store
+2022-09-04 20:03:19.510  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399510 | took 2ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table menu 
+       add constraint FK4sgenfcmk1jajhgctnkpn5erg 
+       foreign key (store_id) 
+       references store
+
+    alter table menu 
+       add constraint FK4sgenfcmk1jajhgctnkpn5erg 
+       foreign key (store_id) 
+       references store;
+2022-09-04 20:03:19.510 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table review 
+       add constraint FKk0ccx5i4ci2wd70vegug074w1 
+       foreign key (member_id) 
+       references member
+2022-09-04 20:03:19.513  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399513 | took 3ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table review 
+       add constraint FKk0ccx5i4ci2wd70vegug074w1 
+       foreign key (member_id) 
+       references member
+
+    alter table review 
+       add constraint FKk0ccx5i4ci2wd70vegug074w1 
+       foreign key (member_id) 
+       references member;
+2022-09-04 20:03:19.514 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table review 
+       add constraint FK74d12ba8sxxu9vpnc59b43y30 
+       foreign key (store_id) 
+       references store
+2022-09-04 20:03:19.516  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399516 | took 2ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table review 
+       add constraint FK74d12ba8sxxu9vpnc59b43y30 
+       foreign key (store_id) 
+       references store
+
+    alter table review 
+       add constraint FK74d12ba8sxxu9vpnc59b43y30 
+       foreign key (store_id) 
+       references store;
+2022-09-04 20:03:19.517 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    
+    alter table store_off_days 
+       add constraint FK9rh5423mkraxqc2pujldawf0b 
+       foreign key (store_store_id) 
+       references store
+2022-09-04 20:03:19.522  INFO 17512 --- [    Test worker] p6spy                                    : #1662289399522 | took 4ms | statement | connection 2| url jdbc:h2:tcp://localhost/~/neighbor
+
+    alter table store_off_days 
+       add constraint FK9rh5423mkraxqc2pujldawf0b 
+       foreign key (store_store_id) 
+       references store
+
+    alter table store_off_days 
+       add constraint FK9rh5423mkraxqc2pujldawf0b 
+       foreign key (store_store_id) 
+       references store;
+2022-09-04 20:03:19.526  INFO 17512 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-04 20:03:19.547  INFO 17512 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-04 20:03:20.290  WARN 17512 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-09-04 20:03:20.970 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:20.991  INFO 17512 --- [    Test worker] p6spy                                    : #1662289400991 | took 12ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.036 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.038  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401038 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.050 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.055  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401055 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.087 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.089  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401089 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.090 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.091  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401091 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.093 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.093  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401093 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.094 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.096  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401096 | took 1ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.097 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.099  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401099 | took 1ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.100 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.101  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401101 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.102 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.103  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401103 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.105 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.106  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401106 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.107 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.108  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401108 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.109 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    call next value for hibernate_sequence
+2022-09-04 20:03:21.110  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401110 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+call next value for hibernate_sequence
+call next value for hibernate_sequence;
+2022-09-04 20:03:21.162 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.member.Member
+        */ insert 
+        into
+            member
+            (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.182  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401182 | took 1ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.member.Member */ insert into member (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.member.Member */ insert into member (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) values ('2022-09-04T20:03:20.940+0900', '2022-09-04T20:03:20.940+0900', 29, NULL, 'ywonp9405@gmail.com', false, 0, NULL, '양갱', '$2a$10$UTjpsSFew5oRLhpIyKCcAeqVofR1VlsSwMUHwR5w9LARXlDyKFiH.', '01067731582', 'ailey', '박양원', 1);
+2022-09-04 20:03:21.186 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.member.Member
+        */ insert 
+        into
+            member
+            (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.189  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401189 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.member.Member */ insert into member (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.member.Member */ insert into member (created_date, last_modified_date, age, birth_date, email, email_confirm, gender, member_role, nickname, password, phone_number, user_id, username, member_id) values ('2022-09-04T20:03:21.036+0900', '2022-09-04T20:03:21.036+0900', 24, NULL, 'hansung@naver.com', false, 0, NULL, '한성', '12341234', '01038352375', 'hansung', '문한성', 2);
+2022-09-04 20:03:21.190 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.196  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401196 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.041+0900', '2022-09-04T20:03:21.041+0900', '1층', '부산 해운대구 우동 544-15', '부산 해운대구 구남로30번길 8-3', '48094', '1970-01-01T17:00:00.000+0900', '1970-01-01T15:30:00.000+0900', '1970-01-01T21:00:00.000+0900', '안녕하세요 칸다 소바입니다.', 35.1612928, 129.1600985, '칸다 소바', NULL, '1970-01-01T09:00:00.000+0900', '0517311660', 'OPEN', 3);
+2022-09-04 20:03:21.196 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.199  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401198 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.087+0900', '2022-09-04T20:03:21.087+0900', '', '부산 해운대구 우동 626-13', '부산 해운대구 해운대로570번길 51', '48094', NULL, NULL, '1970-01-01T00:00:00.000+0900', '맥도날드로 오세요.', 35.1600985, 129.1596415, '맥도날드', NULL, '1970-01-01T00:00:00.000+0900', '07072091629', 'OPEN', 4);
+2022-09-04 20:03:21.199 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.202  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401202 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.090+0900', '2022-09-04T20:03:21.090+0900', '', '부산 해운대구 중동 1205-13', '부산 해운대구 해운대해변로 351-1', '48096', NULL, NULL, '1970-01-01T19:00:00.000+0900', 'https://www.instagram.com/kuziramen/', 35.1638127, 129.1681053, '쿠지라멘', '영업 날짜 및 시간을 인스타 그램으로 확인해주세요.', '1970-01-01T11:00:00.000+0900', NULL, 'OPEN', 5);
+2022-09-04 20:03:21.203 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.205  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401205 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.092+0900', '2022-09-04T20:03:21.092+0900', '', '부산 해운대구 중동 1404-39', '부산 해운대구 해운대해변로298번길 9', '48099', NULL, NULL, '1970-01-01T21:00:00.000+0900', NULL, 35.1609342, 129.1646901, '버거인뉴욕', NULL, '1970-01-01T11:00:00.000+0900', '0517430144', 'OPEN', 6);
+2022-09-04 20:03:21.206 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.207  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401207 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.094+0900', '2022-09-04T20:03:21.094+0900', '', '부산 해운대구 중동 1128-86', '부산광역시 해운대구 달맞이길 2-7', '48099', NULL, NULL, '1970-01-01T02:00:00.000+0900', NULL, 35.1641708, 129.1654434, '퍼플펍', NULL, '1970-01-01T17:00:00.000+0900', NULL, 'OPEN', 7);
+2022-09-04 20:03:21.208 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.210  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401210 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.097+0900', '2022-09-04T20:03:21.097+0900', '', '부산 해운대구 우동 635-1', '부산 해운대구 구남로24번길 29', '48094', NULL, NULL, '1970-01-01T01:00:00.000+0900', NULL, 35.1610265, 129.1589194, '맛찬들 왕소금구이 해운대점', NULL, '1970-01-01T16:00:00.000+0900', '0517420106', 'OPEN', 8);
+2022-09-04 20:03:21.210 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.212  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401212 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.100+0900', '2022-09-04T20:03:21.100+0900', '', '부산 해운대구 중동 1392-24', '부산 해운대구 구남로47', '48095', NULL, NULL, '1970-01-01T02:00:00.000+0900', NULL, 35.1602022, 129.1620121, '아웃닭', NULL, '1970-01-01T17:30:00.000+0900', '0517479788', 'OPEN', 9);
+2022-09-04 20:03:21.213 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.214  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401214 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.102+0900', '2022-09-04T20:03:21.102+0900', '', '부산 해운대구 우동 641-15', '부산 해운대구 구남로8번길 62', '48094', NULL, NULL, '1970-01-01T00:00:00.000+0900', NULL, 35.1615938, 129.1562055, '류센소', NULL, '1970-01-01T09:00:00.000+0900', '01082813884', 'OPEN', 10);
+2022-09-04 20:03:21.216 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.218  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401218 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.104+0900', '2022-09-04T20:03:21.104+0900', '', '부산 해운대구 우동 532-17', '부산 해운대구 우동1로20번길 19', '48087', NULL, NULL, '1970-01-01T20:30:00.000+0900', NULL, 35.1642173, 129.1576517, '버거샵', NULL, '1970-01-01T11:30:00.000+0900', '0517474961', 'OPEN', 11);
+2022-09-04 20:03:21.219 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.221  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401221 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.107+0900', '2022-09-04T20:03:21.107+0900', '', '부산 해운대구 우동 397-22', '부산 해운대구 우동1로 57', '48088', '1970-01-01T16:30:00.000+0900', '1970-01-01T15:30:00.000+0900', '1970-01-01T20:30:00.000+0900', NULL, 35.1666969, 129.1574575, '나가하마 만게츠 한국 본점', NULL, '1970-01-01T11:00:00.000+0900', '0517310866', 'OPEN', 12);
+2022-09-04 20:03:21.222 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.store.Store
+        */ insert 
+        into
+            store
+            (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) 
+        values
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:21.223  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401223 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.store.Store */ insert into store (created_date, last_modified_date, detail, number_addr, road_addr, zipcode, break_end, break_start, closing_time, intro, lat, lon, name, notice, opening_time, phone_number, status, store_id) values ('2022-09-04T20:03:21.109+0900', '2022-09-04T20:03:21.109+0900', '', '부산 해운대구 우동 493-1', '부산 해운대구 우동1로 37', '48088', NULL, NULL, '1970-01-01T22:30:00.000+0900', NULL, 35.1646947, 129.1569286, '코지하우스', NULL, '1970-01-01T11:30:00.000+0900', '0517316683', 'OPEN', 13);
+2022-09-04 20:03:21.226 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert collection
+        row ywphsm.ourneighbor.domain.store.Store.offDays */ insert 
+        into
+            store_off_days
+            (store_store_id, off_days) 
+        values
+            (?, ?)
+2022-09-04 20:03:21.228  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401228 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert collection row ywphsm.ourneighbor.domain.store.Store.offDays */ insert into store_off_days (store_store_id, off_days) values (?, ?)
+/* insert collection row ywphsm.ourneighbor.domain.store.Store.offDays */ insert into store_off_days (store_store_id, off_days) values (4, '일요일');
+2022-09-04 20:03:21.228 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert collection
+        row ywphsm.ourneighbor.domain.store.Store.offDays */ insert 
+        into
+            store_off_days
+            (store_store_id, off_days) 
+        values
+            (?, ?)
+2022-09-04 20:03:21.229  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401229 | took 0ms | statement | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert collection row ywphsm.ourneighbor.domain.store.Store.offDays */ insert into store_off_days (store_store_id, off_days) values (?, ?)
+/* insert collection row ywphsm.ourneighbor.domain.store.Store.offDays */ insert into store_off_days (store_store_id, off_days) values (4, '토요일');
+2022-09-04 20:03:21.233  INFO 17512 --- [    Test worker] p6spy                                    : #1662289401233 | took 0ms | commit | connection 3| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:21.390  WARN 17512 --- [    Test worker] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 275d812f-59da-4060-b178-28db0e0253bf
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-09-04 20:03:21.631  INFO 17512 --- [    Test worker] o.s.s.web.DefaultSecurityFilterChain     : Will not secure any request
+2022-09-04 20:03:22.254  INFO 17512 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-09-04 20:03:22.761  INFO 17512 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2022-09-04 20:03:22.761  INFO 17512 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2022-09-04 20:03:22.763  INFO 17512 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2022-09-04 20:03:23.118  INFO 17512 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 14234 (http) with context path ''
+2022-09-04 20:03:23.128  INFO 17512 --- [    Test worker] y.o.controller.EditControllerTest        : Started EditControllerTest in 9.846 seconds (JVM running for 12.223)
+2022-09-04 20:03:23.488 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:23.492  INFO 17512 --- [    Test worker] p6spy                                    : #1662289403492 | took 0ms | statement | connection 4| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:23.579 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:23.581  INFO 17512 --- [    Test worker] p6spy                                    : #1662289403581 | took 0ms | statement | connection 5| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:23.713  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [9ad2d779-06fa-49f5-90a5-30ee1f046293][/member_edit/confirm_email][ywphsm.ourneighbor.controller.EditController#confirmEmail(EmailConfirmForm, Member)]
+2022-09-04 20:03:23.747  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;edit/EmailConfirmForm&quot;; model={emailConfirmForm=EmailConfirmForm(email=null), org.springframework.validation.BindingResult.emailConfirmForm=org.springframework.validation.BeanPropertyBindingResult: 0 errors}]]
+2022-09-04 20:03:24.238  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [9ad2d779-06fa-49f5-90a5-30ee1f046293][/member_edit/confirm_email]
+2022-09-04 20:03:24.264  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [3fb017f2-b38c-41ab-8bb4-89d473313b52][/member_edit/confirm_email][ywphsm.ourneighbor.controller.EditController#confirmEmail(EmailConfirmForm, Member)]
+2022-09-04 20:03:24.265  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;edit/alreadyEmailConfirm&quot;; model={emailConfirmForm=EmailConfirmForm(email=null), org.springframework.validation.BindingResult.emailConfirmForm=org.springframework.validation.BeanPropertyBindingResult: 0 errors}]]
+2022-09-04 20:03:24.283  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [3fb017f2-b38c-41ab-8bb4-89d473313b52][/member_edit/confirm_email]
+2022-09-04 20:03:24.302 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:24.304  INFO 17512 --- [    Test worker] p6spy                                    : #1662289404304 | took 0ms | statement | connection 6| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:24.516  INFO 17512 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-04 20:03:24.517  INFO 17512 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-09-04 20:03:24.517  INFO 17512 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-09-04 20:03:24.525  INFO 17512 --- [o-auto-1-exec-1] y.o.interceptor.LogInterceptor           : REQUEST [68819c6a-950d-4dbb-b600-cf67745bcf6e][/member_edit][ywphsm.ourneighbor.controller.EditController#memberEdit(EditForm, BindingResult)]
+2022-09-04 20:03:24.591 DEBUG 17512 --- [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:24.593  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404593 | took 0ms | statement | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:24.598  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404598 | took 0ms | commit | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:24.601 DEBUG 17512 --- [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.nickname=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.nickname=?
+2022-09-04 20:03:24.602  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404602 | took 0ms | statement | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.nickname=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.nickname=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.nickname=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.nickname='바뀐_닉네임';
+2022-09-04 20:03:24.603  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404603 | took 0ms | commit | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:24.606 DEBUG 17512 --- [o-auto-1-exec-1] org.hibernate.SQL                        : 
+    /* update
+        ywphsm.ourneighbor.domain.member.Member */ update
+            member 
+        set
+            last_modified_date=?,
+            age=?,
+            birth_date=?,
+            email=?,
+            email_confirm=?,
+            gender=?,
+            member_role=?,
+            nickname=?,
+            password=?,
+            phone_number=?,
+            user_id=?,
+            username=? 
+        where
+            member_id=?
+2022-09-04 20:03:24.609  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404609 | took 1ms | statement | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+/* update ywphsm.ourneighbor.domain.member.Member */ update member set last_modified_date=?, age=?, birth_date=?, email=?, email_confirm=?, gender=?, member_role=?, nickname=?, password=?, phone_number=?, user_id=?, username=? where member_id=?
+/* update ywphsm.ourneighbor.domain.member.Member */ update member set last_modified_date='2022-09-04T20:03:24.604+0900', age=29, birth_date=NULL, email='ywonp9405@gmail.com', email_confirm=false, gender=0, member_role=NULL, nickname='바뀐_닉네임', password='$2a$10$UTjpsSFew5oRLhpIyKCcAeqVofR1VlsSwMUHwR5w9LARXlDyKFiH.', phone_number='01067731582', user_id='ailey', username='박양원' where member_id=1;
+2022-09-04 20:03:24.611  INFO 17512 --- [o-auto-1-exec-1] p6spy                                    : #1662289404611 | took 0ms | commit | connection 7| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:24.612  INFO 17512 --- [o-auto-1-exec-1] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;redirect:/&quot;; model={}]]
+2022-09-04 20:03:24.614  INFO 17512 --- [o-auto-1-exec-1] y.o.interceptor.LogInterceptor           : RESPONSE [68819c6a-950d-4dbb-b600-cf67745bcf6e][/member_edit]
+2022-09-04 20:03:24.636 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:24.637  INFO 17512 --- [    Test worker] p6spy                                    : #1662289404637 | took 0ms | statement | connection 8| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:24.638  INFO 17512 --- [    Test worker] p6spy                                    : #1662289404638 | took 0ms | commit | connection 8| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:24.729 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:24.731  INFO 17512 --- [    Test worker] p6spy                                    : #1662289404731 | took 0ms | statement | connection 9| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:24.796  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [fe254912-1d7a-4204-8e94-fccf39af1b3a][/member_edit/confirm_email][ywphsm.ourneighbor.controller.EditController#confirmEmail(EmailConfirmForm, BindingResult, Member)]
+2022-09-04 20:03:28.868 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* insert ywphsm.ourneighbor.domain.member.EmailToken
+        */ insert 
+        into
+            email_token
+            (create_date, expiration_date, expired, last_modified_date, member_id, id) 
+        values
+            (?, ?, ?, ?, ?, ?)
+2022-09-04 20:03:28.870  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408870 | took 0ms | statement | connection 10| url jdbc:h2:tcp://localhost/~/neighbor
+/* insert ywphsm.ourneighbor.domain.member.EmailToken */ insert into email_token (create_date, expiration_date, expired, last_modified_date, member_id, id) values (?, ?, ?, ?, ?, ?)
+/* insert ywphsm.ourneighbor.domain.member.EmailToken */ insert into email_token (create_date, expiration_date, expired, last_modified_date, member_id, id) values (NULL, '2022-09-04T20:08:24.818+0900', false, NULL, 1, '60b4424e-3c98-4261-bbdc-fdff8871c3ac');
+2022-09-04 20:03:28.870  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408870 | took 0ms | commit | connection 10| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:28.871  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;signUp/confirmEmail&quot;; model={emailConfirmForm=EmailConfirmForm(email=ywonp9405@gmail.com), org.springframework.validation.BindingResult.emailConfirmForm=org.springframework.validation.BeanPropertyBindingResult: 0 errors}]]
+2022-09-04 20:03:28.886  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [fe254912-1d7a-4204-8e94-fccf39af1b3a][/member_edit/confirm_email]
+2022-09-04 20:03:28.893 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:28.894  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408894 | took 0ms | statement | connection 11| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:28.959  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [8bcdd6ef-66ec-48b8-8412-8d278f5cdfac][/member_edit/phoneCertified][ywphsm.ourneighbor.controller.EditController#edit_phoneCertified(PhoneNumberEditForm, BindingResult, PhoneCertifiedForm, Member)]
+2022-09-04 20:03:28.972 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.phoneNumber=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.phone_number=?
+2022-09-04 20:03:28.973  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408973 | took 0ms | statement | connection 12| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.phoneNumber=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.phone_number=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.phoneNumber=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.phone_number='01038352376';
+2022-09-04 20:03:28.974  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408974 | took 0ms | commit | connection 12| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:28.975 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:28.975  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408975 | took 0ms | statement | connection 12| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:28.977 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* update
+        ywphsm.ourneighbor.domain.member.Member */ update
+            member 
+        set
+            last_modified_date=?,
+            age=?,
+            birth_date=?,
+            email=?,
+            email_confirm=?,
+            gender=?,
+            member_role=?,
+            nickname=?,
+            password=?,
+            phone_number=?,
+            user_id=?,
+            username=? 
+        where
+            member_id=?
+2022-09-04 20:03:28.977  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408977 | took 0ms | statement | connection 12| url jdbc:h2:tcp://localhost/~/neighbor
+/* update ywphsm.ourneighbor.domain.member.Member */ update member set last_modified_date=?, age=?, birth_date=?, email=?, email_confirm=?, gender=?, member_role=?, nickname=?, password=?, phone_number=?, user_id=?, username=? where member_id=?
+/* update ywphsm.ourneighbor.domain.member.Member */ update member set last_modified_date='2022-09-04T20:03:28.976+0900', age=29, birth_date=NULL, email='ywonp9405@gmail.com', email_confirm=false, gender=0, member_role=NULL, nickname='바뀐_닉네임', password='$2a$10$UTjpsSFew5oRLhpIyKCcAeqVofR1VlsSwMUHwR5w9LARXlDyKFiH.', phone_number='01038352376', user_id='ailey', username='박양원' where member_id=1;
+2022-09-04 20:03:28.978  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408978 | took 0ms | commit | connection 12| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:28.978  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;redirect:/logout&quot;; model={}]]
+2022-09-04 20:03:28.979  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [8bcdd6ef-66ec-48b8-8412-8d278f5cdfac][/member_edit/phoneCertified]
+2022-09-04 20:03:28.984 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:28.986  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408986 | took 0ms | statement | connection 13| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:28.986  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408986 | took 0ms | commit | connection 13| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:28.994 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:28.995  INFO 17512 --- [    Test worker] p6spy                                    : #1662289408995 | took 0ms | statement | connection 14| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:29.058  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [d7d998b0-30d1-44b4-8536-a52671c669ad][/member_edit/withdrawal][ywphsm.ourneighbor.controller.EditController#withdrawal(Member)]
+2022-09-04 20:03:29.059 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:29.060  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409060 | took 0ms | statement | connection 15| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:29.067 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* delete ywphsm.ourneighbor.domain.member.Member */ delete 
+        from
+            member 
+        where
+            member_id=?
+2022-09-04 20:03:29.068  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409068 | took 0ms | statement | connection 15| url jdbc:h2:tcp://localhost/~/neighbor
+/* delete ywphsm.ourneighbor.domain.member.Member */ delete from member where member_id=?
+/* delete ywphsm.ourneighbor.domain.member.Member */ delete from member where member_id=1;
+2022-09-04 20:03:29.070  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409070 | took 0ms | commit | connection 15| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:29.071  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : postHandle [ModelAndView [view=&quot;redirect:/logout&quot;; model={}]]
+2022-09-04 20:03:29.071  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [d7d998b0-30d1-44b4-8536-a52671c669ad][/member_edit/withdrawal]
+2022-09-04 20:03:29.077 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    select
+        member0_.member_id as member_i1_3_0_,
+        member0_.created_date as created_2_3_0_,
+        member0_.last_modified_date as last_mod3_3_0_,
+        member0_.age as age4_3_0_,
+        member0_.birth_date as birth_da5_3_0_,
+        member0_.email as email6_3_0_,
+        member0_.email_confirm as email_co7_3_0_,
+        member0_.gender as gender8_3_0_,
+        member0_.member_role as member_r9_3_0_,
+        member0_.nickname as nicknam10_3_0_,
+        member0_.password as passwor11_3_0_,
+        member0_.phone_number as phone_n12_3_0_,
+        member0_.user_id as user_id13_3_0_,
+        member0_.username as usernam14_3_0_ 
+    from
+        member member0_ 
+    where
+        member0_.member_id=?
+2022-09-04 20:03:29.077  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409077 | took 0ms | statement | connection 16| url jdbc:h2:tcp://localhost/~/neighbor
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=?
+select member0_.member_id as member_i1_3_0_, member0_.created_date as created_2_3_0_, member0_.last_modified_date as last_mod3_3_0_, member0_.age as age4_3_0_, member0_.birth_date as birth_da5_3_0_, member0_.email as email6_3_0_, member0_.email_confirm as email_co7_3_0_, member0_.gender as gender8_3_0_, member0_.member_role as member_r9_3_0_, member0_.nickname as nicknam10_3_0_, member0_.password as passwor11_3_0_, member0_.phone_number as phone_n12_3_0_, member0_.user_id as user_id13_3_0_, member0_.username as usernam14_3_0_ from member member0_ where member0_.member_id=1;
+2022-09-04 20:03:29.081  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409081 | took 0ms | rollback | connection 16| url jdbc:h2:tcp://localhost/~/neighbor
+
+;
+2022-09-04 20:03:29.090 DEBUG 17512 --- [    Test worker] org.hibernate.SQL                        : 
+    /* select
+        generatedAlias0 
+    from
+        Member as generatedAlias0 
+    where
+        generatedAlias0.userId=:param0 */ select
+            member0_.member_id as member_i1_3_,
+            member0_.created_date as created_2_3_,
+            member0_.last_modified_date as last_mod3_3_,
+            member0_.age as age4_3_,
+            member0_.birth_date as birth_da5_3_,
+            member0_.email as email6_3_,
+            member0_.email_confirm as email_co7_3_,
+            member0_.gender as gender8_3_,
+            member0_.member_role as member_r9_3_,
+            member0_.nickname as nicknam10_3_,
+            member0_.password as passwor11_3_,
+            member0_.phone_number as phone_n12_3_,
+            member0_.user_id as user_id13_3_,
+            member0_.username as usernam14_3_ 
+        from
+            member member0_ 
+        where
+            member0_.user_id=?
+2022-09-04 20:03:29.091  INFO 17512 --- [    Test worker] p6spy                                    : #1662289409091 | took 0ms | statement | connection 17| url jdbc:h2:tcp://localhost/~/neighbor
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id=?
+/* select generatedAlias0 from Member as generatedAlias0 where generatedAlias0.userId=:param0 */ select member0_.member_id as member_i1_3_, member0_.created_date as created_2_3_, member0_.last_modified_date as last_mod3_3_, member0_.age as age4_3_, member0_.birth_date as birth_da5_3_, member0_.email as email6_3_, member0_.email_confirm as email_co7_3_, member0_.gender as gender8_3_, member0_.member_role as member_r9_3_, member0_.nickname as nicknam10_3_, member0_.password as passwor11_3_, member0_.phone_number as phone_n12_3_, member0_.user_id as user_id13_3_, member0_.username as usernam14_3_ from member member0_ where member0_.user_id='ailey';
+2022-09-04 20:03:29.092  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : REQUEST [1bf548ee-6cfd-4cc1-9f2c-e4001fb614dc][/member_edit/password_edit][ywphsm.ourneighbor.controller.EditController#passwordEdit(PasswordEditForm, BindingResult, Member)]
+2022-09-04 20:03:29.100  WARN 17512 --- [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.ServletRequestBindingException: Missing session attribute 'loginMember' of type Member]
+2022-09-04 20:03:29.100  INFO 17512 --- [    Test worker] y.o.interceptor.LogInterceptor           : RESPONSE [1bf548ee-6cfd-4cc1-9f2c-e4001fb614dc][/member_edit/password_edit]
+
+MockHttpServletRequest:
+      HTTP Method = POST
+      Request URI = /member_edit/password_edit
+       Parameters = {beforePassword=[12341234], afterPassword=[Arnold!(97], passwordCheck=[Arnold!(97]}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = ywphsm.ourneighbor.controller.EditController
+           Method = ywphsm.ourneighbor.controller.EditController#passwordEdit(PasswordEditForm, BindingResult, Member)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = org.springframework.web.bind.ServletRequestBindingException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 400
+    Error message = Missing session attribute 'loginMember' of type Member
+          Headers = [X-Content-Type-Options:&quot;nosniff&quot;, X-XSS-Protection:&quot;1; mode=block&quot;, Cache-Control:&quot;no-cache, no-store, max-age=0, must-revalidate&quot;, Pragma:&quot;no-cache&quot;, Expires:&quot;0&quot;]
+     Content type = null
+             Body = 
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 7.4.1</a> at 2022. 9. 4. 오후 8:03:29</p>
+</div>
+</div>
+</body>
+</html>

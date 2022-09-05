@@ -29,9 +29,6 @@ public class SignUpController {
     private final TokenService tokenService;
 
     @GetMapping
-<<<<<<< HEAD
-    public String signUp(@ModelAttribute MemberForm memberForm) {
-=======
     public String signUp(@ModelAttribute MemberForm memberForm, HttpServletRequest request) {
         HttpSession session = request.getSession();
         PhoneCertifiedForm certifiedForm = (PhoneCertifiedForm) session.getAttribute(SessionConst.PHONE_CERTIFIED);
@@ -42,7 +39,6 @@ public class SignUpController {
 
         memberForm.setPhoneNumber(certifiedForm.getPhoneNumber());
 
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
         return "signUp/signUpForm";
     }
 
@@ -59,13 +55,6 @@ public class SignUpController {
             bindingResult.reject("doubleCheck", new Object[]{memberForm.getNickname()}, null);
         }
 
-<<<<<<< HEAD
-        if (bindingResult.hasErrors()) {
-            return "signUp/signUpForm";
-        }
-
-        //나이계산 ***생년월일 체크 만들어야함!!!!!!!!!**
-=======
         if (!memberForm.getPhoneNumber().equals(certifiedForm.getPhoneNumber()) ||
                 !memberForm.getCertifiedNumber().equals(certifiedForm.getCertifiedNumber())) {
             bindingResult.reject("phoneCertifiedFail");
@@ -83,7 +72,6 @@ public class SignUpController {
             return "signUp/signUpForm";
         }
 
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
         int age = memberService.ChangeBirthToAge(memberForm.getBirthDate());
 
         //패스워드 암호화
@@ -96,12 +84,8 @@ public class SignUpController {
 
         memberService.join(member);
         tokenService.createEmailToken(member.getId(), member.getEmail());
-<<<<<<< HEAD
-        return "redirect:/";    //이메일인증 알림 페이지로 보내야함*********
-=======
 
         return "signUp/confirmEmail";
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
     }
 
     @GetMapping("/confirm-email")
@@ -110,11 +94,6 @@ public class SignUpController {
             return "redirect:/login";
         }
 
-<<<<<<< HEAD
-        return "signUp/emailFail";    //나중에 이메일 인증 실패 페이지로 바꿔야함(회원수정에서 재인증)
-    }
-
-=======
         return "signUp/emailFail";
     }
 
@@ -159,5 +138,4 @@ public class SignUpController {
         }
         return "redirect:/sign_up";
     }
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 }

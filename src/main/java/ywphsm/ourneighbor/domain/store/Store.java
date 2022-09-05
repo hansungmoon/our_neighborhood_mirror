@@ -33,18 +33,9 @@ public class Store extends BaseTimeEntity {
 
     private String name;
 
-<<<<<<< HEAD
-    @NotNull
-    private Double lon;                // 경도
-
-    @NotNull
-    private Double lat;                 // 위도
-
-=======
     private Double lat;                // 위도
     private Double lon;                // 경도
 
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
     private String phoneNumber;
 
     @Column(name = "opening_time")
@@ -103,10 +94,7 @@ public class Store extends BaseTimeEntity {
     /*
         생성자
      */
-<<<<<<< HEAD
-=======
     @Builder
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
     public Store(String name, Double lat, Double lon,
                  String phoneNumber, LocalTime openingTime, LocalTime closingTime,
                  LocalTime breakStart, LocalTime breakEnd, String notice, String intro,

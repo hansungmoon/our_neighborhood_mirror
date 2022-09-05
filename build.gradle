@@ -51,10 +51,7 @@ dependencies {
 	//Gson
 	implementation 'com.google.code.gson:gson:2.8.7'
 
-<<<<<<< HEAD
-=======
 	//json-simple
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 
 	// QueryDSL
@@ -76,15 +73,12 @@ dependencies {
 	//이메일인증
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
-<<<<<<< HEAD
-=======
 	//coolSMS(휴대폰 문자 인증)
 	implementation group: 'net.nurigo', name: 'javaSDK', version: '2.2'
 
 	// devtools (개발 편의성 증대)
 	implementation 'org.springframework.boot:spring-boot-devtools'
 
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 }
 
 tasks.named('test') {

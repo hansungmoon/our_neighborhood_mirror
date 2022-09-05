@@ -31,36 +31,10 @@ public class HomeController {
         return "map";
     }
 
-<<<<<<< HEAD
-
-    // 검색 뷰페이지 임시
-=======
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
     @GetMapping("/prac2")
     public String prac2(@ModelAttribute("storeSearchCond") StoreSearchCond storeSearchCond) {
         return "prac2";
     }
-<<<<<<< HEAD
-
-    @PostMapping("/prac2")
-    public String prac2(Model model, @ModelAttribute("storeSearchCond") StoreSearchCond storeSearchCond) {
-        List<Store> stores = storeService.searchByKeyword(storeSearchCond);
-        System.out.println("storeSearchCond = " + storeSearchCond.getKeyword());
-        for (Store store : stores) {
-            System.out.println("store = " + store.getName());
-        }
-        model.addAttribute("stores", stores);
-
-        return "prac2";
-    }
-
-
-    @GetMapping("/loginHome")
-    public String loginhome(
-            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member,
-            Model model) {
-=======
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
 
     @GetMapping("/prac3")
     public String prac3(@ModelAttribute("storeSearchCond") StoreSearchCond storeSearchCond) {
@@ -77,23 +51,6 @@ public class HomeController {
                         Model model) {
 
         model.addAttribute("member", member);
-<<<<<<< HEAD
-
-        return "login/loginHome";
-    }
-
-    @GetMapping("/memberHome")
-    public String memberHome() {
-        return "login/login";
-    }
-
-    @GetMapping("/")
-    public String home(Model model, @ModelAttribute("storeSearchCond") StoreSearchCond storeSearchCond) {
-        List<Store> stores = storeService.searchByKeyword(storeSearchCond);
-        model.addAttribute("stores", stores);
-
-=======
->>>>>>> 118caa3cd9b991f0dd390a415068ce56a3133f97
         return "index";
     }
 
