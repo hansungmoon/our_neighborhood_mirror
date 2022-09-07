@@ -55,13 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginPage("/login")
                 .loginProcessingUrl("/loginSecurity")
-                .defaultSuccessUrl("/")
-                .successHandler(new AuthenticationSuccessHandler() {
-                    @Override
-                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        log.info("로그인 성공");
-                    }
-                })
+
                 //logout
                 .and()
                 .logout()
