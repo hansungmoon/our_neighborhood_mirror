@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05e3e811-7582-43f9-9cbb-c19f533487fe" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/findUserControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/InitDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/InitDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/EditControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/EditControllerTest.java" afterDir="false" />
+    <list default="true" id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/findUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/FindUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/interceptor/LogInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/findUserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/FindUserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +46,6 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -54,7 +55,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2EGNAV50vacvOS89kQLyyNGt47s" />
+  <component name="ProjectId" id="2DY96HkdfyFCRwTJfLb0yO2Vx9L" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -67,25 +68,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/intelliJ/workspace/corespringsecurity-master",
-    "settings.editor.selected.configurable": "File.Encoding",
+    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/our_neighborhood mirror",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HOME\Desktop\JAVA\our_nieghborhood\src\main\java\ywphsm\ourneighbor" />
+      <recent name="C:\Users\HOME\Desktop\JAVA\ywp\src\test\resources" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="ywphsm.ourneighbor.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.findUserControllerTest.비밀번호_찾기_post">
+  <component name="RunManager" selected="Spring Boot.OurNeighborApplication">
     <configuration name="EditControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -109,7 +105,30 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="EditControllerTest.회원탈퇴" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FindUserControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ywphsm.ourneighbor.controller.FindUserControllerTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="EditControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ourneighbor.test" />
       <extension name="coverage">
         <pattern>
@@ -119,8 +138,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ywphsm.ourneighbor.controller" />
       <option name="MAIN_CLASS_NAME" value="ywphsm.ourneighbor.controller.EditControllerTest" />
-      <option name="METHOD_NAME" value="회원탈퇴" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,38 +159,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="findUserControllerTest.아이디_찾기_post" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ourneighbor.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ywphsm.ourneighbor.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ywphsm.ourneighbor.controller" />
-      <option name="MAIN_CLASS_NAME" value="ywphsm.ourneighbor.controller.findUserControllerTest" />
-      <option name="METHOD_NAME" value="아이디_찾기_post" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="findUserControllerTest.비밀번호_찾기_post" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ourneighbor.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ywphsm.ourneighbor.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ywphsm.ourneighbor.controller" />
-      <option name="MAIN_CLASS_NAME" value="ywphsm.ourneighbor.controller.findUserControllerTest" />
-      <option name="METHOD_NAME" value="비밀번호_찾기_post" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="OurNeighborApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="ourneighbor.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ywphsm.ourneighbor.OurNeighborApplication" />
@@ -182,31 +168,25 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.findUserControllerTest.비밀번호_찾기_post" />
-        <item itemvalue="JUnit.findUserControllerTest.아이디_찾기_post" />
-        <item itemvalue="JUnit.EditControllerTest.회원탈퇴" />
+        <item itemvalue="JUnit.EditControllerTest" />
         <item itemvalue="JUnit.EditControllerTest.닉네임_수정" />
         <item itemvalue="Gradle.EditControllerTest" />
+        <item itemvalue="Gradle.FindUserControllerTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="05e3e811-7582-43f9-9cbb-c19f533487fe" name="Changes" comment="" />
-      <created>1662217817524</created>
+      <changelist id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="" />
+      <created>1660864973686</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1662217817524</updated>
-      <workItem from="1662217818824" duration="40000" />
-      <workItem from="1662218134743" duration="260000" />
-      <workItem from="1662287432923" duration="261000" />
-      <workItem from="1662288504967" duration="31000" />
-      <workItem from="1662288855761" duration="33000" />
-      <workItem from="1662289001817" duration="6112000" />
-      <workItem from="1662446387116" duration="1505000" />
-      <workItem from="1662451591761" duration="1011000" />
-      <workItem from="1662639486059" duration="2366000" />
+      <updated>1660864973686</updated>
+      <workItem from="1660864976052" duration="98000" />
+      <workItem from="1660867897965" duration="20000" />
+      <workItem from="1662713428384" duration="3056000" />
+      <workItem from="1662717009931" duration="1738000" />
     </task>
     <servers />
   </component>

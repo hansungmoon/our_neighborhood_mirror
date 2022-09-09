@@ -30,6 +30,8 @@ public class QStore extends EntityPathBase<Store> {
 
     public final TimePath<java.time.LocalTime> breakStart = createTime("breakStart", java.time.LocalTime.class);
 
+    public final ListPath<ywphsm.ourneighbor.domain.CategoryOfStore, ywphsm.ourneighbor.domain.QCategoryOfStore> categoryOfStoreList = this.<ywphsm.ourneighbor.domain.CategoryOfStore, ywphsm.ourneighbor.domain.QCategoryOfStore>createList("categoryOfStoreList", ywphsm.ourneighbor.domain.CategoryOfStore.class, ywphsm.ourneighbor.domain.QCategoryOfStore.class, PathInits.DIRECT2);
+
     public final TimePath<java.time.LocalTime> closingTime = createTime("closingTime", java.time.LocalTime.class);
 
     //inherited

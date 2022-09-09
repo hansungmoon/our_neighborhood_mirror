@@ -28,6 +28,8 @@ public class QMenu extends EntityPathBase<Menu> {
 
     public final DateTimePath<java.time.LocalDateTime> discountStart = createDateTime("discountStart", java.time.LocalDateTime.class);
 
+    public final ywphsm.ourneighbor.domain.file.QUploadFile file;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath name = createString("name");
@@ -54,6 +56,7 @@ public class QMenu extends EntityPathBase<Menu> {
 
     public QMenu(Class<? extends Menu> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.file = inits.isInitialized("file") ? new ywphsm.ourneighbor.domain.file.QUploadFile(forProperty("file"), inits.get("file")) : null;
         this.store = inits.isInitialized("store") ? new ywphsm.ourneighbor.domain.store.QStore(forProperty("store"), inits.get("store")) : null;
     }
 

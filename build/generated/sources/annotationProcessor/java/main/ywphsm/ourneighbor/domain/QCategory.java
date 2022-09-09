@@ -24,7 +24,9 @@ public class QCategory extends EntityPathBase<Category> {
 
     public final ListPath<CategoryOfStore, QCategoryOfStore> categoryOfStoreList = this.<CategoryOfStore, QCategoryOfStore>createList("categoryOfStoreList", CategoryOfStore.class, QCategoryOfStore.class, PathInits.DIRECT2);
 
-    public final ListPath<Category, QCategory> child = this.<Category, QCategory>createList("child", Category.class, QCategory.class, PathInits.DIRECT2);
+    public final ListPath<Category, QCategory> children = this.<Category, QCategory>createList("children", Category.class, QCategory.class, PathInits.DIRECT2);
+
+    public final NumberPath<Long> depth = createNumber("depth", Long.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 

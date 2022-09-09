@@ -39,13 +39,13 @@ public class QMember extends EntityPathBase<Member> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
 
-    public final EnumPath<MemberRole> memberRole = createEnum("memberRole", MemberRole.class);
-
     public final StringPath nickname = createString("nickname");
 
     public final StringPath password = createString("password");
 
     public final StringPath phoneNumber = createString("phoneNumber");
+
+    public final EnumPath<Role> role = createEnum("role", Role.class);
 
     public final StringPath userId = createString("userId");
 
