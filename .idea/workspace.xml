@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/kakao/KakaoTokenResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/findUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/FindUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/KakaoLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/KakaoLoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/interceptor/LogInterceptor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/GoogleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/GoogleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/KakaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/KakaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/NaverService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/NaverService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signUp/certifiedPhoneForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/signUp/certifiedPhoneForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/findUserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/FindUserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -59,20 +66,20 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/our_neighborhood mirror",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/our_nieghborhood&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7130eb1fe8be9e65aec547fef9a6cef6&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HOME\Desktop\JAVA\ywp\src\test\resources" />
@@ -186,7 +193,9 @@
       <workItem from="1660864976052" duration="98000" />
       <workItem from="1660867897965" duration="20000" />
       <workItem from="1662713428384" duration="3056000" />
-      <workItem from="1662717009931" duration="1738000" />
+      <workItem from="1662717009931" duration="7439000" />
+      <workItem from="1662736602756" duration="4000" />
+      <workItem from="1662786804979" duration="2049000" />
     </task>
     <servers />
   </component>
