@@ -82,6 +82,8 @@ public class Store extends BaseTimeEntity {
 //    @JoinColumn(name = "member_id")
 //    private Member member;
 
+    @OneToMany
+    private List<Review> reviewList = new ArrayList<>();
 
 
 
