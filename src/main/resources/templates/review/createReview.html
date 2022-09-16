@@ -66,6 +66,7 @@
                   </div>
                   <textarea class="form-control" placeholder="내용"
                             id="content"
+                            th:placeholder="200자 이하여야 합니다"
                             th:field="*{content}"
                             th:errorclass="field-error"></textarea>
                   <div class="field-error" th:errors="*{content}"></div>
@@ -81,7 +82,7 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
 
 </body>
 <footer th:replace="layout/footer :: common_footer">

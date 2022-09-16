@@ -33,28 +33,13 @@
         <div class="card bg-secondary shadow border-0">
           <div class="card-header bg-transparent pb-5">
             <div class="text-muted text-center mt-2 mb-4">
-              <small>Api 로그인</small>
+              <small>리뷰 등록</small>
             </div>
-            <div class="text-muted text-center mx-1">
-              <!-- 카카오 로그인 -->
-              <a href="/login/kakaoUrl">
-                <img th:src="@{/images/login/kakao_login.png}" style="width: 10rem; height:3rem"/>
-              </a>
-              <!-- 네이버 로그인 -->
-              <a href="/login/naverUrl">
-                <img th:src="@{/images/login/naver_login.png}" style="width: 10rem; height:3rem"/>
-              </a>
-              <!-- 구글 로그인 -->
-              <a href="/login/googleUrl">
-                <img th:src="@{/images/login/google_login.png}" style="width: 10rem; height:3.5rem"/>
-              </a>
-            </div>
-          </div>
           <div class="card-body px-lg-5 py-lg-5">
             <div class="text-center text-muted mb-4">
-              <small>Log in</small>
+              <small>리뷰</small>
             </div>
-            <form role="form" th:action="@{/loginSecurity}" th:object="${loginForm}" method="post">
+            <form role="form" th:action="" th:object="${reviewForm}" method="post">
               <div class="form-group">
                 <div th:if="${#fields.hasGlobalErrors()}">
                   <p class="field-error" th:each="err : ${#fields.globalErrors()}"
@@ -66,10 +51,10 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="ID" type="text" id="userId"
-                         th:field="*{userId}"
+                  <input class="form-control" placeholder="제목" type="text" id="title"
+                         th:field="*{title}"
                          th:errorclass="field-error">
-                  <div class="field-error" th:errors="*{userId}">
+                  <div class="field-error" th:errors="*{title}">
                   </div>
                 </div>
               </div>
@@ -79,15 +64,16 @@
                                         <span class="input-group-text"><i
                                                 class="ni ni-lock-circle-open"></i></span>
                   </div>
-                  <input class="form-control" placeholder="Password" type="password"
-                         id="password"
-                         th:field="*{password}"
-                         th:errorclass="field-error">
-                  <div class="field-error" th:errors="*{password}"></div>
+                  <textarea class="form-control" placeholder="내용"
+                            id="content"
+                            th:placeholder="200자 이하여야 합니다"
+                            th:field="*{content}"
+                            th:errorclass="field-error"></textarea>
+                  <div class="field-error" th:errors="*{content}"></div>
                 </div>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-orange mt-4">로그인</button>
+                <button type="submit" class="btn btn-orange mt-4">등록</button>
               </div>
             </form>
 
@@ -96,7 +82,7 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
 
 </body>
 <footer th:replace="layout/footer :: common_footer">
