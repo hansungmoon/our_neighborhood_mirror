@@ -104,6 +104,18 @@
                 <span th:text="${menu.getPrice()}"></span>
             </div>
         </div>
+        <hr class="my-2 hr-orange">
+        <div class="row store-menu">
+            <h3><strong>리뷰</strong></h3>
+            <div class="col-6">
+                <button class="btn btn-info float-end" style="font-size: 1.1rem; color: #ffffff"
+                        th:onclick="|location.href='@{/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
+                </button>
+            </div>
+            <div class="col" th:each="review : *{reviewList}">
+                <span th:text="${review.content}"></span>
+            </div>
+        </div>
     </div>
 </section>
 <!--<footer th:replace="layout/footer :: common_footer">-->

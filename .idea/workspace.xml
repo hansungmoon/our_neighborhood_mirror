@@ -22,6 +22,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/signUp/certifiedPhoneForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/signUp/certifiedPhoneForm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/store/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/store/detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/findUserControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ywphsm/ourneighbor/controller/FindUserControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +83,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/demo&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/intelliJ/workspace/jpashop&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;7130eb1fe8be9e65aec547fef9a6cef6&quot;
   }
@@ -209,7 +210,8 @@
       <workItem from="1663074078070" duration="1676000" />
       <workItem from="1663164679789" duration="493000" />
       <workItem from="1663252831663" duration="97000" />
-      <workItem from="1663338467609" duration="1114000" />
+      <workItem from="1663338467609" duration="3709000" />
+      <workItem from="1663413344670" duration="3639000" />
     </task>
     <servers />
   </component>

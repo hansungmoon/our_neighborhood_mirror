@@ -1,19 +1,17 @@
 package ywphsm.ourneighbor.controller.form;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 public class ReviewForm {
 
     @NotBlank
-    private String title;
-
-    @NotBlank   //글자수 제한해야함
-    @Pattern(regexp = ".{200}",
-            message = "200자 이하여야 합니다")
+    @Size(max = 200)
     private String content;
 
 }

@@ -60,6 +60,8 @@ public class QStore extends EntityPathBase<Store> {
 
     public final StringPath phoneNumber = createString("phoneNumber");
 
+    public final ListPath<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview> reviewList = this.<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview>createList("reviewList", ywphsm.ourneighbor.domain.Review.class, ywphsm.ourneighbor.domain.QReview.class, PathInits.DIRECT2);
+
     public final EnumPath<StoreStatus> status = createEnum("status", StoreStatus.class);
 
     public QStore(String variable) {

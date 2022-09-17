@@ -36,37 +36,21 @@
               <small>리뷰 등록</small>
             </div>
           <div class="card-body px-lg-5 py-lg-5">
-            <div class="text-center text-muted mb-4">
-              <small>리뷰</small>
-            </div>
-            <form role="form" th:action="" th:object="${reviewForm}" method="post">
+            <form role="form" th:action th:object="${reviewForm}" method="post">
               <div class="form-group">
                 <div th:if="${#fields.hasGlobalErrors()}">
                   <p class="field-error" th:each="err : ${#fields.globalErrors()}"
                      th:text="${err}">전체 오류 메시지</p>
                 </div>
               </div>
+
               <div class="form-group">
                 <div class="input-group input-group-alternative mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                   </div>
-                  <input class="form-control" placeholder="제목" type="text" id="title"
-                         th:field="*{title}"
-                         th:errorclass="field-error">
-                  <div class="field-error" th:errors="*{title}">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                                        <span class="input-group-text"><i
-                                                class="ni ni-lock-circle-open"></i></span>
-                  </div>
-                  <textarea class="form-control" placeholder="내용"
+                  <textarea class="form-control" placeholder="200자 이하여야 합니다"
                             id="content"
-                            th:placeholder="200자 이하여야 합니다"
                             th:field="*{content}"
                             th:errorclass="field-error"></textarea>
                   <div class="field-error" th:errors="*{content}"></div>
@@ -82,7 +66,7 @@
       </div>
     </div>
   </div>
-  </section>
+</section>
 
 </body>
 <footer th:replace="layout/footer :: common_footer">
