@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/findUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/FindUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/KakaoLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/KakaoLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/dto/StoreDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/dto/StoreDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/store/Store.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/interceptor/LogInterceptor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/MemberDetailsImpl.java" afterDir="false" />
@@ -212,6 +213,7 @@
       <workItem from="1663252831663" duration="97000" />
       <workItem from="1663338467609" duration="3709000" />
       <workItem from="1663413344670" duration="3639000" />
+      <workItem from="1663511916715" duration="337000" />
     </task>
     <servers />
   </component>
