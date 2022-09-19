@@ -38,7 +38,7 @@ public class ReviewController {
         }
 
         Store store = storeService.findOne(storeId);
-        Review review = new Review(reviewForm.getContent(), 5, member, store);
+        Review review = new Review(reviewForm.getContent(), reviewForm.getRating(), member, store);
         reviewService.saveReview(review);
 
         return "redirect:/store/{storeId}";

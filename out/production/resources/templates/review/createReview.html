@@ -8,8 +8,9 @@
 
   </style>
 </head>
-<link rel="stylesheet" th:href="@{../css/aragon.css}">
+<link rel="stylesheet" href="/css/aragon.css">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="/css/star.css" rel="stylesheet"/>
 <body class="bg-default">
 
 <!-- Navbar -->
@@ -35,38 +36,58 @@
             <div class="text-muted text-center mt-2 mb-4">
               <small>리뷰 등록</small>
             </div>
-          <div class="card-body px-lg-5 py-lg-5">
-            <form role="form" th:action th:object="${reviewForm}" method="post">
-              <div class="form-group">
-                <div th:if="${#fields.hasGlobalErrors()}">
-                  <p class="field-error" th:each="err : ${#fields.globalErrors()}"
-                     th:text="${err}">전체 오류 메시지</p>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <div class="input-group input-group-alternative mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+            <div class="card-body px-lg-5 py-lg-5">
+              <form role="form" th:action th:object="${reviewForm}" method="post" id="myform">
+                <div class="form-group">
+                  <div th:if="${#fields.hasGlobalErrors()}">
+                    <p class="field-error" th:each="err : ${#fields.globalErrors()}"
+                       th:text="${err}">전체 오류 메시지</p>
                   </div>
-                  <textarea class="form-control" placeholder="200자 이하여야 합니다"
-                            id="content"
-                            th:field="*{content}"
-                            th:errorclass="field-error"></textarea>
-                  <div class="field-error" th:errors="*{content}"></div>
                 </div>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-orange mt-4">등록</button>
-              </div>
-            </form>
+                <fieldset>
+                  <span class="text-bold">별점을 선택해주세요</span>
+                  <input type="radio" th:field="*{rating}" value="1" id="rating1"><label
+                        for="rating1">★</label>
+                  <input type="radio" th:field="*{rating}" value="2" id="rating2"><label
+                        for="rating2">★</label>
+                  <input type="radio" th:field="*{rating}" value="3" id="rating3"><label
+                        for="rating3">★</label>
+                  <input type="radio" th:field="*{rating}" value="4" id="rating4"><label
+                        for="rating4">★</label>
+                  <input type="radio" th:field="*{rating}" value="5" id="rating5"><label
+                        for="rating5">★</label>
+                </fieldset>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <textarea class="form-control" placeholder="200자 이하여야 합니다"
+                              id="content"
+                              th:field="*{content}"
+                              th:errorclass="field-error"></textarea>
+                    <div class="field-error" th:errors="*{content}"></div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-orange mt-4">등록</button>
+                </div>
+              </form>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 </section>
+
+</body>
+<footer th:replace="layout/footer :: common_footer">
+  템플릿 푸터
+  <script th:replace="layout/footer :: common_js(~{::script})"></script>
+</footer>
+
+</html>
 
 </body>
 <footer th:replace="layout/footer :: common_footer">
