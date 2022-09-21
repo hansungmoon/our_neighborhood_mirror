@@ -112,8 +112,21 @@
                         th:onclick="|location.href='@{/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
                 </button>
             </div>
-            <div class="col" th:each="review : *{reviewList}">
-                <span th:text="${review.content}"></span>
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>별점</th>
+                        <th>리뷰</th>
+                    </tr>
+                    </thead>
+                    <tr th:each="review : ${reviewList}">
+                        <td th:text="${review.id}"></td>
+                        <td th:text="${review.rating}"></td>
+                        <td th:text="${review.content}"></td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

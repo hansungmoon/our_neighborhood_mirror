@@ -10,7 +10,7 @@
         }
     </style>
 </head>
-<link rel="stylesheet" th:href="@{/css/aragon.css}">
+<link rel="stylesheet" th:href="@{/css/argon.css}">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <body class="bg-default">
 <nav th:replace="layout/navbar :: common_navbar"></nav>
@@ -112,8 +112,22 @@
                         th:onclick="|location.href='@{/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
                 </button>
             </div>
-            <div class="col" th:each="review : *{reviewList}">
-                <span th:text="${review.content}"></span>
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>별점</th>
+                        <th>리뷰</th>
+                    </tr>
+                    </thead>
+                    <tbody> <tr th:each="review : ${reviewList}">
+                        <td th:text="${review.id}"></td>
+                        <td th:text="${review.rating}"></td>
+                        <td th:text="${review.content}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

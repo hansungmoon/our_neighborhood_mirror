@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="" />
+    <list default="true" id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/store/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/store/detail.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +66,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/intelliJ/workspace/data-jpa",
+    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/intelliJ/workspace/jpashop",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
   }
@@ -193,6 +196,7 @@
       <workItem from="1663338467609" duration="3709000" />
       <workItem from="1663413344670" duration="3639000" />
       <workItem from="1663511916715" duration="5660000" />
+      <workItem from="1663770793059" duration="904000" />
     </task>
     <servers />
   </component>
