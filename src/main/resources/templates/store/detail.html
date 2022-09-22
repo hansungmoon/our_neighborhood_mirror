@@ -109,10 +109,10 @@
             <h3><strong>리뷰</strong></h3>
             <div class="col-6">
                 <button class="btn btn-info float-end" style="font-size: 1.1rem; color: #ffffff"
-                        th:onclick="|location.href='@{/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
+                        th:onclick="|location.href='@{/user/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
                 </button>
             </div>
-            <div class="col">
+            <div>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -121,11 +121,12 @@
                         <th>리뷰</th>
                     </tr>
                     </thead>
-                    <tr th:each="review : ${reviewList}">
-                        <td th:text="${review.id}"></td>
-                        <td th:text="${review.rating}"></td>
-                        <td th:text="${review.content}"></td>
+                    <tbody> <tr th:each="review : ${reviewList}">
+                        <td th:text="${review.gerId()}"></td>
+                        <td th:text="${review.getRating()}"></td>
+                        <td th:text="${review.getContent()}"></td>
                     </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

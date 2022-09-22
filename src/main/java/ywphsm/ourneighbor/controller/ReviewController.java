@@ -16,6 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class ReviewController {
 
     private final ReviewService reviewService;
