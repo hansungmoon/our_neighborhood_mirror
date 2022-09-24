@@ -34,6 +34,7 @@ import java.io.IOException;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MemberDetailService memberDetailService;
+    private final CustomOAuthUserService customOAuthUserService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -106,7 +107,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         response.sendRedirect("/login");
                     }
                 })
-                .deleteCookies("remember-me");
+                .deleteCookies("remember-me")
+
+                //OAuth 로그인
+                .and()
+                .oauth2Login()
+                .userInfoEndpoint()
+                .userService(customOAuthUserService);
 
         //중복 로그인
         http.sessionManagement()
