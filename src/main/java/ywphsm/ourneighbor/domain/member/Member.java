@@ -1,9 +1,6 @@
 package ywphsm.ourneighbor.domain.member;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import ywphsm.ourneighbor.domain.BaseTimeEntity;
 
 import javax.persistence.*;
@@ -23,31 +20,22 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     private Long id;
 
-//    @NotBlank
     private String userId;
 
-//    @NotBlank
     private String password;    // 암호화
 
-//    @NotBlank
     private String username;
 
-//    @NotBlank
     private String nickname;
 
-//    @Email
     private String email;
 
-//    @NotBlank
     private String phoneNumber;
 
-//    @NotNull
     private int age;
 
-//    @NotBlank
     private String birthDate;
 
-//    @NotNull
     private int gender;         // 0 : 남자, 1 : 여자
 
     @Enumerated(EnumType.STRING)
@@ -101,11 +89,19 @@ public class Member extends BaseTimeEntity {
     }
 
     //구글 로그인시 openId 회원 저장
-    public Member(String email, String username, boolean emailConfirm, int gender) {
+    @Builder
+    public Member(String email, String username, Role role, int gender) {
         this.email = email;
         this.username = username;
-        this.emailConfirm = emailConfirm;
+        this.role = role;
         this.gender = gender;
+    }
+
+    public Member updateOAuth(String name, String picture) {
+        this.username = name;
+//        this.picture = picture;
+
+        return this;
     }
 
     //네이버 로그인시 회원 저장
@@ -118,9 +114,12 @@ public class Member extends BaseTimeEntity {
         this.age = age;
     }
 
+    //시큐리티 때매 추가
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
     //이메일 인증 성공
-
     public void emailConfirmSuccess() {
         this.emailConfirm = true;
     }

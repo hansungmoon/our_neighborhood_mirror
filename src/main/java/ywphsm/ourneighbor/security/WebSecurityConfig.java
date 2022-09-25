@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import ywphsm.ourneighbor.domain.member.Member;
+import ywphsm.ourneighbor.service.CustomOAuthUserService;
 import ywphsm.ourneighbor.service.login.SessionConst;
 
 import javax.servlet.ServletException;
@@ -112,6 +113,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //OAuth 로그인
                 .and()
                 .oauth2Login()
+                .loginPage("/login")
                 .userInfoEndpoint()
                 .userService(customOAuthUserService);
 
