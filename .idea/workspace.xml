@@ -16,6 +16,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/GoogleLoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/NaverLoginController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Role.java" afterDir="false" />
@@ -75,21 +76,21 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/our_nieghborhood&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;7130eb1fe8be9e65aec547fef9a6cef6&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/demo",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HOME\Desktop\JAVA\ywp\src\test\resources" />
@@ -218,7 +219,7 @@
       <workItem from="1663770793059" duration="2172000" />
       <workItem from="1663941853390" duration="10923000" />
       <workItem from="1664050960982" duration="3000" />
-      <workItem from="1664203548765" duration="573000" />
+      <workItem from="1664203548765" duration="8563000" />
     </task>
     <servers />
   </component>

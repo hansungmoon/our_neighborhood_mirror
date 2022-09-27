@@ -10,6 +10,7 @@ public enum Role {
     SELLER("ROLE_SELLER", "판매자"),
     ADMIN("ROLE_ADMIN", "관리자");
 
+    //security api login에 필요
     private final String key;
     private final String title;
 }
