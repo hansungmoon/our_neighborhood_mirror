@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 import org.springframework.security.web.firewall.DefaultHttpFirewall;
 import org.springframework.security.web.firewall.HttpFirewall;
 import ywphsm.ourneighbor.domain.member.Member;
-import ywphsm.ourneighbor.service.CustomOAuthUserService;
+import ywphsm.ourneighbor.service.login.CustomOAuthUserService;
 import ywphsm.ourneighbor.service.login.SessionConst;
 
 import javax.servlet.ServletException;
@@ -65,7 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable();
 
         http.authorizeRequests()
-                .antMatchers("/user/**").authenticated()
+                .antMatchers("/user/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/seller/**").hasAnyRole("SELLER", "ADMIN")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll();

@@ -7,22 +7,34 @@
     <list default="true" id="3ab43d26-84a5-4954-85a0-061efb243b0b" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/OAuthAttributes.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/SessionUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/CustomOAuthUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/dto/ReviewMemberDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/CustomOAuthUserService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/application-oauth.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/CategoryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/SignUpController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/StoreController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthRequest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/google/GoogleOAuthResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/kakao/KakaoTokenResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/form/naver/NaverTokenResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/GoogleLoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/KakaoLoginController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/controller/login/NaverLoginController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Member.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/member/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/domain/store/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepositoryCustom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepositoryCustom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/repository/review/ReviewRepositoryImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/security/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/InitDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/InitDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/GoogleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/KakaoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/NaverService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/SessionConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ywphsm/ourneighbor/service/login/SessionConst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login/loginForm.html" afterDir="false" />
@@ -51,6 +63,17 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="ourneighbor" type="f1a62948:ProjectNode" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ourneighbor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="ourneighbor" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -76,21 +99,21 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/HOME/Desktop/JAVA/demo",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "7130eb1fe8be9e65aec547fef9a6cef6"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HOME/Desktop/JAVA/intelliJ/workspace/data-jpa&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;7130eb1fe8be9e65aec547fef9a6cef6&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\HOME\Desktop\JAVA\ywp\src\test\resources" />
@@ -99,7 +122,7 @@
       <recent name="ywphsm.ourneighbor.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.OurNeighborApplication">
+  <component name="RunManager" selected="Gradle.our_nieghborhood [compileJava]">
     <configuration name="EditControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -146,6 +169,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="our_nieghborhood [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="EditControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ourneighbor.test" />
       <extension name="coverage">
@@ -186,6 +230,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.our_nieghborhood [compileJava]" />
         <item itemvalue="JUnit.EditControllerTest" />
         <item itemvalue="JUnit.EditControllerTest.닉네임_수정" />
         <item itemvalue="Gradle.EditControllerTest" />
@@ -220,6 +265,9 @@
       <workItem from="1663941853390" duration="10923000" />
       <workItem from="1664050960982" duration="3000" />
       <workItem from="1664203548765" duration="8563000" />
+      <workItem from="1664375894361" duration="10809000" />
+      <workItem from="1664501802249" duration="46000" />
+      <workItem from="1664502571307" duration="1209000" />
     </task>
     <servers />
   </component>

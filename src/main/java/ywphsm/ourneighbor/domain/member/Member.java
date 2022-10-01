@@ -2,8 +2,12 @@ package ywphsm.ourneighbor.domain.member;
 
 import lombok.*;
 import ywphsm.ourneighbor.domain.BaseTimeEntity;
+import ywphsm.ourneighbor.domain.Review;
+import ywphsm.ourneighbor.domain.store.Store;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -43,6 +47,10 @@ public class Member extends BaseTimeEntity {
 
     private boolean emailConfirm;
 
+    //(1:N) Store
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Store> storeList = new ArrayList<>();
+
     // 생성 메소드
     public Member(String userId, String password, String username, String nickname, String email, String phoneNumber, int age, int gender) {
         this.userId = userId;
@@ -69,7 +77,7 @@ public class Member extends BaseTimeEntity {
 
     //회원가입때 사용
 
-    public Member(String username, String birthDate, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname) {
+    public Member(String username, String birthDate, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname, Role role) {
         this.username = username;
         this.birthDate = birthDate;
         this.age = age;
@@ -79,6 +87,7 @@ public class Member extends BaseTimeEntity {
         this.password = password;
         this.email = email;
         this.nickname = nickname;
+        this.role = role;
     }
 
     //카카오 로그인시 openId 회원 저장

@@ -22,10 +22,8 @@ public class Review extends BaseEntity{
     @Column(name = "review_id")
     private Long id;
 
-    @NotEmpty
     private String content;
 
-    @NotNull
     private Integer rating;
 
     /*

@@ -19,13 +19,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 @Slf4j
 @Controller
-@RequestMapping("/store")
+//@RequestMapping("/store")
 public class StoreController {
 
     private final StoreService storeService;
     private final CategoryService categoryService;
 
-    @ModelAttribute("offDays")
+    @ModelAttribute("/storeoffDays")
     public Map<String, String> offDays() {
         Map<String, String> offDays = new LinkedHashMap<>();
 
@@ -40,7 +40,7 @@ public class StoreController {
         return offDays;
     }
 
-    @GetMapping("/{storeId}")
+    @GetMapping("/store/{storeId}")
     public String storeDetail(@PathVariable Long storeId, Model model) {
         Store store = storeService.findOne(storeId);
 
@@ -54,7 +54,7 @@ public class StoreController {
         return "store/detail";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/admin/store/add")
     public String addStore(Model model) {
         List<CategoryDTO> all = categoryService.findAll();
 
@@ -65,7 +65,7 @@ public class StoreController {
         return "store/add_form";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/store/add")
     public String addStore(@ModelAttribute StoreDTO.Add storeAddDTO, @RequestParam Long categoryId) {
         Category category = categoryService.findById(categoryId);
         log.info("category={}", category.getCategoryOfStoreList());

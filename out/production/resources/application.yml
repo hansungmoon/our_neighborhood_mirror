@@ -49,5 +49,5 @@ naver:
     url: https://nid.naver.com/oauth2.0/token?grant_type=authorization_code
   client:
     id: z_c0ETHIqnzInQwcpjLX
-    secret: A2wobfeDuq
+
 
