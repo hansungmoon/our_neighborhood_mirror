@@ -2,13 +2,17 @@ package ywphsm.ourneighbor.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ywphsm.ourneighbor.domain.Category;
 import ywphsm.ourneighbor.domain.dto.CategoryDTO;
+import ywphsm.ourneighbor.domain.dto.ReviewMemberDTO;
 import ywphsm.ourneighbor.domain.dto.StoreDTO;
 import ywphsm.ourneighbor.domain.store.Store;
+import ywphsm.ourneighbor.repository.review.ReviewRepository;
 import ywphsm.ourneighbor.service.CategoryService;
 import ywphsm.ourneighbor.service.StoreService;
 
@@ -24,6 +28,7 @@ public class StoreController {
 
     private final StoreService storeService;
     private final CategoryService categoryService;
+    private final ReviewRepository reviewRepository;
 
     @ModelAttribute("/storeoffDays")
     public Map<String, String> offDays() {
@@ -45,6 +50,12 @@ public class StoreController {
         Store store = storeService.findOne(storeId);
 
         StoreDTO.Detail storeDetailDTO = new StoreDTO.Detail(store);
+
+        PageRequest pageRequest = PageRequest.of(0, 5);
+        Slice<ReviewMemberDTO> reviewMemberDTOS = reviewRepository.ReviewPage(pageRequest);
+        List<ReviewMemberDTO> content = reviewMemberDTOS.getContent();
+        log.info("reviewMemberDTO={}", reviewMemberDTOS);
+        log.info("content={}", content);
 
         log.info("store={}", storeDetailDTO.getMenuList());
         log.info("store={}", store.getMenuList());

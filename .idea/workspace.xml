@@ -122,7 +122,7 @@
       <recent name="ywphsm.ourneighbor.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.our_nieghborhood [compileJava]">
+  <component name="RunManager" selected="Spring Boot.OurNeighborApplication">
     <configuration name="EditControllerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -268,6 +268,8 @@
       <workItem from="1664375894361" duration="10809000" />
       <workItem from="1664501802249" duration="46000" />
       <workItem from="1664502571307" duration="1209000" />
+      <workItem from="1664627607768" duration="381000" />
+      <workItem from="1664705339497" duration="2676000" />
     </task>
     <servers />
   </component>
