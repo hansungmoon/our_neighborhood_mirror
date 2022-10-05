@@ -24,7 +24,7 @@ public class QUploadFile extends EntityPathBase<UploadFile> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final ywphsm.ourneighbor.domain.QMenu menu;
+    public final ywphsm.ourneighbor.domain.menu.QMenu menu;
 
     public final StringPath storedFileName = createString("storedFileName");
 
@@ -48,7 +48,7 @@ public class QUploadFile extends EntityPathBase<UploadFile> {
 
     public QUploadFile(Class<? extends UploadFile> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.menu = inits.isInitialized("menu") ? new ywphsm.ourneighbor.domain.QMenu(forProperty("menu"), inits.get("menu")) : null;
+        this.menu = inits.isInitialized("menu") ? new ywphsm.ourneighbor.domain.menu.QMenu(forProperty("menu"), inits.get("menu")) : null;
     }
 
 }

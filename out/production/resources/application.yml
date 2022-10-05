@@ -28,7 +28,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -37,17 +37,9 @@ spring:
         default_batch_fetch_size: 500 # 컬렉션 조회 페이징 및 최적화
 
 file:
-  dir: /c:/Users/HOME/Desktop/JAVA/menu_file/
+  dir: /C:/Users/HOME/Desktop/JAVA/menu_file/
 
 logging.level:
   org.hibernate.SQL: debug
 #  org.hibernate.type: trace
-
-#naver login 관련
-naver:
-  token:
-    url: https://nid.naver.com/oauth2.0/token?grant_type=authorization_code
-  client:
-    id: z_c0ETHIqnzInQwcpjLX
-
 

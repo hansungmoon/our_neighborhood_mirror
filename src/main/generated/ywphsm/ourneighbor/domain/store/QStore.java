@@ -22,24 +22,28 @@ public class QStore extends EntityPathBase<Store> {
 
     public static final QStore store = new QStore("store");
 
-    public final ywphsm.ourneighbor.domain.QBaseTimeEntity _super = new ywphsm.ourneighbor.domain.QBaseTimeEntity(this);
+    public final ywphsm.ourneighbor.domain.QBaseEntity _super = new ywphsm.ourneighbor.domain.QBaseEntity(this);
 
-    public final ywphsm.ourneighbor.domain.QAddress address;
+    public final ywphsm.ourneighbor.domain.embedded.QAddress address;
 
-    public final TimePath<java.time.LocalTime> breakEnd = createTime("breakEnd", java.time.LocalTime.class);
+    public final ywphsm.ourneighbor.domain.embedded.QBusinessTime businessTime;
 
-    public final TimePath<java.time.LocalTime> breakStart = createTime("breakStart", java.time.LocalTime.class);
+    public final ListPath<ywphsm.ourneighbor.domain.category.CategoryOfStore, ywphsm.ourneighbor.domain.category.QCategoryOfStore> categoryOfStoreList = this.<ywphsm.ourneighbor.domain.category.CategoryOfStore, ywphsm.ourneighbor.domain.category.QCategoryOfStore>createList("categoryOfStoreList", ywphsm.ourneighbor.domain.category.CategoryOfStore.class, ywphsm.ourneighbor.domain.category.QCategoryOfStore.class, PathInits.DIRECT2);
 
-    public final ListPath<ywphsm.ourneighbor.domain.CategoryOfStore, ywphsm.ourneighbor.domain.QCategoryOfStore> categoryOfStoreList = this.<ywphsm.ourneighbor.domain.CategoryOfStore, ywphsm.ourneighbor.domain.QCategoryOfStore>createList("categoryOfStoreList", ywphsm.ourneighbor.domain.CategoryOfStore.class, ywphsm.ourneighbor.domain.QCategoryOfStore.class, PathInits.DIRECT2);
-
-    public final TimePath<java.time.LocalTime> closingTime = createTime("closingTime", java.time.LocalTime.class);
+    //inherited
+    public final StringPath createdBy = _super.createdBy;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
+    public final ListPath<ywphsm.ourneighbor.domain.hashtag.HashtagOfStore, ywphsm.ourneighbor.domain.hashtag.QHashtagOfStore> hashtagOfStoreList = this.<ywphsm.ourneighbor.domain.hashtag.HashtagOfStore, ywphsm.ourneighbor.domain.hashtag.QHashtagOfStore>createList("hashtagOfStoreList", ywphsm.ourneighbor.domain.hashtag.HashtagOfStore.class, ywphsm.ourneighbor.domain.hashtag.QHashtagOfStore.class, PathInits.DIRECT2);
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final StringPath intro = createString("intro");
+
+    //inherited
+    public final StringPath lastModifiedBy = _super.lastModifiedBy;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> lastModifiedDate = _super.lastModifiedDate;
@@ -48,9 +52,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public final NumberPath<Double> lon = createNumber("lon", Double.class);
 
-    public final ywphsm.ourneighbor.domain.member.QMember member;
-
-    public final ListPath<ywphsm.ourneighbor.domain.Menu, ywphsm.ourneighbor.domain.QMenu> menuList = this.<ywphsm.ourneighbor.domain.Menu, ywphsm.ourneighbor.domain.QMenu>createList("menuList", ywphsm.ourneighbor.domain.Menu.class, ywphsm.ourneighbor.domain.QMenu.class, PathInits.DIRECT2);
+    public final ListPath<ywphsm.ourneighbor.domain.menu.Menu, ywphsm.ourneighbor.domain.menu.QMenu> menuList = this.<ywphsm.ourneighbor.domain.menu.Menu, ywphsm.ourneighbor.domain.menu.QMenu>createList("menuList", ywphsm.ourneighbor.domain.menu.Menu.class, ywphsm.ourneighbor.domain.menu.QMenu.class, PathInits.DIRECT2);
 
     public final StringPath name = createString("name");
 
@@ -58,11 +60,7 @@ public class QStore extends EntityPathBase<Store> {
 
     public final ListPath<String, StringPath> offDays = this.<String, StringPath>createList("offDays", String.class, StringPath.class, PathInits.DIRECT2);
 
-    public final TimePath<java.time.LocalTime> openingTime = createTime("openingTime", java.time.LocalTime.class);
-
     public final StringPath phoneNumber = createString("phoneNumber");
-
-    public final ListPath<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview> reviewList = this.<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview>createList("reviewList", ywphsm.ourneighbor.domain.Review.class, ywphsm.ourneighbor.domain.QReview.class, PathInits.DIRECT2);
 
     public final EnumPath<StoreStatus> status = createEnum("status", StoreStatus.class);
 
@@ -84,8 +82,8 @@ public class QStore extends EntityPathBase<Store> {
 
     public QStore(Class<? extends Store> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.address = inits.isInitialized("address") ? new ywphsm.ourneighbor.domain.QAddress(forProperty("address")) : null;
-        this.member = inits.isInitialized("member") ? new ywphsm.ourneighbor.domain.member.QMember(forProperty("member")) : null;
+        this.address = inits.isInitialized("address") ? new ywphsm.ourneighbor.domain.embedded.QAddress(forProperty("address")) : null;
+        this.businessTime = inits.isInitialized("businessTime") ? new ywphsm.ourneighbor.domain.embedded.QBusinessTime(forProperty("businessTime")) : null;
     }
 
 }
