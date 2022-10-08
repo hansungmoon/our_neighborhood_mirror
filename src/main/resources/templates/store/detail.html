@@ -30,12 +30,17 @@
                       th:classappend="*{status}"></span>
             </div>
             <div class="col-6">
-                <div class="float-end">
-                    <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
-                            th:onclick="|location.href='@{/store/edit/{storeId}(storeId=${store.storeId})}'|">
-                        정보 수정
-                    </button>
-                </div>
+                <th:block th:if="${session.loginMember ne null}">
+                    <th:block th:if="${#strings.equals(session.loginMember.role, 'SELLER')} or
+                            ${#strings.equals(session.loginMember.role, 'ADMIN')}">
+                        <div class="float-end">
+                            <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
+                                    th:onclick="|location.href='@{/seller/store/edit/{storeId}(storeId=${store.storeId})}'|">
+                                정보 수정
+                            </button>
+                        </div>
+                    </th:block>
+                </th:block>
             </div>
         </div>
         <hr class="my-2">
@@ -103,25 +108,30 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="float-end">
-                    <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
-                            th:onclick="|location.href='@{/menu/edit/{storeId}(storeId=${store.storeId})}'|">
-                        메뉴 수정
-                    </button>
-                    <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
-                            th:onclick="|location.href='@{/menu/add/{storeId}(storeId=${store.storeId})}'|">
-                        메뉴 등록
-                    </button>
-                </div>
+                <th:block th:if="${session.loginMember ne null}">
+                    <th:block th:if="${#strings.equals(session.loginMember.role, 'SELLER')} or
+                            ${#strings.equals(session.loginMember.role, 'ADMIN')}">
+                        <div class="float-end">
+                            <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
+                                    th:onclick="|location.href='@{/seller/menu/edit/{storeId}(storeId=${store.storeId})}'|">
+                                메뉴 수정
+                            </button>
+                            <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
+                                    th:onclick="|location.href='@{/seller/menu/add/{storeId}(storeId=${store.storeId})}'|">
+                                메뉴 등록
+                            </button>
+                        </div>
+                    </th:block>
+                </th:block>
             </div>
         </div>
         <hr class="my-2">
         <div class="menu-list">
             <div class="row menu-sub" th:each="t: ${menuTypes}">
-                <th:block th:each="menu, stat : *{menuList}">
+                <th:block th:each="menu, stat : ${menus}">
                     <th:block th:if="${#strings.equals(t.name(), menu.type)}"
                               th:with="isDuplicated=${stat.index > 0 &&
-                                store.menuList[stat.index - 1].type== store.menuList[stat.index].type}">
+                                menus[stat.index - 1].type == menus[stat.index].type}">
                         <div class="col-12" th:if="${isDuplicated == false}">
                             <div class="menu-title my-3">
                                 <div class="col-12">
@@ -154,6 +164,44 @@
                     </th:block>
                 </th:block>
             </div>
+        </div>
+        <hr class="my-2 hr-orange">
+        <div class="row store-menu">
+            <h3><strong>리뷰</strong></h3>
+            <div class="col">
+                <button class="btn btn-info float-end" style="font-size: 1.1rem; color: #ffffff"
+                        th:onclick="|location.href='@{/user/store/{storeId}/createReview(storeId=${store.storeId})}'|">리뷰 등록
+                </button>
+            </div>
+            <div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>별점</th>
+                        <th>리뷰</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                    </tr>
+                    </thead>
+                    <tbody> <tr th:each="review : ${review}">
+                        <td th:text="${review.reviewId}"></td>
+                        <td th:if="${review.rating == 1}">★☆☆☆☆</td>
+                        <td th:if="${review.rating == 2}">★★☆☆☆</td>
+                        <td th:if="${review.rating == 3}">★★★☆☆</td>
+                        <td th:if="${review.rating == 4}">★★★★☆</td>
+                        <td th:if="${review.rating == 5}">★★★★★</td>
+                        <td th:text="${review.content}"></td>
+                        <td th:text="${review.username}"></td>
+                        <td th:text="${review.createDate}"></td>
+                        <div class="menu-detail-img mb-2">
+                            <img th:src="|/menu/${review.storedFileName}|" width="180" height="180" alt="리뷰 사진">
+                        </div>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     </div>
 </section>

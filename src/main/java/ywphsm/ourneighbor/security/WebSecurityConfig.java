@@ -36,6 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final MemberDetailService memberDetailService;
     private final CustomOAuthUserService customOAuthUserService;
+    private final CustomAuthSuccessHandler customAuthSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -75,20 +76,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginPage("/login")
                 .loginProcessingUrl("/loginSecurity")
-                .successHandler(new AuthenticationSuccessHandler() {
-                    @Override
-                    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                        //사용자 정보 가져오기
-                        authentication = SecurityContextHolder.getContext().getAuthentication();
-                        MemberDetailsImpl principal = (MemberDetailsImpl) authentication.getPrincipal();
-                        Member loginMember = principal.getMember();
-
-                        HttpSession session = request.getSession();
-                        session.setAttribute(SessionConst.LOGIN_MEMBER, loginMember);
-
-                        response.sendRedirect("/");
-                    }
-                })
+                .successHandler(customAuthSuccessHandler)
 
                 //logout
                 .and()

@@ -51,7 +51,7 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<MemberOfStore> memberOfStoreList = new ArrayList<>();
 
-    //(1:N) Member
+    //(1:N) Review
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
     private List<Review> reviewList = new ArrayList<>();
 
@@ -79,8 +79,14 @@ public class Member extends BaseTimeEntity {
         this.role = role;
     }
 
-    //회원가입때 사용
+    @Builder
+    public Member(String username, String email, Role role) {
+        this.username = username;
+        this.email = email;
+        this.role = role;
+    }
 
+    //회원가입때 사용
     public Member(String username, String birthDate, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname, Role role) {
         this.username = username;
         this.birthDate = birthDate;
@@ -123,6 +129,15 @@ public class Member extends BaseTimeEntity {
 
     public void updatePassword(String password) {
         this.password = password;
+    }
+
+    public void updateRole(Role role) {
+        this.role = role;
+    }
+
+    public void addReview(Review review) {
+        review.setMember(this);
+        reviewList.add(review);
     }
 
     /*

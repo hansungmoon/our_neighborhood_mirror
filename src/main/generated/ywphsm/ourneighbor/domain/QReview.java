@@ -32,6 +32,8 @@ public class QReview extends EntityPathBase<Review> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
+    public final ywphsm.ourneighbor.domain.file.QUploadFile file;
+
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
@@ -64,6 +66,7 @@ public class QReview extends EntityPathBase<Review> {
 
     public QReview(Class<? extends Review> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.file = inits.isInitialized("file") ? new ywphsm.ourneighbor.domain.file.QUploadFile(forProperty("file"), inits.get("file")) : null;
         this.member = inits.isInitialized("member") ? new ywphsm.ourneighbor.domain.member.QMember(forProperty("member")) : null;
         this.store = inits.isInitialized("store") ? new ywphsm.ourneighbor.domain.store.QStore(forProperty("store"), inits.get("store")) : null;
     }

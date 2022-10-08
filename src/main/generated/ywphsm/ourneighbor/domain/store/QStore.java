@@ -52,6 +52,8 @@ public class QStore extends EntityPathBase<Store> {
 
     public final NumberPath<Double> lon = createNumber("lon", Double.class);
 
+    public final ListPath<ywphsm.ourneighbor.domain.member.MemberOfStore, ywphsm.ourneighbor.domain.member.QMemberOfStore> memberOfStoreList = this.<ywphsm.ourneighbor.domain.member.MemberOfStore, ywphsm.ourneighbor.domain.member.QMemberOfStore>createList("memberOfStoreList", ywphsm.ourneighbor.domain.member.MemberOfStore.class, ywphsm.ourneighbor.domain.member.QMemberOfStore.class, PathInits.DIRECT2);
+
     public final ListPath<ywphsm.ourneighbor.domain.menu.Menu, ywphsm.ourneighbor.domain.menu.QMenu> menuList = this.<ywphsm.ourneighbor.domain.menu.Menu, ywphsm.ourneighbor.domain.menu.QMenu>createList("menuList", ywphsm.ourneighbor.domain.menu.Menu.class, ywphsm.ourneighbor.domain.menu.QMenu.class, PathInits.DIRECT2);
 
     public final StringPath name = createString("name");
@@ -61,6 +63,8 @@ public class QStore extends EntityPathBase<Store> {
     public final ListPath<String, StringPath> offDays = this.<String, StringPath>createList("offDays", String.class, StringPath.class, PathInits.DIRECT2);
 
     public final StringPath phoneNumber = createString("phoneNumber");
+
+    public final ListPath<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview> reviewList = this.<ywphsm.ourneighbor.domain.Review, ywphsm.ourneighbor.domain.QReview>createList("reviewList", ywphsm.ourneighbor.domain.Review.class, ywphsm.ourneighbor.domain.QReview.class, PathInits.DIRECT2);
 
     public final EnumPath<StoreStatus> status = createEnum("status", StoreStatus.class);
 
