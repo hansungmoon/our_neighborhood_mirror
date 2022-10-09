@@ -83,18 +83,13 @@ public class StoreController {
         //review paging
         Slice<ReviewMemberDTO> reviewMemberDTOS = reviewService.pagingReview(storeId);
         List<ReviewMemberDTO> content = reviewMemberDTOS.getContent();
-        boolean hasNext = true;
         log.info("content={}", content);
-        if (reviewMemberDTOS.hasNext()) {
-            hasNext = false;
-        }
 
         model.addAttribute("store", dto);
         model.addAttribute("menus", menuDTOList);
         model.addAttribute("categoryList", dtoList);
         //review
         model.addAttribute("review", content);
-        model.addAttribute("hasNext", hasNext);
 
         return "store/detail";
     }
