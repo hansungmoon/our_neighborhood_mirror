@@ -81,15 +81,17 @@ public class StoreController {
                 .map(CategorySimpleDTO::of).collect(Collectors.toList());
 
         //review paging
-        Slice<ReviewMemberDTO> reviewMemberDTOS = reviewService.pagingReview(storeId);
+        Slice<ReviewMemberDTO> reviewMemberDTOS = reviewService.pagingReview(storeId, 0);
         List<ReviewMemberDTO> content = reviewMemberDTOS.getContent();
         log.info("content={}", content);
+        double ratingAverage = reviewService.ratingAverage(storeId);
 
         model.addAttribute("store", dto);
         model.addAttribute("menus", menuDTOList);
         model.addAttribute("categoryList", dtoList);
         //review
         model.addAttribute("review", content);
+        model.addAttribute("ratingAverage", ratingAverage);
 
         return "store/detail";
     }

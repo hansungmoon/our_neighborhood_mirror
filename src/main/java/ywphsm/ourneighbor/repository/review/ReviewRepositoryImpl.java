@@ -24,7 +24,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
 
     @Override
     public Slice<ReviewMemberDTO> ReviewPage(Pageable pageable, Long storeId) {
-        QueryResults<ReviewMemberDTO> response = queryFactory
+        List<ReviewMemberDTO> content = queryFactory
                 .select(new QReviewMemberDTO(
                         QReview.review.id.as("reviewId"),
                         QReview.review.content,
@@ -40,12 +40,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
                 .orderBy(QReview.review.createdDate.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize() + 1) // limit보다 데이터를 1개 더 들고와서, 해당 데이터가 있다면 hasNext 변수에 true를 넣어 알림
-                .fetchResults();
-
-        List<ReviewMemberDTO> content = new ArrayList<>();
-        for (ReviewMemberDTO eachResponse : response.getResults()) {
-            content.add(new ReviewMemberDTO(eachResponse));
-        }
+                .fetch();
 
         boolean hasNext = false;
         if (content.size() > pageable.getPageSize()) {

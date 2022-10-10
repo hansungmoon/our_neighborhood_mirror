@@ -5,6 +5,7 @@ var main = {
         var _this = this;
 
         const reviewSaveBtn = document.getElementById('review-save');
+        const reviewDeleteBtnList = document.querySelectorAll('.review-delete');
         const reviewMoreBtn = document.getElementById('review-more');
 
         if (reviewSaveBtn !== null) {
@@ -12,6 +13,14 @@ var main = {
                 _this.check()
                 // _this.save()
             });
+        }
+
+        if (reviewDeleteBtnList !== null) {
+            reviewDeleteBtnList.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    _this.delete(btn.id);
+                })
+            })
         }
 
         if (reviewMoreBtn !== null) {
@@ -109,29 +118,84 @@ var main = {
         });
     },
 
+    delete: function (btnId) {
+        const reviewId = btnId.substring(17);
+        const storeId = document.getElementById('storeId').value;
+
+        console.log(reviewId);
+
+        axios({
+            method: "delete",
+            url: "/review/delete/" + storeId,
+            params: {
+                reviewId: reviewId
+            }
+        }).then((resp) => {
+            alert('리뷰 삭제가 완료됐습니다.');
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error);
+        })
+    },
+
     more: function () {
-        let startNum = $("#reviewBody tr").length;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
+        let page = $("#reviewBody tr").length / 5 + 1;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
         let addListHtml = "";
-        console.log("startNum", startNum);
+        console.log("page", page);
 
         const storeId = document.getElementById("storeId").value;
+        let loginMember = document.getElementById("member-role").value;
+        console.log("loginMember", loginMember);
 
         axios({
             method: "get",
             url: "/review/more",
             params: {
-                startNum: startNum,
+                page: page,
                 storeId: storeId
             }
         }).then((resp) => {
-            let check = resp.data;
+            console.log("result", resp);
+            let data = resp.data
+            console.log("data", data);
 
-            if (check === false) {
-                this.save();
-            } else {
-                alert("이미 등록된 메뉴입니다.");
-                window.location.reload();
+            if (data.last) {
+                $("#review-more").remove();
             }
+            for (let contentElement of data.content) {
+                addListHtml += "<tr>";
+                addListHtml += "<td>" + contentElement.reviewId + "</td>";
+                switch (contentElement.rating) {
+                    case 1:
+                        addListHtml += "<td>★☆☆☆☆</td>";
+                        break;
+                    case 2:
+                        addListHtml += "<td>★★☆☆☆</td>";
+                        break;
+                    case 3:
+                        addListHtml += "<td>★★★☆☆</td>";
+                        break;
+                    case 4:
+                        addListHtml += "<td>★★★★☆</td>";
+                        break;
+                    case 5:
+                        addListHtml += "<td>★★★★★</td>";
+                        break;
+                }
+                addListHtml += "<td>" + contentElement.content + "</td>";
+                addListHtml += "<td>" + contentElement.username + "</td>";
+                addListHtml += "<td>" + contentElement.createDate + "</td>";
+                addListHtml += '<td><img src="/menu/' + contentElement.storedFileName + '" width="180" height="180" alt="리뷰 사진"></td>'
+                if (loginMember !== null) {
+                    if (loginMember === 'ADMIN') {
+                        addListHtml += '<td><button id="review-delete-btn' + contentElement.reviewId + '" type="button" class="btn btn-dark mt-4 review-delete"> 삭제 </button></td>';
+                    }
+                }
+                addListHtml += "</tr>";
+            }
+            $("#reviewBody").append(addListHtml);
+
+
         }).catch((e) => {
             console.error(e);
         });

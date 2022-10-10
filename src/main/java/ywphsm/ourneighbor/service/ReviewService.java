@@ -22,6 +22,7 @@ import ywphsm.ourneighbor.repository.store.StoreRepository;
 import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -71,8 +72,8 @@ public class ReviewService {
         return reviewRepository.findAll();
     }
 
-    public Slice<ReviewMemberDTO> pagingReview(Long storeId) {
-        PageRequest pageRequest = PageRequest.of(0, 5);
+    public Slice<ReviewMemberDTO> pagingReview(Long storeId, int page) {
+        PageRequest pageRequest = PageRequest.of(page, 5);
         Slice<ReviewMemberDTO> reviewMemberDTOS = reviewRepository.ReviewPage(pageRequest, storeId);
         log.info("reviewMemberDTO={}", reviewMemberDTOS);
 
@@ -80,4 +81,25 @@ public class ReviewService {
         return reviewMemberDTOS;
     }
 
+    public double ratingAverage(Long storeId) {
+        Store store = storeRepository.findById(storeId).orElseThrow(() -> new IllegalArgumentException("해당 매장이 없어요"));
+
+        if (store.getReviewList().size() == 0) {
+            return 0;
+        }
+
+        double ratingTotal = store.getRatingTotal();
+        double count = store.getReviewList().size();
+        double average = ratingTotal / count;
+
+        return Math.round(average * 10) / 10.0;
+
+    }
+
+    @Transactional
+    public void ratingDiscount(Long storeId, Long reviewId) {
+        Store store = storeRepository.findById(storeId).orElseThrow(() -> new IllegalArgumentException("해당 매장이 없어요"));
+        Review review = findOne(reviewId);
+        store.reviewDelete(review.getRating());
+    }
 }
