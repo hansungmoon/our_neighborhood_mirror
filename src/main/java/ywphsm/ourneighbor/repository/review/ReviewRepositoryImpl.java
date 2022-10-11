@@ -13,6 +13,7 @@ import ywphsm.ourneighbor.domain.dto.QReviewMemberDTO;
 import ywphsm.ourneighbor.domain.dto.ReviewMemberDTO;
 import ywphsm.ourneighbor.domain.file.QUploadFile;
 import ywphsm.ourneighbor.domain.member.QMember;
+import ywphsm.ourneighbor.domain.store.QStore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +52,47 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
         return new SliceImpl<>(content, pageable, hasNext);
     }
 
+    @Override
+    public Slice<ReviewMemberDTO> MyReview(Pageable pageable, Long memberId) {
+        List<ReviewMemberDTO> content = queryFactory
+                .select(new QReviewMemberDTO(
+                        QReview.review.id.as("reviewId"),
+                        QReview.review.content,
+                        QReview.review.rating,
+                        QReview.review.createdDate,
+                        QUploadFile.uploadFile.storedFileName,
+                        QStore.store.name.as("storeName"),
+                        QStore.store.id.as("storeId")))
+                .from(QReview.review)
+                .where(memberIdEq(memberId))
+                .leftJoin(QReview.review.member, QMember.member)
+                .leftJoin(QReview.review.file, QUploadFile.uploadFile)
+                .leftJoin(QReview.review.store, QStore.store)
+                .orderBy(QReview.review.createdDate.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize() + 1) // limit보다 데이터를 1개 더 들고와서, 해당 데이터가 있다면 hasNext 변수에 true를 넣어 알림
+                .fetch();
+
+        boolean hasNext = false;
+        if (content.size() > pageable.getPageSize()) {
+            content.remove(pageable.getPageSize());
+            hasNext = true;
+        }
+
+        //리뷰 총개수 구하는 쿼리
+//        long count = queryFactory
+//                .selectFrom(QReview.review)
+//                .leftJoin(QReview.review.member, QMember.member)
+//                .where(memberIdEq(memberId))
+//                .fetch().size();
+
+        return new SliceImpl<>(content, pageable, hasNext);
+    }
+
     private BooleanExpression storeIdEq(Long storeId) {
         return storeId != null ? QReview.review.store.id.eq(storeId) : null;
+    }
+    private BooleanExpression memberIdEq(Long memberId) {
+        return memberId != null ? QMember.member.id.eq(memberId) : null;
     }
 }

@@ -47,4 +47,9 @@ public class ReviewApiController {
         return reviewService.pagingReview(storeId, page);
     }
 
+    @GetMapping("/review/moreMyReview")
+    public Slice<ReviewMemberDTO> moreMyReview(Long memberId, int page) {
+        return reviewService.pagingMyReview(memberId, page);
+    }
+
 }

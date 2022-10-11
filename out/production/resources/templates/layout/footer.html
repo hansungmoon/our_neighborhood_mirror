@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<footer id="footer" th:fragment="common_footer">
+    <div class="section-content">
+        <div class="container">
+            <div class="row align-items-center justify-content-around">
+                <div class="col-md-3 mb-4 footer-1 text-nowrap">
+                    <h4 class="fw-bold">Contact Us</h4>
+                    <ul class="contact mt-4" style="list-style: none; padding-left: 0px;">
+                        <li>
+                            <img src="/images/icon/gmail.svg" alt="Mail" width="38px" class="me-3"/> ywonp94@gmail.com
+                        </li>
+                        <li>
+                            <img src="/images/icon/phone-ringing-icon.svg" alt="phone" width="38px" class="me-3"/> 010-6773-1582
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 text-center footer-2">
+                    <ul class="sns mt-4" style="list-style: none; padding-left: 0px;">
+                        <li>
+                            <a target="_blank" href="https://github.com/" class="mx-1 text-decoration-none social">
+                                <img src="/images/icon/github.svg" alt="Github" width="38px"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://yangwon-park.github.io/" class="mx-1 text-decoration-none social">
+                                <img src="/images/icon/githubpages.svg" alt="GithubPages" width="100px"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 text-center footer-3">
+                    <div>
+                        <h4 class="fw-bold">Thank You!</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<th:block th:fragment="common_js(script)">
+    <!--  npm - axios 경로-->
+    <script defer th:src="@{/node_modules/axios/dist/axios.js}"></script>
+
+    <!-- jQuery CDN   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+            integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- bootstrap js   -->
+    <script th:src="@{/js/bootstrap.bundle.js}"></script>
+
+    <!-- slick   -->
+    <script th:src="@{/plugin/slick/slick.min.js}"></script>
+
+    <!-- 사이드바 js   -->
+    <script th:src="@{/js/sidebars.js}"></script>
+
+    <!-- 커스텀 js -->
+    <script type="module" th:src="@{/js/app.js}"></script>
+</th:block>
+
+</html>

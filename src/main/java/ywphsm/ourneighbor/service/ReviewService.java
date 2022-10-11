@@ -81,6 +81,15 @@ public class ReviewService {
         return reviewMemberDTOS;
     }
 
+    public Slice<ReviewMemberDTO> pagingMyReview(Long memberId, int page) {
+        PageRequest pageRequest = PageRequest.of(page, 5);
+        Slice<ReviewMemberDTO> reviewMemberDTOS = reviewRepository.MyReview(pageRequest, memberId);
+        log.info("reviewMemberDTO={}", reviewMemberDTOS);
+
+
+        return reviewMemberDTOS;
+    }
+
     public double ratingAverage(Long storeId) {
         Store store = storeRepository.findById(storeId).orElseThrow(() -> new IllegalArgumentException("해당 매장이 없어요"));
 

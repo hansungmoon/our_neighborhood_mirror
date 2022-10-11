@@ -7,6 +7,7 @@ var main = {
         const reviewSaveBtn = document.getElementById('review-save');
         const reviewDeleteBtnList = document.querySelectorAll('.review-delete');
         const reviewMoreBtn = document.getElementById('review-more');
+        const MyReviewMoreBtn = document.getElementById('MyReview-more');
 
         if (reviewSaveBtn !== null) {
             reviewSaveBtn.addEventListener('click', () => {
@@ -26,6 +27,13 @@ var main = {
         if (reviewMoreBtn !== null) {
             reviewMoreBtn.addEventListener('click', () => {
                 _this.more()
+                // _this.save()
+            });
+        }
+
+        if (MyReviewMoreBtn !== null) {
+            reviewMoreBtn.addEventListener('click', () => {
+                _this.myReviewMore()
                 // _this.save()
             });
         }
@@ -144,7 +152,11 @@ var main = {
         console.log("page", page);
 
         const storeId = document.getElementById("storeId").value;
-        let loginMember = document.getElementById("member-role").value;
+
+        let loginMember = null;
+        let memberRoleList = document.querySelectorAll('.member-role');
+        loginMember = memberRoleList.item(0).value
+
         console.log("loginMember", loginMember);
 
         axios({
@@ -184,8 +196,8 @@ var main = {
                 }
                 addListHtml += "<td>" + contentElement.content + "</td>";
                 addListHtml += "<td>" + contentElement.username + "</td>";
-                addListHtml += "<td>" + contentElement.createDate + "</td>";
-                addListHtml += '<td><img src="/menu/' + contentElement.storedFileName + '" width="180" height="180" alt="리뷰 사진"></td>'
+                addListHtml += "<td>" + contentElement.createDate.substring(0, 10) + "</td>";
+                addListHtml += '<td><img src="/menu/' + contentElement.storedFileName + '" width="180" height="180" alt="리뷰 사진"></td>';
                 if (loginMember !== null) {
                     if (loginMember === 'ADMIN') {
                         addListHtml += '<td><button id="review-delete-btn' + contentElement.reviewId + '" type="button" class="btn btn-dark mt-4 review-delete"> 삭제 </button></td>';
@@ -199,7 +211,7 @@ var main = {
         }).catch((e) => {
             console.error(e);
         });
-    }
+    },
 };
 
 main.init();
