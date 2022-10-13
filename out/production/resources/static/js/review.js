@@ -130,7 +130,8 @@ var main = {
         const reviewId = btnId.substring(17);
         const storeId = document.getElementById('storeId').value;
 
-        console.log(reviewId);
+        console.log("reviewId", reviewId);
+        console.log("storeId", storeId);
 
         axios({
             method: "delete",
@@ -212,66 +213,6 @@ var main = {
             console.error(e);
         });
     },
-
-    myReviewMore: function () {
-        let page = $("#reviewBody section").length / 5 + 1;  //마지막 리스트 번호를 알아내기 위해서 tr태그의 length를 구함.
-        let addListHtml = "";
-        console.log("page", page);
-
-        const memberId = document.getElementById("memberId").value;
-
-        axios({
-            method: "get",
-            url: "/review/moreMyReview",
-            params: {
-                page: page,
-                memberId: memberId
-            }
-        }).then((resp) => {
-            console.log("result", resp);
-            let data = resp.data
-            console.log("data", data);
-
-            if (data.last) {
-                $("#MyReview-more").remove();
-            }
-            for (let content of data.content) {
-                addListHtml += '<div class="row store-info" style="font-size: 1.5rem">' +
-                                    '<div class="col-12 my-1">' +
-                                        '<span>가게 이름 : </span>' +
-                                        '<a th:href="@{/store/{storeId} (storeId = ${myReview.storeId})}" th:text="*{myReview.storeName}" style="color: #000000">가게 이름</a>' +
-                                    '</div>';
-                addListHtml += "<td>" + content.reviewId + "</td>";
-                switch (content.rating) {
-                    case 1:
-                        addListHtml += "<td>★☆☆☆☆</td>";
-                        break;
-                    case 2:
-                        addListHtml += "<td>★★☆☆☆</td>";
-                        break;
-                    case 3:
-                        addListHtml += "<td>★★★☆☆</td>";
-                        break;
-                    case 4:
-                        addListHtml += "<td>★★★★☆</td>";
-                        break;
-                    case 5:
-                        addListHtml += "<td>★★★★★</td>";
-                        break;
-                }
-                addListHtml += "<td>" + content.content + "</td>";
-                addListHtml += "<td>" + content.username + "</td>";
-                addListHtml += "<td>" + content.createDate.substring(0, 10) + "</td>";
-                addListHtml += '<td><img src="/menu/' + content.storedFileName + '" width="180" height="180" alt="리뷰 사진"></td>';
-                addListHtml += "</tr>";
-            }
-            $("#MyReviewBody").append(addListHtml);
-
-
-        }).catch((e) => {
-            console.error(e);
-        });
-    }
 };
 
 main.init();

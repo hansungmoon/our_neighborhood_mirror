@@ -36,6 +36,8 @@ public class QMenu extends EntityPathBase<Menu> {
 
     public final DateTimePath<java.time.LocalDateTime> discountStart = createDateTime("discountStart", java.time.LocalDateTime.class);
 
+    public final EnumPath<MenuFeat> feature = createEnum("feature", MenuFeat.class);
+
     public final ywphsm.ourneighbor.domain.file.QUploadFile file;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);

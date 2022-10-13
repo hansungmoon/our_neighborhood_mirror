@@ -62,6 +62,10 @@ public class QStore extends EntityPathBase<Store> {
 
     public final ListPath<String, StringPath> offDays = this.<String, StringPath>createList("offDays", String.class, StringPath.class, PathInits.DIRECT2);
 
+    public final EnumPath<ParkAvailable> park = createEnum("park", ParkAvailable.class);
+
+    public final StringPath parkDetail = createString("parkDetail");
+
     public final StringPath phoneNumber = createString("phoneNumber");
 
     public final NumberPath<Integer> ratingTotal = createNumber("ratingTotal", Integer.class);

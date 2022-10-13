@@ -24,7 +24,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public Slice<ReviewMemberDTO> ReviewPage(Pageable pageable, Long storeId) {
+    public Slice<ReviewMemberDTO> reviewPage(Pageable pageable, Long storeId) {
         List<ReviewMemberDTO> content = queryFactory
                 .select(new QReviewMemberDTO(
                         QReview.review.id.as("reviewId"),
@@ -53,8 +53,8 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
     }
 
     @Override
-    public Slice<ReviewMemberDTO> MyReview(Pageable pageable, Long memberId) {
-        List<ReviewMemberDTO> content = queryFactory
+    public List<ReviewMemberDTO> myReview(Long memberId) {
+        return queryFactory
                 .select(new QReviewMemberDTO(
                         QReview.review.id.as("reviewId"),
                         QReview.review.content,
@@ -69,15 +69,7 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
                 .leftJoin(QReview.review.file, QUploadFile.uploadFile)
                 .leftJoin(QReview.review.store, QStore.store)
                 .orderBy(QReview.review.createdDate.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize() + 1) // limit보다 데이터를 1개 더 들고와서, 해당 데이터가 있다면 hasNext 변수에 true를 넣어 알림
                 .fetch();
-
-        boolean hasNext = false;
-        if (content.size() > pageable.getPageSize()) {
-            content.remove(pageable.getPageSize());
-            hasNext = true;
-        }
 
         //리뷰 총개수 구하는 쿼리
 //        long count = queryFactory
@@ -86,7 +78,17 @@ public class ReviewRepositoryImpl implements ReviewRepositoryCustom {
 //                .where(memberIdEq(memberId))
 //                .fetch().size();
 
-        return new SliceImpl<>(content, pageable, hasNext);
+    }
+
+    @Override
+    public long myReviewCount(Long memberId) {
+        //리뷰 총개수 구하는 쿼리
+        return queryFactory
+                .selectFrom(QReview.review)
+                .leftJoin(QReview.review.member, QMember.member)
+                .where(memberIdEq(memberId))
+                .fetch().size();
+
     }
 
     private BooleanExpression storeIdEq(Long storeId) {

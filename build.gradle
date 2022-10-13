@@ -124,10 +124,13 @@ dependencies {
 	// AWS S3
 	implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.2'
 
+	// JWT
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+
 }
 
 //tasks.named('test') {
-//   useJUnitPlatform()
+//	useJUnitPlatform()
 //}
 
 //Querydsl 추가, 자동 생성된 Q클래스 gradle clean으로 제거

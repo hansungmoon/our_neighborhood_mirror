@@ -32,6 +32,8 @@ public class QUploadFile extends EntityPathBase<UploadFile> {
 
     public final StringPath uploadedFileName = createString("uploadedFileName");
 
+    public final StringPath uploadImageUrl = createString("uploadImageUrl");
+
     public QUploadFile(String variable) {
         this(UploadFile.class, forVariable(variable), INITS);
     }
