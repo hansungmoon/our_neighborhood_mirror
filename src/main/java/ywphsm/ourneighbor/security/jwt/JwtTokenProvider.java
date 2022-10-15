@@ -4,7 +4,6 @@ import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 
-import java.security.SignatureException;
 import java.util.Date;
 
 @Slf4j
@@ -39,7 +38,7 @@ public class JwtTokenProvider {
     }
 
     // Jwt 토큰 유효성 검사
-    public static <UnsupportedJwtException> boolean validateToken(String token) {
+    public static boolean validateToken(String token) {
         try {
             Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token);
             return true;
