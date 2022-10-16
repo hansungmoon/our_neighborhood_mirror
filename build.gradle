@@ -124,9 +124,6 @@ dependencies {
 	// AWS S3
 	implementation 'io.awspring.cloud:spring-cloud-starter-aws:2.4.2'
 
-	// JWT
-	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
-
 }
 
 //tasks.named('test') {
