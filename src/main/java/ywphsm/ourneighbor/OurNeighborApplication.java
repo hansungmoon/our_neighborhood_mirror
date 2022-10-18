@@ -40,7 +40,6 @@ public class OurNeighborApplication {
 	@Bean
 	public AuditorAware<String> auditorProvider() {
 		return new AuditorAware<String>() {
-
 			@Override
 			public Optional<String> getCurrentAuditor() {
 				Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

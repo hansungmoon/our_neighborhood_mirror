@@ -15,6 +15,8 @@ public class MemberOfStore {
     @Id @GeneratedValue
     private Long Id;
 
+    private boolean storeLike;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;

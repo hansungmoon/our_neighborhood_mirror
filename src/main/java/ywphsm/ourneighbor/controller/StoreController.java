@@ -102,8 +102,11 @@ public class StoreController {
     }
 
     @GetMapping("/seller/store/add")
-    public String addStore(Model model) {
-        model.addAttribute("store", new StoreDTO.Add());
+    public String addStore(Model model,
+                           @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member member) {
+        StoreDTO.Add add = new StoreDTO.Add();
+        add.setMemberId(member.getId());
+        model.addAttribute("store", add);
         return "store/add_form";
     }
 
