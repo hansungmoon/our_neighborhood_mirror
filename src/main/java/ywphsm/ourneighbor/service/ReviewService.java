@@ -12,6 +12,7 @@ import ywphsm.ourneighbor.domain.dto.ReviewMemberDTO;
 import ywphsm.ourneighbor.domain.file.FileStore;
 import ywphsm.ourneighbor.domain.file.UploadFile;
 import ywphsm.ourneighbor.domain.member.Member;
+import ywphsm.ourneighbor.domain.member.MemberOfStore;
 import ywphsm.ourneighbor.domain.store.Store;
 import ywphsm.ourneighbor.repository.member.MemberRepository;
 import ywphsm.ourneighbor.repository.review.ReviewRepository;

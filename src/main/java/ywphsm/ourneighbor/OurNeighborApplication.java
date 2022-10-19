@@ -8,9 +8,13 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import ywphsm.ourneighbor.domain.member.Member;
 import ywphsm.ourneighbor.security.MemberDetailsImpl;
+import ywphsm.ourneighbor.service.login.SessionConst;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 // Spring Data JPA에서 Auditing 기능 사용을 위해 필수 (등록, 수정 추적)
@@ -38,16 +42,16 @@ public class OurNeighborApplication {
 	// 이게 있어야 작성자 수정자 받을 수 있음
 	// UUID 부분은 실무에선 session에서 사용자 아이디를 받아와서 처리
 	@Bean
-	public AuditorAware<String> auditorProvider() {
-		return new AuditorAware<String>() {
+	public AuditorAware<Long> auditorProvider(HttpServletRequest request) {
+		return new AuditorAware<Long>() {
 			@Override
-			public Optional<String> getCurrentAuditor() {
-				Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-				if (!authentication.isAuthenticated()) {
-					return null;
+			public Optional<Long> getCurrentAuditor() {
+				HttpSession session = request.getSession();
+				Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
+				if (member == null) {
+					return Optional.empty();
 				}
-				MemberDetailsImpl principal = (MemberDetailsImpl) authentication.getPrincipal();
-				return Optional.of(principal.getMember().getNickname());
+				return Optional.of(member.getId());
 			}
 		};
 

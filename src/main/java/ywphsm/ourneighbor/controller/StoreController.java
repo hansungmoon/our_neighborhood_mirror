@@ -16,10 +16,7 @@ import ywphsm.ourneighbor.domain.menu.MenuFeat;
 import ywphsm.ourneighbor.domain.menu.MenuType;
 import ywphsm.ourneighbor.domain.store.ParkAvailable;
 import ywphsm.ourneighbor.domain.store.Store;
-import ywphsm.ourneighbor.service.CategoryService;
-import ywphsm.ourneighbor.service.MenuService;
-import ywphsm.ourneighbor.service.ReviewService;
-import ywphsm.ourneighbor.service.StoreService;
+import ywphsm.ourneighbor.service.*;
 import ywphsm.ourneighbor.service.login.SessionConst;
 
 import java.util.ArrayList;
@@ -40,6 +37,8 @@ public class StoreController {
     private final CategoryService categoryService;
     private final MenuService menuService;
     private final ReviewService reviewService;
+
+    private final MemberService memberService;
 
     @ModelAttribute("menuTypes")
     public MenuType[] menuTypes() {
@@ -72,7 +71,8 @@ public class StoreController {
     }
 
     @GetMapping("/store/{storeId}")
-    public String storeDetail(@PathVariable Long storeId, Model model) {
+    public String storeDetail(@PathVariable Long storeId, Model model,
+                              @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member) {
         Store store = storeService.findById(storeId);
         StoreDTO.Detail dto = new StoreDTO.Detail(store);
 
@@ -90,6 +90,12 @@ public class StoreController {
         List<ReviewMemberDTO> content = reviewMemberDTOS.getContent();
         log.info("content={}", content);
         double ratingAverage = reviewService.ratingAverage(storeId);
+
+        //찜
+        if (member != null) {
+            boolean likeStatus = memberService.likeStatus(member.getId(), storeId);
+            model.addAttribute("likeStatus", likeStatus);
+        }
 
         model.addAttribute("store", dto);
         model.addAttribute("menus", menuDTOList);
