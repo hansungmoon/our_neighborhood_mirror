@@ -42,16 +42,16 @@ public class OurNeighborApplication {
 	// 이게 있어야 작성자 수정자 받을 수 있음
 	// UUID 부분은 실무에선 session에서 사용자 아이디를 받아와서 처리
 	@Bean
-	public AuditorAware<Long> auditorProvider(HttpServletRequest request) {
-		return new AuditorAware<Long>() {
+	public AuditorAware<String> auditorProvider(HttpServletRequest request) {
+		return new AuditorAware<String>() {
 			@Override
-			public Optional<Long> getCurrentAuditor() {
+			public Optional<String> getCurrentAuditor() {
 				HttpSession session = request.getSession();
 				Member member = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
 				if (member == null) {
 					return Optional.empty();
 				}
-				return Optional.of(member.getId());
+				return Optional.of(member.getEmail());
 			}
 		};
 

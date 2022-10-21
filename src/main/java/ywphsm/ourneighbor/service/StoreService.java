@@ -147,17 +147,18 @@ public class StoreService {
             MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(member, store);
             memberOfStore.updateStoreLike(true);
             memberOfStoreRepository.save(memberOfStore);
-            return;
+        } else {
+            List<MemberOfStore> collect = member.getMemberOfStoreList().stream()
+                    .filter(memberOfStore -> memberOfStore.getStore().getId().equals(storeId))
+                    .collect(Collectors.toList());
+
+            MemberOfStore memberOfStore = collect.get(0);
+            memberOfStore.updateStoreLike(false);
+            if (!memberOfStore.isMyStore()) {
+                memberOfStoreRepository.delete(memberOfStore);
+            }
         }
 
-        List<MemberOfStore> collect = member.getMemberOfStoreList().stream()
-                .filter(memberOfStore -> memberOfStore.getStore().getId().equals(storeId))
-                .collect(Collectors.toList());
 
-        MemberOfStore memberOfStore = collect.get(0);
-        memberOfStore.updateStoreLike(false);
-        if (!memberOfStore.isMyStore()) {
-            memberOfStoreRepository.delete(memberOfStore);
-        }
     }
 }
