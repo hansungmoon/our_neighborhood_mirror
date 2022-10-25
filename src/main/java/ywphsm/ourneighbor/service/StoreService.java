@@ -18,6 +18,8 @@ import ywphsm.ourneighbor.repository.store.StoreRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static ywphsm.ourneighbor.domain.category.CategoryOfStore.*;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -25,8 +27,11 @@ import java.util.stream.Collectors;
 public class StoreService {
 
     private final StoreRepository storeRepository;
+
     private final CategoryRepository categoryRepository;
+
     private final MemberOfStoreRepository memberOfStoreRepository;
+    
     private final MemberService memberService;
 
     // 매장 등록
@@ -34,20 +39,19 @@ public class StoreService {
     public Long save(StoreDTO.Add dto, List<Category> categoryList) {
         Store store = dto.toEntity();
         Member member = memberService.findById(dto.getMemberId());
-        MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(member, store);
+
+        MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(member, storeRepository.save(store));
         memberOfStore.updateMyStore(true);
 
         for (Category category : categoryList) {
-            CategoryOfStore categoryOfStore = CategoryOfStore.linkCategoryAndStore(category, store);
-            log.info("categoryOfStore={}", categoryOfStore.getCategory().getName());
-            log.info("categoryOfStore={}", categoryOfStore.getStore().getName());
+            linkCategoryAndStore(category, store);
         }
 
         // default: OPEN
         store.updateStatus(StoreStatus.OPEN);
 
         memberOfStoreRepository.save(memberOfStore);
-        storeRepository.save(store);
+
         return store.getId();
     }
 

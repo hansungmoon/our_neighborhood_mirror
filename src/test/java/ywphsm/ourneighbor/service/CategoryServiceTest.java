@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
-import ywphsm.ourneighbor.domain.dto.CategoryDTO;
+import ywphsm.ourneighbor.domain.dto.category.CategoryDTO;
 
 
 import static org.assertj.core.api.Assertions.*;
@@ -57,7 +57,7 @@ class CategoryServiceTest {
         String name = "test";
         Long parentId = 5L;
 
-        CategoryDTO dto = CategoryDTO.builder()
+        CategoryDTO.Detail dto = CategoryDTO.Detail.builder()
                 .name(name)
                 .parent_id(parentId)
                 .build();
@@ -70,7 +70,7 @@ class CategoryServiceTest {
                 .andDo(print())
                 .andExpect(status().isOk());
 
-        CategoryDTO findCategory = categoryService.findByName(name);
+        CategoryDTO.Detail findCategory = categoryService.findByName(name);
 
         assertThat(findCategory.getDepth()).isEqualTo(3L);
         assertThat(findCategory.getParentId()).isEqualTo(5L);
@@ -81,7 +81,7 @@ class CategoryServiceTest {
     @DisplayName("카테고리 삭제")
     void deleteStore() throws Exception {
 
-        Long categoryId = categoryService.save(CategoryDTO.builder()
+        Long categoryId = categoryService.save(CategoryDTO.Detail.builder()
                 .name("category")
                 .depth(1L)
                 .build());

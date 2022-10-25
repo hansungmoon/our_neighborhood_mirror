@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ywphsm.ourneighbor.domain.category.Category;
-import ywphsm.ourneighbor.domain.dto.CategoryDTO;
+import ywphsm.ourneighbor.domain.dto.category.CategoryDTO;
 import ywphsm.ourneighbor.repository.category.CategoryRepository;
 
 import java.util.List;
@@ -26,9 +26,7 @@ public class CategoryService {
 
     // 카테고리 등록
     @Transactional
-    public Long save(CategoryDTO dto) {
-
-        log.info("dto.getParentId={}", dto.getParentId());
+    public Long save(CategoryDTO.Detail dto) {
 
         // parent, child는 빠져있음
         Category category = dto.toEntity();
@@ -73,22 +71,28 @@ public class CategoryService {
         return categoryId;
     }
 
-    public CategoryDTO findByName(String name) {
-        Category category = categoryRepository.findByName(name);
-        CategoryDTO dto = new CategoryDTO(category);
-        return dto;
+    public CategoryDTO.Detail findByName(String name) {
+        return new CategoryDTO.Detail(categoryRepository.findByName(name));
+    }
+
+    public List<CategoryDTO.Simple> findTop4ByDepth(Long depth) {
+        List<Category> category = categoryRepository.findTop4ByDepth(depth);
+
+        return category.stream().map(CategoryDTO.Simple::of).collect(Collectors.toList());
     }
 
     // 단순히 모든 카테고리들을 보여주는 쿼리
-    public List<CategoryDTO> findAll() {
-        return categoryRepository.findAllByOrderByDepthAscParentIdAscNameAsc().stream().map(CategoryDTO::new).collect(Collectors.toList());
+    public List<CategoryDTO.Detail> findAll() {
+        return categoryRepository.findAllByOrderByDepthAscParentIdAscNameAsc().stream()
+                .map(CategoryDTO.Detail::new).collect(Collectors.toList());
     }
 
     // 하나의 쿼리로 모든 하위 카테고리를 연쇄적으로 뽑아내기 위한 쿼리
-    public List<CategoryDTO> findAllCategoriesHier() {
-        return categoryRepository.findByCategories().stream().map(CategoryDTO::of).collect(Collectors.toList());
+    public List<CategoryDTO.Detail> findAllCategoriesHier() {
+        return categoryRepository.findByCategories().stream().map(CategoryDTO.Detail::of).collect(Collectors.toList());
     }
 
+    // 중복 체크 로직
     public boolean checkCategoryDuplicate(String categoryName, Category parent) {
         return categoryRepository.existsByNameAndParent(categoryName, parent);
     }

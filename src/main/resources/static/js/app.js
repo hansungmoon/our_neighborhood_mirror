@@ -1,26 +1,9 @@
-const slickSlide = jQuery('#slick-slide')
+import main from "./map.js"
 
-if (slickSlide) {
-    slickSlide.slick({
-        dots: true,
-        arrows: false,
-        slidesToShow: 3,
-        slideToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 2
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1
-                }
-            }
-        ]
-    })
+var app = {
+    init: function() {
+
+    //    해당 카테고리 기준 무조건 Top5가 나오게 search되는 SQL 작성 (5개 미만이면 알아서 처리)
+
+    },
 }

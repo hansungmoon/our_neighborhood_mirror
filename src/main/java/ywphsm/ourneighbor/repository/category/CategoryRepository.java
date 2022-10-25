@@ -3,12 +3,12 @@ package ywphsm.ourneighbor.repository.category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import ywphsm.ourneighbor.domain.category.Category;
+import ywphsm.ourneighbor.domain.dto.category.CategoryDTO;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long>, CategoryRepositoryCustom {
-
 
     List<Category> findAllByOrderByDepthAscParentIdAscNameAsc();
 
@@ -23,5 +23,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long>, Categ
     Boolean existsByNameAndParent(String name, Category parent);
 
     Category findByName(String name);
+
 
 }

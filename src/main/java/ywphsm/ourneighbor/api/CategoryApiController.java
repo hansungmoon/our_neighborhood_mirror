@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ywphsm.ourneighbor.domain.category.Category;
-import ywphsm.ourneighbor.domain.dto.CategoryDTO;
+import ywphsm.ourneighbor.domain.dto.category.CategoryDTO;
 import ywphsm.ourneighbor.service.CategoryService;
 
 import java.util.List;
@@ -19,12 +19,12 @@ public class CategoryApiController {
 
     @GetMapping("/categories")
     public ResultClass<?> findAllCategories() {
-        List<CategoryDTO> categories = categoryService.findAll();
+        List<CategoryDTO.Detail> categories = categoryService.findAll();
         return new ResultClass<>(categories);
     }
 
     @GetMapping("/categoriesHier")
-    public CategoryDTO findAllCategoriesHier() {
+    public CategoryDTO.Detail findAllCategoriesHier() {
         return categoryService.findAllCategoriesHier().get(0);
     }
 
@@ -36,7 +36,7 @@ public class CategoryApiController {
 
     // @RequestBody 생략 시, Test에서 받아오질 못함
     @PostMapping(value = "/admin/category", produces = "application/json;")
-    public Long save(@RequestBody CategoryDTO dto) {
+    public Long save(@RequestBody CategoryDTO.Detail dto) {
         return categoryService.save(dto);
     }
 
