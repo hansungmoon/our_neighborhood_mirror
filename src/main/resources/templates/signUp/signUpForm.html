@@ -135,13 +135,13 @@
                                 </div>
                                 <input class="form-control" placeholder="인증번호" type="text" id="certifiedNumber" th:field="*{certifiedNumber}"
                                        th:errorclass="field-error">
-                                <div class="field-error" th:errors="*{certifiedNumber}" />
+                                <div id="sign-up-certifiedNumber-valid" class="my-1 valid-custom"></div>
                             </div>
                             <a th:href="@{/sign_up/certifiedPhone}">인증번호 재발급</a>
                         </div>
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-orange mt-4">회원가입</button>
+                            <button type="button" class="btn btn-orange mt-4" id="sign-up-save">회원가입</button>
                         </div>
                     </form>
                 </div>
@@ -154,7 +154,8 @@
 </body>
 <footer th:replace="layout/footer :: common_footer">
     템플릿 푸터
-    <script th:replace="layout/footer :: common_js(~{::script})"></script>
 </footer>
+<script th:replace="layout/footer :: common_js(~{::script})"></script>
+<script type="module" th:src="@{/js/sign_up.js}"></script>
 
 </html>
