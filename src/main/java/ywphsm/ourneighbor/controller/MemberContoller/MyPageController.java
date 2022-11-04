@@ -80,4 +80,9 @@ public class MyPageController {
         model.addAttribute("count", count);
         return "member/myReview";
     }
+
+    @GetMapping("/admin/adminPage")
+    public String adminPage() {
+        return "member/adminPage";
+    }
 }
