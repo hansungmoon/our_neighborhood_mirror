@@ -21,13 +21,21 @@
   </div>
 </section>
 <section class="main">
-  <div class="container px-0">
-    <button class="btn btn-orange float-end" style="font-size: 1.1rem; color: #ffffff"
-            th:onclick="|location.href='@{/admin/category/add}'|">상점 추가</button>
+  <div class="col-6">
+    <div class="float-end">
+      <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
+              th:onclick="|location.href='@{/admin/category/add}'|">
+        카테고리
+      </button>
+    </div>
   </div>
-  <div class="container px-0">
-    <button class="btn btn-orange float-end" style="font-size: 1.1rem; color: #ffffff"
-            th:onclick="|location.href='@{/admin/store/list}'|">상점 추가</button>
+  <div class="col-6">
+    <div class="float-end">
+      <button class="btn btn-info" style="font-size: 1.1rem; color: #ffffff"
+              th:onclick="|location.href='@{/admin/store/list}'|">
+        상점 보기
+      </button>
+    </div>
   </div>
 </section>
 <footer th:replace="layout/footer :: common_footer">

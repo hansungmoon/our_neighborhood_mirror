@@ -83,6 +83,6 @@ public class MyPageController {
 
     @GetMapping("/admin/adminPage")
     public String adminPage() {
-        return "member/adminPage";
+        return "member/admin_page";
     }
 }
