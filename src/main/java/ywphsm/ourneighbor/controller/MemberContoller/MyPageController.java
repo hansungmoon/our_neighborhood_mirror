@@ -59,6 +59,7 @@ public class MyPageController {
                          Model model) {
         Member byId = memberService.findById(member.getId());
         List<StoreDTO.Detail> collect = byId.getMemberOfStoreList().stream()
+                .filter(MemberOfStore::isMyStore)
                 .map(memberOfStore -> new StoreDTO.Detail(memberOfStore.getStore()))
                 .collect(Collectors.toList());
 
@@ -66,7 +67,7 @@ public class MyPageController {
 
         return "member/sellerPage";
     }
-    @GetMapping("/member_edit/review")
+    @GetMapping("/user/member_edit/review")
     public String MyReview(@SessionAttribute(value = SessionConst.LOGIN_MEMBER) Member member,
                            Model model) {
 
