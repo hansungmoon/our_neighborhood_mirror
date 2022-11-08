@@ -12,6 +12,7 @@ import ywphsm.ourneighbor.domain.file.AwsS3FileStore;
 import ywphsm.ourneighbor.domain.file.UploadFile;
 import ywphsm.ourneighbor.domain.member.Member;
 import ywphsm.ourneighbor.domain.member.MemberOfStore;
+import ywphsm.ourneighbor.domain.member.Role;
 import ywphsm.ourneighbor.domain.store.Store;
 import ywphsm.ourneighbor.domain.store.StoreStatus;
 import ywphsm.ourneighbor.domain.store.distance.Direction;
@@ -275,5 +276,73 @@ public class StoreService {
 
         return collect.stream().map(categoryService::findById)
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public String addStoreOwner(String userId, Long storeId) {
+        try {
+            Member findMember = memberService.findByUserId(userId);
+            if (findMember.getRole() == Role.USER) {
+                return "가게를 관리할 권한이 없는 아이디입니다";
+            }
+            Store findStore = findById(storeId);
+            List<MemberOfStore> DuplicateCheck = findStore.getMemberOfStoreList().stream()
+                    .filter(memberOfStore -> memberOfStore.getMember().equals(findMember))
+                    .collect(Collectors.toList());
+
+            if (!DuplicateCheck.isEmpty()) {
+                long OwnerCount = DuplicateCheck.stream()
+                        .filter(MemberOfStore::isMyStore)
+                        .count();
+
+                long likeCount = DuplicateCheck.stream()
+                        .filter(MemberOfStore::isStoreLike)
+                        .count();
+                log.info("likeCount={}", likeCount);
+                if (OwnerCount > 0) {
+                    return "이미 등록된 관리자 입니다.";
+                }
+                if (likeCount > 0) {
+                    DuplicateCheck.get(0).updateMyStore(true);
+                    return "성공";
+                }
+            }
+            MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(findMember, findStore);
+            memberOfStore.updateMyStore(true);
+            memberOfStoreRepository.save(memberOfStore);
+
+        } catch (IllegalArgumentException e) {
+            return "존재하지 않는 아이디 입니다";
+        }
+        return "성공";
+    }
+
+    @Transactional
+    public String deleteStoreOwner(Long memberId, Long storeId) {
+        try {
+            Member findMember = memberService.findById(memberId);
+            Store findStore = findById(storeId);
+            List<MemberOfStore> DuplicateCheck = findStore.getMemberOfStoreList().stream()
+                    .filter(memberOfStore -> memberOfStore.getMember().equals(findMember))
+                    .collect(Collectors.toList());
+
+            if (!DuplicateCheck.isEmpty()) {
+                long likeCount = DuplicateCheck.stream()
+                        .filter(MemberOfStore::isStoreLike)
+                        .count();
+                if (likeCount > 0) {
+                    DuplicateCheck.get(0).updateMyStore(false);
+                    return "성공";
+                }
+                MemberOfStore memberOfStore = DuplicateCheck.get(0);
+                memberOfStoreRepository.delete(memberOfStore);
+                return "성공";
+            }
+
+            return "이미 삭제된 관리자입니다";
+
+        } catch (IllegalArgumentException e) {
+            return "존재하지 않는 아이디 입니다";
+        }
     }
 }

@@ -110,4 +110,15 @@ public class StoreApiController {
     public Long delete(@PathVariable Long storeId) {
         return storeService.delete(storeId);
     }
+
+    @PostMapping("/admin/storeOwner/add")
+    public String addStoreOwner(String userId, Long storeId) {
+
+        return storeService.addStoreOwner(userId, storeId);
+    }
+
+    @DeleteMapping("/admin/storeOwner/delete")
+    public String deleteStoreOwner(Long memberId, Long storeId) {
+        return storeService.deleteStoreOwner(memberId, storeId);
+    }
 }
