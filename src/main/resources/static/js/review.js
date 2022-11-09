@@ -238,19 +238,27 @@ var main = {
     likeUpdate: function () {
         const storeId = document.getElementById("storeId").value;
         const memberId = document.getElementById("memberId").value;
-        const likeStatus = document.getElementById("like-btn").value;
+        const likeStatus = document.getElementById("like-btn");
 
         axios({
             method: "put",
             url: "/user/like",
             params: {
-                likeStatus: likeStatus,
+                likeStatus: likeStatus.value,
                 memberId: memberId,
                 storeId: storeId
             }
         }).then((resp) => {
-            // alert('리뷰 삭제가 완료됐습니다.');
-            window.location.reload();
+            let check = resp.data;
+            if (check === '가게가 찜 등록이 되었습니다.') {
+                likeStatus.innerText = '찜 취소';
+                likeStatus.value = true;
+                alert(check);
+            } else {
+                likeStatus.innerText = '찜 하기';
+                likeStatus.value = false;
+                alert(check);
+            }
         }).catch((error) => {
             console.log(error);
         });
