@@ -1,42 +1,35 @@
 import validation from "./validation.js";
+import mask from "./mask.js";
 
 var main = {
     init: async function () {
-        var _this = this;
+        let _this = this;
+
+        mask.loadingWithMask();
 
         const reviewSaveBtn = document.getElementById("review-save");
         const reviewDeleteBtnList = document.querySelectorAll(".review-delete");
         const reviewMoreBtn = document.getElementById("review-more");
-        const likeBtn = document.getElementById("like-btn");
         const storeImgBtn = document.getElementById("store-image-btn");
         const mainImg = document.getElementById("main-image");
 
         if (reviewSaveBtn !== null) {
-            reviewSaveBtn.addEventListener('click', () => {
+            reviewSaveBtn.addEventListener("click", () => {
                 _this.check()
-                // _this.save()
             });
         }
 
         if (reviewDeleteBtnList !== null) {
             reviewDeleteBtnList.forEach((btn) => {
-                btn.addEventListener('click', () => {
+                btn.addEventListener("click", () => {
                     _this.delete(btn.id);
                 })
             })
         }
 
         if (reviewMoreBtn !== null) {
-            reviewMoreBtn.addEventListener('click', () => {
+            reviewMoreBtn.addEventListener("click", () => {
                 _this.more()
-                // _this.save()
-            });
-        }
-
-        if (likeBtn !== null) {
-            likeBtn.addEventListener('click', () => {
-                _this.likeUpdate()
-                // _this.save()
             });
         }
 
@@ -53,6 +46,7 @@ var main = {
         }
 
         const zoomDiv = document.getElementById("modal-content");
+        let scale = 1;
 
         function zoom(event) {
             event.preventDefault();
@@ -66,8 +60,37 @@ var main = {
             zoomDiv.style.transform = `scale(${scale})`;
         }
 
-        let scale = 1;
-        zoomDiv.onwheel = zoom;
+        if (zoomDiv !== null) {
+            zoomDiv.onwheel = zoom;
+        }
+
+        mask.closeMask();
+
+        //좋아요 버튼
+        let $likeBtn =$('.icon.heart');
+
+        $likeBtn.click(function(){
+            console.log("likeBtn.src=", document.getElementById('like-img').src);
+            if (document.getElementById('like-img').src === 'https://cdn-icons-png.flaticon.com/512/803/803087.png') {
+                $likeBtn.addClass('active');
+            }
+            $likeBtn.toggleClass('active');
+
+            if($likeBtn.hasClass('active')){
+                _this.likeUpdate(true)
+                $(this).find('img').attr({
+                    'src': 'https://cdn-icons-png.flaticon.com/512/803/803087.png',
+                    alt:'찜하기 완료'
+                });
+            }else{
+                _this.likeUpdate(false)
+                $(this).find('i').removeClass('fas').addClass('far')
+                $(this).find('img').attr({
+                    'src': 'https://cdn-icons-png.flaticon.com/512/812/812327.png',
+                    alt:"찜하기"
+                })
+            }
+        })
     },
 
     check: function () {
@@ -91,16 +114,17 @@ var main = {
 
         let ratingCheck = true;
 
-        if (rating1.value === '' || rating2.value === '' || rating3.value === '' || rating4.value === '' || rating5.value === '') {
+        if (rating1.value === "" || rating2.value === "" || rating3.value === "" ||
+            rating4.value === "" || rating5.value === '') {
             ratingCheck = false;
         }
 
-        if (content.value !== '' && ratingCheck === true
-        && memberId !== '' && storeId !== '') {
+        if (content.value !== "" && ratingCheck === true
+        && memberId !== "" && storeId !== "") {
             this.save();
         }
 
-        if (content.value === '') {
+        if (content.value === "") {
             content.classList.add("valid-custom");
             validation.addValidation(contentValid, "리뷰 내용을 작성해주세요.");
         }
@@ -126,6 +150,8 @@ var main = {
     },
 
     save: function () {
+        mask.loadingWithMask();
+
         const reviewForm = document.getElementById("review-add-form");
         const storeId = document.getElementById("storeId").value;
 
@@ -142,11 +168,13 @@ var main = {
             url: "/user/review",
             data: formData
         }).then((resp) => {
-            alert("리뷰가 등록됐습니다.")
+            alert("리뷰가 등록됐습니다.");
             window.location.href = "/store/" + storeId;
-            console.log(resp)
+            mask.closeMask();
         }).catch((error) => {
+            alert("리뷰를 등록할 수 없습니다.");
             console.log(error)
+            mask.closeMask();
         });
     },
 
@@ -161,7 +189,7 @@ var main = {
                 reviewId: reviewId
             }
         }).then((resp) => {
-            alert('리뷰 삭제가 완료됐습니다.');
+            alert("리뷰 삭제가 완료됐습니다.");
             window.location.reload();
         }).catch((error) => {
             console.log(error);
@@ -176,7 +204,7 @@ var main = {
         const storeId = document.getElementById("storeId").value;
 
         let loginMember = null;
-        let memberRoleList = document.querySelectorAll('.member-role');
+        let memberRoleList = document.querySelectorAll(".member-role");
         loginMember = memberRoleList.item(0).value
 
         console.log("loginMember", loginMember);
@@ -189,9 +217,7 @@ var main = {
                 storeId: storeId
             }
         }).then((resp) => {
-            console.log("result", resp);
             let data = resp.data
-            console.log("data", data);
 
             if (data.last) {
                 $("#review-more").remove();
@@ -227,48 +253,37 @@ var main = {
                 }
                 addListHtml += "</tr>";
             }
-            $("#reviewBody").append(addListHtml);
 
+            $("#reviewBody").append(addListHtml);
 
         }).catch((e) => {
             console.error(e);
         });
     },
 
-    likeUpdate: function () {
+    likeUpdate: function (like) {
         const storeId = document.getElementById("storeId").value;
         const memberId = document.getElementById("memberId").value;
-        const likeStatus = document.getElementById("like-btn");
 
         axios({
             method: "put",
             url: "/user/like",
             params: {
-                likeStatus: likeStatus.value,
+                likeStatus: like,
                 memberId: memberId,
                 storeId: storeId
             }
         }).then((resp) => {
             let check = resp.data;
-            if (check === '가게가 찜 등록이 되었습니다.') {
-                likeStatus.innerText = '찜 취소';
-                likeStatus.value = true;
                 alert(check);
-            } else {
-                likeStatus.innerText = '찜 하기';
-                likeStatus.value = false;
-                alert(check);
-            }
         }).catch((error) => {
             console.log(error);
         });
     },
 
-
     saveMainImage: function () {
-        const storeId = document.getElementById("storeId").innerText
+        const storeId = document.getElementById("storeId");
         const form = document.getElementById("main-image-form");
-
         const formData = new FormData(form);
 
         axios({
@@ -277,7 +292,7 @@ var main = {
                 "Access-Control-Allow_Origin": "*"
             },
             method: "post",
-            url: "/seller/store/editImage/" + storeId,
+            url: "/seller/store/edit-image/" + storeId.value,
             data: formData
         }).then((resp) => {
             alert("메인 이미지가 등록됐습니다.");
@@ -288,9 +303,8 @@ var main = {
     },
 
     updateMainImage: function () {
-        const storeId = document.getElementById("storeId").innerText
+        const storeId = document.getElementById("storeId");
         const form = document.getElementById("main-image-form");
-
         const formData = new FormData(form);
 
         axios({
@@ -299,7 +313,7 @@ var main = {
                 "Access-Control-Allow_Origin": "*"
             },
             method: "put",
-            url: "/seller/store/editImage/" + storeId,
+            url: "/seller/store/edit-image/" + storeId.value,
             data: formData
         }).then((resp) => {
             alert("메인 이미지가 수정됐습니다.");
