@@ -187,4 +187,22 @@ class MenuServiceTest {
         assertThatThrownBy(() -> menuService.findById(menuId))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    @WithMockUser(username = "admin1", roles = "ADMIN")
+    @DisplayName("권한 수정")
+    void editRole() throws Exception {
+        Long storeId = 24L;
+        Long menuId = 970L;
+
+        String url = "http://localhost" + port + "/seller/menu/" + storeId;
+
+        mvc.perform(delete(url)
+                        .param("menuId", String.valueOf(menuId)))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+        assertThatThrownBy(() -> menuService.findById(menuId))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
