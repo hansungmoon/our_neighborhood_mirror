@@ -6,7 +6,15 @@ var main = {
         let _this = this;
 
         // mask.loadingWithMask();
-        _this.getCategories();
+        const categoryMain = document.getElementById("category-main").value;
+        const categoryMid = document.getElementById("category-mid").value;
+        const categorySub = document.getElementById("category-sub").value;
+        let categoryList = [];
+        categoryList.push(categoryMain);
+        categoryList.push(categoryMid);
+        categoryList.push(categorySub);
+        console.log("categoryList = ", categoryList)
+        _this.getCategories(categoryList);
 
         const storeSaveBtn = document.getElementById("store-save");
         const storeUpdateBtn = document.getElementById("store-update");
@@ -127,24 +135,77 @@ var main = {
     update: function () {
         mask.loadingWithMask();
 
+        // input 태그
+        const els = {
+            name: document.getElementById("name"),
+            zipcode: document.getElementById("zipcode"),
+            roadAddr: document.getElementById("roadAddr"),
+            numberAddr: document.getElementById("numberAddr"),
+            openingTime: document.getElementById("openingTime"),
+            closingTime: document.getElementById("closingTime")
+        }
+
+        // input 아래의 validation을 담을 div 태그
+        const valids = {
+            nameValid: document.getElementById("store-name-valid"),
+            zipcodeValid: document.getElementById("store-zipcode-valid"),
+            roadAddrValid: document.getElementById("store-roadAddr-valid"),
+            numberAddrValid: document.getElementById("store-numberAddr-valid"),
+            openingTimeValid: document.getElementById("store-openingTime-valid"),
+            closingTimeValid: document.getElementById("store-closingTime-valid")
+        }
+
+        const cateValid = document.getElementById("store-category-valid");
+        const mainCateVal = document.getElementById("main-cate").options
+            [document.getElementById("main-cate").selectedIndex].value;
         const storeForm = document.getElementById("store-edit-form");
-        const storeIdVal = document.getElementById("storeId").value;
 
         const formData = new FormData(storeForm);
+        const storeIdVal = document.getElementById("storeId").value;
 
-        axios({
-            method: "put",
-            url: "/seller/store/" + storeIdVal,
-            data: formData
-        }).then((resp) => {
-            alert("매장 정보 수정이 완료됐습니다.");
-            window.location.href = "/store/" + storeIdVal;
-            mask.closeMask();
-        }).catch((error) => {
-            alert("매장 수정에 실패했습니다.");
-            console.error(error);
-            mask.closeMask();
-        })
+        for (const el in els) {
+            els[el].classList.remove("valid-custom");
+        }
+
+        for (const v in valids) {
+            validation.removeValidation(valids[v]);
+        }
+
+        validation.removeValidation(cateValid);
+
+        this.categoryLayerEl.main.classList.remove("input-error-border");
+
+        if (els["name"].value !== "" && els["zipcode"].value !== ""
+            && els["roadAddr"].value !== "" && els["numberAddr"].value !== ""
+            && els["openingTime"].value !== "" && els["closingTime"].value !== ""
+            && mainCateVal !== "") {
+
+            axios({
+                method: "put",
+                url: "/seller/store/" + storeIdVal,
+                data: formData
+            }).then((resp) => {
+                alert("매장 정보 수정이 완료됐습니다.");
+                window.location.href = "/store/" + storeIdVal;
+                mask.closeMask();
+            }).catch((error) => {
+                alert("매장 수정에 실패했습니다.");
+                console.error(error);
+                mask.closeMask();
+            })
+        }
+
+        for (const el in els) {
+            if (els[el].value === "") {
+                els[el].classList.add("valid-custom");
+                validation.addValidation(valids[el + "Valid"], "위의 값들은 필수입니다.");
+            }
+        }
+
+        if (mainCateVal === "") {
+            this.categoryLayerEl.main.classList.add("input-error-border");
+            validation.addValidation(cateValid, "대분류는 필수입니다.");
+        }
     },
 
     delete: function () {
@@ -167,34 +228,39 @@ var main = {
 
     midChildren: [],
 
-    getCategories: function () {
+    getCategories: function (categoryList) {
         axios({
             method: "get",
             url: "/categories-hier",
         }).then((resp) => {
             let rootChildren = resp.data.children;
-            this.getMainCategories(rootChildren);
+            this.getMainCategories(rootChildren, categoryList);
 
-            this.changeMainCategories(this.mainChildren);
+            this.changeMainCategories(this.mainChildren, categoryList);
             this.changeMidCategories(this.midChildren);
+
         }).catch((e) => {
             console.error(e);
         })
     },
 
-    getMainCategories: function (rootChildren) {
+    getMainCategories: function (rootChildren, categoryList) {
         // 대분류는 미리 저장함
         for (const rc of rootChildren) {
             let mainOption = document.createElement("option");
             mainOption.text = rc.name;
             mainOption.value = rc.categoryId;
+            if (mainOption.value === categoryList[0]) {
+                mainOption.selected = true;
+                console.log("true")
+            }
             this.categoryLayerEl.main.appendChild(mainOption);
 
             this.mainChildren.push(rc.children)
         }
     },
 
-    changeMainCategories: function (mainChildrenParam) {
+    changeMainCategories: function (mainChildrenParam, categoryList) {
         this.categoryLayerEl.main.addEventListener("change", () => {
             this.mainChildren = [];
 
@@ -207,19 +273,22 @@ var main = {
             for (const mid of mainChildrenParam) {
                 for (let i = 0; i < mid.length; i++) {
                     if (mainVal === String(mid[i].parentId)) {
+                        console.log("true2")
                         let option = document.createElement("option");
                         option.text = mid[i].name;
                         option.value = mid[i].categoryId;
-                        main.categoryLayerEl.mid.appendChild(option)
+
+                        main.categoryLayerEl.mid.appendChild(option);
 
                         this.midChildren.push(mid[i].children);
                     }
                 }
             }
+
         });
     },
 
-    changeMidCategories: function (midChildrenParam) {
+    changeMidCategories: function (midChildrenParam, categoryList) {
         this.categoryLayerEl.mid.addEventListener("change", () => {
             this.midChildren = [];
 
@@ -234,6 +303,7 @@ var main = {
                         let option = document.createElement("option");
                         option.text = sub[i].name;
                         option.value = sub[i].categoryId;
+
                         main.categoryLayerEl.sub.appendChild(option)
                     }
                 }
@@ -258,6 +328,7 @@ var main = {
         mid: document.getElementById("mid-cate"),
         sub: document.getElementById("sub-cate")
     },
+
 
     addStoreOwner: function () {
 
