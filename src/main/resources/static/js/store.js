@@ -6,15 +6,19 @@ var main = {
         let _this = this;
 
         // mask.loadingWithMask();
-        const categoryMain = document.getElementById("category-main").value;
-        const categoryMid = document.getElementById("category-mid").value;
-        const categorySub = document.getElementById("category-sub").value;
-        let categoryList = [];
-        categoryList.push(categoryMain);
-        categoryList.push(categoryMid);
-        categoryList.push(categorySub);
-        console.log("categoryList = ", categoryList)
-        _this.getCategories(categoryList);
+        if (document.getElementById("category-main")) {
+            const categoryMain = document.getElementById("category-main").value;
+            const categoryMid = document.getElementById("category-mid").value;
+            const categorySub = document.getElementById("category-sub").value;
+            let categoryList = [];
+            categoryList.push(categoryMain);
+            categoryList.push(categoryMid);
+            categoryList.push(categorySub);
+            console.log("categoryList = ", categoryList)
+            _this.getCategories(categoryList);
+        } else {
+            _this.getCategories();
+        }
 
         const storeSaveBtn = document.getElementById("store-save");
         const storeUpdateBtn = document.getElementById("store-update");
@@ -228,6 +232,8 @@ var main = {
 
     midChildren: [],
 
+    storeEditCheck: false,
+
     getCategories: function (categoryList) {
         axios({
             method: "get",
@@ -235,8 +241,16 @@ var main = {
         }).then((resp) => {
             let rootChildren = resp.data.children;
             this.getMainCategories(rootChildren, categoryList);
-
-            this.changeMainCategories(this.mainChildren, categoryList);
+            console.log("mainChildren = ", this.mainChildren)
+            if (this.storeEditCheck) {
+                if (categoryList[1] !== '') {
+                    this.getMidCategories(this.mainChildren, categoryList);
+                }
+                if (categoryList[2] !== '') {
+                    this.getSubCategories(this.midChildren, categoryList);
+                }
+            }
+            this.changeMainCategories(this.mainChildren);
             this.changeMidCategories(this.midChildren);
 
         }).catch((e) => {
@@ -250,9 +264,12 @@ var main = {
             let mainOption = document.createElement("option");
             mainOption.text = rc.name;
             mainOption.value = rc.categoryId;
-            if (mainOption.value === categoryList[0]) {
-                mainOption.selected = true;
-                console.log("true")
+            if (this.storeEditCheck) {
+                if (mainOption.value === categoryList[0]) {
+                    mainOption.selected = true;
+                    this.storeEditCheck = true;
+                    console.log("true");
+                }
             }
             this.categoryLayerEl.main.appendChild(mainOption);
 
@@ -260,7 +277,7 @@ var main = {
         }
     },
 
-    changeMainCategories: function (mainChildrenParam, categoryList) {
+    changeMainCategories: function (mainChildrenParam) {
         this.categoryLayerEl.main.addEventListener("change", () => {
             this.mainChildren = [];
 
@@ -273,7 +290,6 @@ var main = {
             for (const mid of mainChildrenParam) {
                 for (let i = 0; i < mid.length; i++) {
                     if (mainVal === String(mid[i].parentId)) {
-                        console.log("true2")
                         let option = document.createElement("option");
                         option.text = mid[i].name;
                         option.value = mid[i].categoryId;
@@ -288,7 +304,7 @@ var main = {
         });
     },
 
-    changeMidCategories: function (midChildrenParam, categoryList) {
+    changeMidCategories: function (midChildrenParam) {
         this.categoryLayerEl.mid.addEventListener("change", () => {
             this.midChildren = [];
 
@@ -329,6 +345,75 @@ var main = {
         sub: document.getElementById("sub-cate")
     },
 
+    getMidCategories: function (mainChildrenParam, categoryList) {
+        axios({
+            method: "get",
+            url: "/categories-hier-edit",
+            params: {
+                categoryId: categoryList[1]
+            }
+        }).then((resp) => {
+            let midParentId = resp.data
+
+            this.mainChildren = [];
+
+            this.resetCategories(this.categoryLayerEl.mid, "중분류 선택");
+            this.resetCategories(this.categoryLayerEl.sub, "소분류 선택");
+
+            for (const mid of mainChildrenParam) {
+                for (let i = 0; i < mid.length; i++) {
+                    if (midParentId === mid[i].parentId) {
+                        let option = document.createElement("option");
+                        option.text = mid[i].name;
+                        option.value = mid[i].categoryId;
+                        if (option.value === categoryList[1]) {
+                            option.selected = true;
+                            console.log("true2")
+                        }
+
+                        main.categoryLayerEl.mid.appendChild(option);
+                        this.midChildren.push(mid[i].children);
+                    }
+                }
+            }
+        }).catch((e) => {
+            console.error(e);
+        })
+    },
+
+    getSubCategories: function (midChildrenParam, categoryList) {
+        axios({
+            method: "get",
+            url: "/categories-hier-edit",
+            params: {
+                categoryId: categoryList[2]
+            }
+        }).then((resp) => {
+            let subParentId = resp.data
+
+            this.midChildren = [];
+
+            this.resetCategories(this.categoryLayerEl.sub, "소분류 선택");
+
+            for (const sub of midChildrenParam) {
+                for (let i = 0; i < sub.length; i++) {
+                    if (subParentId === sub[i].parentId) {
+                        let option = document.createElement("option");
+                        option.text = sub[i].name;
+                        option.value = sub[i].categoryId;
+                        if (option.value === categoryList[2]) {
+                            option.selected = true;
+                            console.log("true3")
+                        }
+
+                        main.categoryLayerEl.sub.appendChild(option)
+                    }
+                }
+            }
+        }).catch((e) => {
+            console.error(e);
+        })
+    },
 
     addStoreOwner: function () {
 
