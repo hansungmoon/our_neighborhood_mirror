@@ -252,6 +252,7 @@ var main = {
             }
 
             this.changeMainCategories(this.mainChildren);
+            this.changeMidCategories(this.midChildren);
 
         }).catch((e) => {
             console.error(e);
@@ -300,6 +301,7 @@ var main = {
                     }
                 }
             }
+
             this.changeMidCategories(this.midChildren);
 
         });
@@ -407,7 +409,7 @@ var main = {
         }
 
         subParentId = this.categoryLayerEl.mid.options
-                [this.categoryLayerEl.mid.selectedIndex].value;
+            [this.categoryLayerEl.mid.selectedIndex].value;
         console.log("subParentId = ", subParentId)
 
 
