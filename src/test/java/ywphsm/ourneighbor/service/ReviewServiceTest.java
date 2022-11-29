@@ -7,22 +7,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import ywphsm.ourneighbor.domain.*;
-import ywphsm.ourneighbor.domain.dto.ReviewDTO;
-import ywphsm.ourneighbor.domain.dto.StoreDTO;
 
 import java.io.FileInputStream;
-import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -68,10 +64,15 @@ class ReviewServiceTest {
         Integer rating = 5;
 
 //        new MockMultipartFile("필드명", storedFileName, contentType, 서버에 있는 파일 경로)
-        MockMultipartFile file = new MockMultipartFile("file", "test.png", "image/png",
-                new FileInputStream("C:/Users/ywOnp/Desktop/Study/review/file/785c984e-fab2-4422-9833-646d94b631ae.jpg"));
-//                new FileInputStream("C:/Users/HOME/Desktop/JAVA/menu_file/5cf53790-54a5-4c5f-9709-0394d58cec94.png"));
+        MockMultipartFile file1 = new MockMultipartFile("file", "test.png", "image/png",
+//                new FileInputStream("C:/Users/ywOnp/Desktop/Study/review/file/785c984e-fab2-4422-9833-646d94b631ae.jpg"));
+                new FileInputStream("C:/Users/HOME/Desktop/JAVA/menu_file/4bdc6e20-c2bc-46f0-9f1d-e70c537144c2.png"));
 //                new FileInputStream("/Users/bag-yang-won/Desktop/file/ad9e8baf-5293-4403-b796-fb59a6f0c317.jpg"));
+        MockMultipartFile file2 = new MockMultipartFile("file", "test.png", "image/png",
+//                new FileInputStream("C:/Users/ywOnp/Desktop/Study/review/file/785c984e-fab2-4422-9833-646d94b631ae.jpg"));
+                new FileInputStream("C:/Users/HOME/Desktop/JAVA/menu_file/5cf53790-54a5-4c5f-9709-0394d58cec94.png"));
+//                new FileInputStream("/Users/bag-yang-won/Desktop/file/ad9e8baf-5293-4403-b796-fb59a6f0c317.jpg"));
+
         JSONObject json = new JSONObject();
 
         json.put("value", "해쉬태그1");
@@ -81,7 +82,7 @@ class ReviewServiceTest {
         array.add(json);
 
         ResultActions resultActions = mvc.perform(multipart("/user/review")
-                        .file(file)
+                        .file(file1).file(file2)
                         .param("content", content)
                         .param("rating", String.valueOf(rating))
                         .param("storeId", String.valueOf(storeId))
@@ -96,7 +97,7 @@ class ReviewServiceTest {
             if (review.getMember().getId().equals(memberId) && review.getStore().getId().equals(storeId)) {
                 assertThat(review.getContent()).isEqualTo("존맛탱");
                 assertThat(review.getRating()).isEqualTo(5);
-                assertThat(review.getFile().getUploadedFileName()).isEqualTo("test.png");
+                assertThat(review.getFileList().get(0).getUploadedFileName()).isEqualTo("test.png");
             }
         }
 

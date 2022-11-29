@@ -1,15 +1,16 @@
 import validation from "./validation.js";
 import mask from "./mask.js";
 
-var main = {
+let main = {
     init: async function () {
         mask.loadingWithMask();
-        var _this = this;
+        let _this = this;
 
         const menuSaveBtn = document.getElementById("menu-save");
         const menuUpdateBtnList = document.querySelectorAll(".menu-edit");
         const menuDeleteBtnList = document.querySelectorAll(".menu-delete");
         const menuEditImageCheckList = document.querySelectorAll(".menu-edit-image");
+
 
         if (menuSaveBtn !== null) {
             menuSaveBtn.addEventListener("click", () => {
@@ -39,6 +40,19 @@ var main = {
                     _this.imgActive(el.id);
                 });
             });
+        }
+
+        let files = document.getElementById("file").files[0];
+        console.log("files = ", files);
+        let reader = new FileReader();
+        reader.onload = function(e) {
+
+            let image = new Image();
+            image.src = e.target.result;
+
+            image.onload = function (imageEvent) {
+                _this.imageSizeChange(image);
+            };
         }
 
         mask.closeMask();
@@ -151,13 +165,12 @@ var main = {
 
         if (file.name === "") {
             formData.delete("file");
+            let defaultFile = new File(["foo"], "default.png", {
+                type: "image/png"
+            })
+
+            formData.append("file", defaultFile);
         }
-
-        let defaultFile = new File(["foo"], "default.png", {
-            type: "image/png"
-        })
-
-        formData.append("file", defaultFile);
     },
 
     save: function () {
@@ -167,6 +180,17 @@ var main = {
         const formData = new FormData(menuForm);
 
         this.createDefaultImg(formData);
+
+        // FormData의 key 확인
+        for (let key of formData.keys()) {
+            console.log(key);
+        }
+
+        // FormData의 value 확인
+        for (let value of formData.values()) {
+            console.log(value);
+        }
+
 
         axios({
             headers: {
@@ -178,7 +202,7 @@ var main = {
             data: formData
         }).then((resp) => {
             alert("메뉴가 등록됐습니다.")
-            window.location.reload()
+            window.location.reload();
             mask.closeMask();
         }).catch((error) => {
             console.log(error)
@@ -241,3 +265,5 @@ var main = {
 };
 
 main.init();
+
+export default main;
