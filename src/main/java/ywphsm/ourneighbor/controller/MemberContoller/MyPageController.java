@@ -87,5 +87,4 @@ public class MyPageController {
     public String adminPage() {
         return "member/admin_page";
     }
-
 }

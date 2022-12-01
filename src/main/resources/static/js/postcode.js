@@ -2,9 +2,11 @@ var main = {
     init: function () {
         const postBtn = document.getElementById("post-btn");
 
-        postBtn.addEventListener("click", async () => {
-            await this.openPostcode(this.findLatLon);
-        });
+        if (postBtn !== null) {
+            postBtn.addEventListener("click", async () => {
+                await this.openPostcode(this.findLatLon);
+            });
+        }
     },
 
     openPostcode: function(findLatLon) {
@@ -62,10 +64,10 @@ var main = {
                  */
                 if (state === "FORCE_CLOSE") {
 
-                    /*
-                        사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분.
-                        oncomplete 콜백 함수가 실행 완료된 후에 실행.
-                     */
+                /*
+                    사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분.
+                    oncomplete 콜백 함수가 실행 완료된 후에 실행.
+                 */
                 } else if (state === "COMPLETE_CLOSE") {
 
                     findLatLon(geocoder, addr, lat, lon);

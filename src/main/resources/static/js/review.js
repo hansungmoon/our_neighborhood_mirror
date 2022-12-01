@@ -102,6 +102,7 @@ var main = {
 
         const formData = new FormData(reviewForm);
         let rating_form = formData.get("rating");
+        console.log("rating = ", rating_form)
 
         const contentValid = document.getElementById("review-content-valid");
 
@@ -135,7 +136,7 @@ var main = {
         let formData = new FormData(reviewForm);
 
         menu.createDefaultImg(formData);
-
+        
         let file = formData.get("file");
         console.log(file);
 

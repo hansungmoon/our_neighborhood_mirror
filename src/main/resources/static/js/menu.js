@@ -1,16 +1,15 @@
 import validation from "./validation.js";
 import mask from "./mask.js";
 
-let main = {
+var main = {
     init: async function () {
         mask.loadingWithMask();
-        let _this = this;
+        var _this = this;
 
         const menuSaveBtn = document.getElementById("menu-save");
         const menuUpdateBtnList = document.querySelectorAll(".menu-edit");
         const menuDeleteBtnList = document.querySelectorAll(".menu-delete");
         const menuEditImageCheckList = document.querySelectorAll(".menu-edit-image");
-
 
         if (menuSaveBtn !== null) {
             menuSaveBtn.addEventListener("click", () => {
@@ -40,19 +39,6 @@ let main = {
                     _this.imgActive(el.id);
                 });
             });
-        }
-
-        let files = document.getElementById("file").files[0];
-        console.log("files = ", files);
-        let reader = new FileReader();
-        reader.onload = function(e) {
-
-            let image = new Image();
-            image.src = e.target.result;
-
-            image.onload = function (imageEvent) {
-                _this.imageSizeChange(image);
-            };
         }
 
         mask.closeMask();
@@ -165,7 +151,7 @@ let main = {
 
         if (file.name === "") {
             formData.delete("file");
-            let defaultFile = new File(["foo"], "default.png", {
+            let defaultFile = new File(["foo"], "defaultImg.png", {
                 type: "image/png"
             })
 

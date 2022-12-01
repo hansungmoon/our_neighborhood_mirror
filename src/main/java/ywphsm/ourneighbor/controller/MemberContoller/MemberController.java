@@ -1,6 +1,7 @@
 package ywphsm.ourneighbor.controller.MemberContoller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
@@ -19,6 +20,7 @@ import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class MemberController {
 
     private final RequestCache requestCache = new HttpSessionRequestCache();
@@ -33,9 +35,9 @@ public class MemberController {
         if (member != null) {
             ScriptUtils.alertAndMovePage(response, "이미 로그인이 되어있습니다.", "/");
         }
-        SavedRequest savedRequest = requestCache.getRequest(request, response);
 
-        if (savedRequest != null && error == null) {
+        SavedRequest savedRequest = requestCache.getRequest(request, response);
+        if (savedRequest != null) {
             ScriptUtils.alert(response, "로그인후 이용해 주세요.");
         }
 
@@ -52,6 +54,11 @@ public class MemberController {
     @GetMapping("/admin/member-role/edit")
     public String memberRoleEdit() {
         return "member/edit/member_role_edit";
+    }
+
+    @GetMapping("/delete-request-cache")
+    public void deleteRequestCache(HttpServletResponse response, HttpServletRequest request) {
+        requestCache.removeRequest(request, response);
     }
 
 }
