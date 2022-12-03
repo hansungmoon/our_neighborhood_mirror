@@ -2,7 +2,8 @@ package ywphsm.ourneighbor.domain.member;
 
 import lombok.*;
 import ywphsm.ourneighbor.domain.BaseTimeEntity;
-import ywphsm.ourneighbor.domain.Review;
+import ywphsm.ourneighbor.domain.file.UploadFile;
+import ywphsm.ourneighbor.domain.store.Review;
 import ywphsm.ourneighbor.domain.store.RequestAddStore;
 
 import javax.persistence.*;
@@ -55,6 +56,9 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<RequestAddStore> requestAddStoreList = new ArrayList<>();
+
+    @OneToOne(mappedBy = "member", cascade = CascadeType.ALL)
+    private UploadFile file;
 
     // 생성 메소드
     public Member(String userId, String password, String username, String nickname, String email, String phoneNumber, int age, int gender) {
@@ -137,8 +141,8 @@ public class Member extends BaseTimeEntity {
         reviewList.add(review);
     }
 
-    /*
-        JPA 연관 관계 매핑
-     */
+    public void setFile(UploadFile file) {
+        this.file = file;
+    }
 
 }
