@@ -1,5 +1,6 @@
 import validation from "./validation.js";
 import mask from "./mask.js";
+import menu from "./menu.js";
 
 var main = {
     init: async function () {
@@ -242,6 +243,7 @@ var main = {
         const signUpForm = document.getElementById("sign-up-add-form");
 
         let formData = new FormData(signUpForm);
+        menu.createDefaultImg(formData);
 
         axios({
             method: "post",

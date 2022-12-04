@@ -57,6 +57,8 @@ public class MemberDTO {
         @NotBlank
         private String certifiedNumber;
 
+        private MultipartFile file;
+
 
         @Builder
         public Add(String username, String nickname, String birthDate, int gender, String userId, String password, String passwordCheck, String email, String phoneNumber, String certifiedNumber) {
