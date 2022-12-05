@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Builder;
 import org.springframework.web.multipart.MultipartFile;
 import ywphsm.ourneighbor.domain.dto.ReviewDTO;
+import ywphsm.ourneighbor.domain.file.UploadFile;
 import ywphsm.ourneighbor.domain.member.Member;
+import ywphsm.ourneighbor.domain.member.Role;
 import ywphsm.ourneighbor.domain.menu.Menu;
 import ywphsm.ourneighbor.domain.menu.MenuFeat;
 import ywphsm.ourneighbor.domain.menu.MenuType;
@@ -61,7 +63,7 @@ public class MemberDTO {
 
 
         @Builder
-        public Add(String username, String nickname, String birthDate, int gender, String userId, String password, String passwordCheck, String email, String phoneNumber, String certifiedNumber) {
+        public Add(String username, String nickname, String birthDate, int gender, String userId, String password, String passwordCheck, String email, String phoneNumber, String certifiedNumber, MultipartFile file) {
             this.username = username;
             this.nickname = nickname;
             this.birthDate = birthDate;
@@ -72,6 +74,21 @@ public class MemberDTO {
             this.email = email;
             this.phoneNumber = phoneNumber;
             this.certifiedNumber = certifiedNumber;
+            this.file = file;
+        }
+
+        public Member toEntity(int age, String encodedPassword) {
+            return Member.builder()
+                    .userId(userId)
+                    .password(encodedPassword)
+                    .username(username)
+                    .nickname(nickname)
+                    .email(email)
+                    .phoneNumber(phoneNumber)
+                    .gender(gender)
+                    .age(age)
+                    .role(Role.USER)
+                    .build();
         }
     }
 
@@ -97,6 +114,8 @@ public class MemberDTO {
 
         private int gender;         // 0 : 남자, 1 : 여자
 
+        private String imgUrl;
+
         private List<MemberOfStoreDTO> memberOfStoreList = new ArrayList<>();
 
         private List<ReviewDTO.Detail> reviewList = new ArrayList<>();
@@ -113,6 +132,7 @@ public class MemberDTO {
             age = member.getAge();
             birthDate = member.getBirthDate();
             gender = member.getGender();
+            imgUrl = member.getFile().getUploadImageUrl();
             reviewList = member.getReviewList().stream()
                     .map(ReviewDTO.Detail::new)
                     .collect(Collectors.toList());

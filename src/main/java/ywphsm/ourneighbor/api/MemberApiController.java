@@ -18,6 +18,7 @@ import ywphsm.ourneighbor.service.login.SessionConst;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import java.io.IOException;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -99,7 +100,7 @@ public class MemberApiController {
     }
 
     @PostMapping("/member/add")
-    public Long save(MemberDTO.Add dto) {
+    public Long save(MemberDTO.Add dto) throws IOException {
         return memberService.save(dto);
     }
 

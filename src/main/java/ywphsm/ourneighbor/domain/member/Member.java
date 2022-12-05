@@ -1,6 +1,7 @@
 package ywphsm.ourneighbor.domain.member;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 import ywphsm.ourneighbor.domain.BaseTimeEntity;
 import ywphsm.ourneighbor.domain.file.UploadFile;
 import ywphsm.ourneighbor.domain.store.Review;
@@ -72,6 +73,7 @@ public class Member extends BaseTimeEntity {
         this.gender = gender;
     }
 
+    @Builder
     public Member(String userId, String password, String username, String nickname, String email, String phoneNumber, int age, int gender, Role role) {
         this.userId = userId;
         this.password = password;
