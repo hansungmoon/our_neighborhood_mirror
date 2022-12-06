@@ -17,4 +17,6 @@ public class EditForm {
 
     private String phoneNumber;
 
+    private String imgUrl;
+
 }
