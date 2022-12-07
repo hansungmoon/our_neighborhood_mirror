@@ -324,6 +324,7 @@ var main = {
 
         const email = document.getElementById("email");
         const nickname = document.getElementById("nickname");
+        const file = document.getElementById("file");
 
         const emailValid = document.getElementById("sign-up-email-valid");
         const nicknameValid = document.getElementById("sign-up-nickname-valid");
@@ -337,14 +338,15 @@ var main = {
         let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let emailValidation = emailRegExp.test(email.value);
 
-        if (nickname.value !== "" && emailValidation ) {
+        const memberForm = document.getElementById("member-edit-form");
+        let formData = new FormData(memberForm);
+        menu.createDefaultImg(formData)
+
+        if (nickname.value !== "" && emailValidation) {
             axios({
                 method: "put",
                 url: "/member/edit",
-                params: {
-                    nickname: nickname.value,
-                    email: email.value
-                }
+                data: formData
             }).then((resp) => {
                 let check = resp.data;
 

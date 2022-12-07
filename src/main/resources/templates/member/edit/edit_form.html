@@ -32,14 +32,17 @@
                     <div class="card-header bg-transparent pb-5">
                         <div class="text-muted text-center mt-2 mb-4 fs-2">회원 수정</div>
                     </div>
-                    <form th:object="${editForm}" id="member-edit-form" class="form-floating">
+                    <form th:object="${editForm}" id="member-edit-form" class="form-floating"
+                          enctype="multipart/form-data">
+                        <div class="col-12 my-1">
+                            <img th:src="*{imgUrl}" width="180" height="180" alt="프로필 사진">
+                        </div>
                         <div class="form-group">
                             <div class="mb-3">
                                 <input th:field="*{file}"
                                        class="form-control"
                                        type="file"/>
                             </div>
-                            <div class="field-error" th:errors="*{file}"></div>
                         </div>
                         <div class="form-group">
                             <small>닉네임</small>
