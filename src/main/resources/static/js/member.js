@@ -338,10 +338,6 @@ var main = {
         let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let emailValidation = emailRegExp.test(email.value);
 
-        const memberForm = document.getElementById("member-edit-form");
-        let formData = new FormData(memberForm);
-        menu.createDefaultImg(formData)
-
         if (nickname.value !== "" && emailValidation) {
             axios({
                 method: "put",
