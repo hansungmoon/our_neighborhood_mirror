@@ -123,7 +123,7 @@ public class MemberApiController {
 
     @PutMapping("/member/edit")
     public String update(EditForm editForm,
-                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member member) {
+                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER) Member member) throws IOException {
 
         if (memberService.doubleCheck(editForm.getNickname()) != null &&
                 !member.getNickname().equals(editForm.getNickname())) {
@@ -134,7 +134,7 @@ public class MemberApiController {
             return "이미 존재하는 이메일 입니다";
         }
 
-        memberService.updateMember(member.getId(), editForm.getNickname(), editForm.getEmail());
+        memberService.updateMember(member.getId(), editForm);
         return "성공";
     }
 

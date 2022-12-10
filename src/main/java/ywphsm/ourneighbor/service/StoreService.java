@@ -35,6 +35,7 @@ import static org.geolatte.geom.builder.DSL.ring;
 import static org.geolatte.geom.crs.CoordinateReferenceSystems.*;
 import static ywphsm.ourneighbor.domain.category.CategoryOfStore.*;
 import static ywphsm.ourneighbor.domain.file.FileUtil.getResizedMultipartFile;
+import static ywphsm.ourneighbor.domain.member.MemberOfStore.*;
 import static ywphsm.ourneighbor.domain.store.distance.Direction.*;
 import static ywphsm.ourneighbor.domain.store.distance.Distance.calculatePoint;
 
@@ -59,10 +60,10 @@ public class StoreService {
         Store store = dto.toEntity();
         Member member = memberService.findById(dto.getMemberId());
 
-        Point<G2D> point = point(WGS84, g(dto.getLat(), dto.getLon()));
+        Point<G2D> point = point(WGS84, g(dto.getLon(), dto.getLat()));
         store.addPoint(point);
 
-        MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(member, storeRepository.save(store));
+        MemberOfStore memberOfStore = linkMemberOfStore(member, storeRepository.save(store));
         memberOfStore.updateMyStore(true);
 
         List<Category> categoryList = getNotNullCategoryList(categoryIdList);
@@ -121,7 +122,7 @@ public class StoreService {
                 }
 
                 for (int j = i; j < prevCategoryOfStoreList.size(); j++) {
-                    categoryService.deleteByCategory(prevCategoryOfStoreList.get(j).getCategory());
+                    categoryService.deleteByCategoryLinkedCategoryOfStore(prevCategoryOfStoreList.get(j).getCategory());
                 }
             }
         }
@@ -136,7 +137,6 @@ public class StoreService {
 
     @Transactional
     public Long delete(Long storeId) {
-
         Store store = storeRepository.findById(storeId).orElseThrow(
                 () -> new IllegalArgumentException("해당 매장이 없습니다. id = " + storeId));
 
@@ -197,7 +197,7 @@ public class StoreService {
                 return "가게가 찜 등록이 되었습니다.";
             }
 
-            MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(member, store);
+            MemberOfStore memberOfStore = linkMemberOfStore(member, store);
             memberOfStore.updateStoreLike(true);
             memberOfStoreRepository.save(memberOfStore);
             return "가게가 찜 등록이 되었습니다.";
@@ -218,8 +218,8 @@ public class StoreService {
                 () -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + storeId));
     }
 
-    public List<Store> findAllStores() {
-        return storeRepository.findAllStores();
+    public List<Store> findAllStoresJoinUploadFileFetchJoin() {
+        return storeRepository.findAllStoresJoinUploadFileFetchJoin();
     }
 
     public List<Store> searchByKeyword(String keyword) {
@@ -315,7 +315,7 @@ public class StoreService {
                     return "성공";
                 }
             }
-            MemberOfStore memberOfStore = MemberOfStore.linkMemberOfStore(findMember, findStore);
+            MemberOfStore memberOfStore = linkMemberOfStore(findMember, findStore);
             memberOfStore.updateMyStore(true);
             memberOfStoreRepository.save(memberOfStore);
 
@@ -372,13 +372,12 @@ public class StoreService {
      */
     private Polygon<G2D> getPolygon(double lat, double lon, double dist) {
         double sqrt = Math.sqrt(2);
-
-        double toCorner = dist * sqrt;
+        double toCorner = dist * sqrt;          // 빗변의 길이 (직각 이등변 삼각형의 성질)
 
         Location northEast = calculatePoint(lat, lon, toCorner, NORTHEAST.getAngle());
         Location northWest = calculatePoint(lat, lon, toCorner, NORTHWEST.getAngle());
-        Location southEast = calculatePoint(lat, lon, toCorner, SOUTHEAST.getAngle());
         Location southWest = calculatePoint(lat, lon, toCorner, SOUTHWEST.getAngle());
+        Location southEast = calculatePoint(lat, lon, toCorner, SOUTHEAST.getAngle());
 
         double nex = northEast.getLon();
         double ney = northEast.getLat();
@@ -392,7 +391,7 @@ public class StoreService {
         double sex = southEast.getLon();
         double sey = southEast.getLat();
 
-        return polygon(WGS84, ring(g(ney, nex),
-                g(nwy, nwx), g(swy, swx), g(sey, sex), g(ney, nex)));
+        return polygon(WGS84, ring(g(nex, ney),
+                g(nwx, nwy), g(swx, swy), g(sex, sey), g(nex, ney)));
     }
 }

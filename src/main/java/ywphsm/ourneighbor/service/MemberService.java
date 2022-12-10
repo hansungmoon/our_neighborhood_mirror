@@ -9,6 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ywphsm.ourneighbor.controller.form.EditForm;
 import ywphsm.ourneighbor.domain.dto.Member.MemberDTO;
 import ywphsm.ourneighbor.domain.file.AwsS3FileStore;
 import ywphsm.ourneighbor.domain.file.UploadFile;
@@ -93,10 +94,18 @@ public class MemberService {
 
     //회원수정시 닉네임 변경
     @Transactional
-    public void updateMember (Long id, String nickname, String email) {
+    public void updateMember (Long id, EditForm editForm) throws IOException {
         Member member = findById(id);
 
-        member.updateMember(nickname, email);
+        UploadFile uploadFile = awsS3FileStore.storeFile(editForm.getFile());
+        if (uploadFile != null) {
+            awsS3FileStore.deleteFile(member.getFile().getStoredFileName());
+            member.getFile().updateUploadedFileName(
+                    uploadFile.getStoredFileName(), uploadFile.getUploadedFileName(),
+                    uploadFile.getUploadImageUrl());
+        }
+
+        member.updateMember(editForm.getNickname(), editForm.getEmail());
     }
 
     //회원수정시 전화번호 변경

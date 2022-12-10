@@ -86,6 +86,7 @@ public class MemberDTO {
                     .email(email)
                     .phoneNumber(phoneNumber)
                     .gender(gender)
+                    .birthDate(birthDate)
                     .age(age)
                     .role(Role.USER)
                     .build();

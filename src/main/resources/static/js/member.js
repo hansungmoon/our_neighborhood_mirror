@@ -338,6 +338,9 @@ var main = {
         let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let emailValidation = emailRegExp.test(email.value);
 
+        const memberEditForm = document.getElementById("member-edit-form");
+        let formData = new FormData(memberEditForm);
+
         if (nickname.value !== "" && emailValidation) {
             axios({
                 method: "put",

@@ -74,13 +74,14 @@ public class Member extends BaseTimeEntity {
     }
 
     @Builder
-    public Member(String userId, String password, String username, String nickname, String email, String phoneNumber, int age, int gender, Role role) {
+    public Member(String userId, String password, String username, String nickname, String email, String phoneNumber, int age, int gender, Role role, String birthDate) {
         this.userId = userId;
         this.password = password;
         this.username = username;
         this.nickname = nickname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
         this.age = age;
         this.gender = gender;
         this.role = role;
@@ -90,20 +91,6 @@ public class Member extends BaseTimeEntity {
     public Member(String username, String email, Role role) {
         this.username = username;
         this.email = email;
-        this.role = role;
-    }
-
-    //회원가입때 사용
-    public Member(String username, String birthDate, int age, String phoneNumber, int gender, String userId, String password, String email, String nickname, Role role) {
-        this.username = username;
-        this.birthDate = birthDate;
-        this.age = age;
-        this.phoneNumber = phoneNumber;
-        this.gender = gender;
-        this.userId = userId;
-        this.password = password;
-        this.email = email;
-        this.nickname = nickname;
         this.role = role;
     }
 

@@ -281,6 +281,8 @@ var main = {
     },
 
     saveMainImage: function () {
+        mask.loadingWithMask();
+
         const storeId = document.getElementById("storeId");
         const form = document.getElementById("main-image-form");
         const formData = new FormData(form);
@@ -296,12 +298,15 @@ var main = {
         }).then((resp) => {
             alert("메인 이미지가 등록됐습니다.");
             window.location.reload();
+            mask.closeMask();
         }).catch((error) => {
             console.log(error)
+            mask.closeMask();
         });
     },
 
     updateMainImage: function () {
+        mask.loadingWithMask();
         const storeId = document.getElementById("storeId");
         const form = document.getElementById("main-image-form");
         const formData = new FormData(form);
@@ -316,9 +321,11 @@ var main = {
             data: formData
         }).then((resp) => {
             alert("메인 이미지가 수정됐습니다.");
+            mask.closeMask();
             window.location.reload();
         }).catch((error) => {
             console.log(error)
+            mask.closeMask();
         });
     },
 };
