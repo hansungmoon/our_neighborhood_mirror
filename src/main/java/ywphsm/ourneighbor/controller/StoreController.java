@@ -108,7 +108,7 @@ public class StoreController {
         Slice<ReviewMemberDTO> reviewMemberDTOS = reviewService.pagingReview(storeId, 0);
         List<ReviewMemberDTO> content = reviewMemberDTOS.getContent();
 
-        double ratingAverage = reviewService.ratingAverage(storeId);
+        double ratingAverage = store.getRatingAverage();
 
         // 찜, 스토어 수정 권한
         if (member != null) {

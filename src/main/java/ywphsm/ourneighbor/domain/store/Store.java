@@ -53,6 +53,8 @@ public class Store extends BaseEntity {
 
     private int ratingTotal;
 
+    private double ratingAverage;
+
     private String homePage;
 
 //    @OneToMany(mappedBy = "store")
@@ -185,5 +187,9 @@ public class Store extends BaseEntity {
 
     public void reviewDelete(Integer rating) {
         this.ratingTotal -= rating;
+    }
+
+    public void updateRatingAverage(double ratingAverage) {
+        this.ratingAverage = ratingAverage;
     }
 }
