@@ -81,6 +81,7 @@ var main = {
         const birthDate = document.getElementById("birthDate");
         const phoneNumber = document.getElementById("phoneNumber");
         const certifiedNumber = document.getElementById("certifiedNumber");
+        const file = document.getElementById("file").files;
 
         const userIdValid = document.getElementById("sign-up-userId-valid");
         const passwordValid = document.getElementById("sign-up-password-valid");
@@ -91,6 +92,7 @@ var main = {
         const birthDateValid = document.getElementById("sign-up-birthDate-valid");
         const phoneNumberValid = document.getElementById("sign-up-phoneNumber-valid");
         const certifiedNumberValid = document.getElementById("sign-up-certifiedNumber-valid");
+        const fileValid = document.getElementById("sign-up-file-valid");
 
         userId.classList.remove("valid-custom");
         password.classList.remove("valid-custom");
@@ -111,6 +113,7 @@ var main = {
         validation.removeValidation(birthDateValid);
         validation.removeValidation(phoneNumberValid);
         validation.removeValidation(certifiedNumberValid);
+        validation.removeValidation(fileValid);
 
         let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let emailValidation = emailRegExp.test(email.value);
@@ -128,13 +131,23 @@ var main = {
             passwordCheckValidation = false;
         }
 
+        let fileSizeCheck;
+        let targetSize = 1024 * 1024 * 2;
+
+        if (file.length === 0) {
+            fileSizeCheck = true;
+        } else {
+            fileSizeCheck = file[0].size <= targetSize;
+        }
+
         const signUpForm = document.getElementById("sign-up-add-form");
         let formData = new FormData(signUpForm);
 
         if (userId.value !== "" && username.value !== ""
             && nickname.value !== "" && passwordCheckValidation === true
         && emailValidation && birthDateValidation && passwordCheckValidation
-        && passwordValidation && phoneNumberValidation && certifiedNumberValidation) {
+        && passwordValidation && phoneNumberValidation
+            && certifiedNumberValidation && fileSizeCheck) {
 
             axios({
                 method: "get",
@@ -211,15 +224,23 @@ var main = {
             validation.addValidation(nicknameValid, "닉네임을 입력해주세요.");
         }
 
+        if (file.length !== 0 && file[0].size > targetSize) {
+            validation.addValidation(fileValid, "이미지의 크기는 2MB를 넘을 수 없습니다.");
+        }
+
     },
 
     sendSMS: function () {
         const phoneNumber = document.getElementById("phoneNumber");
+        let phoneNumberRegExp = /^01(0|1|[6-9]?)([0-9]{3,4})([0-9]{4})$/;
+        let phoneNumberValidation = phoneNumberRegExp.test(phoneNumber.value);
 
         if (phoneNumber.value === "") {
             alert("전화번호를 입력해주세요.")
-            window.location.reload()
-        }else {
+        }
+        else if (!phoneNumberValidation) {
+            alert("전화번호를 올바르게 입력해주세요.")
+        } else {
             axios({
                 method: "get",
                 url: "/member/send-sms",
@@ -237,6 +258,57 @@ var main = {
                 console.error(e);
             });
         }
+
+        let display = document.getElementById("send-SMS-time");
+        let leftSec = 10;
+
+        if (this.isRunning) {
+            clearInterval(this.timer)
+            display.innerText = "";
+            this.startTimer(leftSec, display);
+        } else {
+            this.startTimer(leftSec, display);
+        }
+
+    },
+
+    timer : null,
+    isRunning : false,
+
+    startTimer: function (count, display) {
+        let minutes, seconds;
+        const signUpForm = document.getElementById("sign-up-add-form");
+        let formData = new FormData(signUpForm);
+
+        this.timer = setInterval(function () {
+            console.log("timer 실행")
+            count--;
+            minutes = parseInt(count / 60, 10);
+            seconds = parseInt(count % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.innerText = minutes + ":" + seconds;
+
+            if (count === 0) {
+                clearInterval(this.timer);
+                alert("인증번호 시간 초과");
+                display.innerText = "시간초과";
+                this.isRunning = false;
+                window.location.reload();
+                axios({
+                    method: "get",
+                    url: "/delete-certified-number",
+                    data: formData
+                }).catch((e) => {
+                    console.error(e);
+                });
+            }
+
+        }, 1000);
+
+        this.isRunning = true;
     },
 
     save: function () {
@@ -324,24 +396,35 @@ var main = {
 
         const email = document.getElementById("email");
         const nickname = document.getElementById("nickname");
-        const file = document.getElementById("file");
+        const file = document.getElementById("file").files;
 
         const emailValid = document.getElementById("sign-up-email-valid");
         const nicknameValid = document.getElementById("sign-up-nickname-valid");
+        const fileValid = document.getElementById("member-edit-file-valid");
 
         email.classList.remove("valid-custom");
         nickname.classList.remove("valid-custom");
 
         validation.removeValidation(emailValid);
         validation.removeValidation(nicknameValid);
+        validation.removeValidation(fileValid);
 
         let emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
         let emailValidation = emailRegExp.test(email.value);
 
+        let fileSizeCheck;
+        let targetSize = 1024 * 1024 * 2;
+
+        if (file.length === 0) {
+            fileSizeCheck = true;
+        } else {
+            fileSizeCheck = file[0].size <= targetSize;
+        }
+
         const memberEditForm = document.getElementById("member-edit-form");
         let formData = new FormData(memberEditForm);
 
-        if (nickname.value !== "" && emailValidation) {
+        if (nickname.value !== "" && emailValidation && fileSizeCheck) {
             axios({
                 method: "put",
                 url: "/member/edit",
@@ -364,9 +447,14 @@ var main = {
             email.classList.add("valid-custom");
             validation.addValidation(emailValid, "올바른 이메일 형식이 아닙니다.");
         }
+
         if (nickname.value === "") {
             nickname.classList.add("valid-custom");
             validation.addValidation(nicknameValid, "닉네임을 입력해주세요.");
+        }
+
+        if (file.length !== 0 && file[0].size > targetSize) {
+            validation.addValidation(fileValid, "이미지의 크기는 2MB를 넘을 수 없습니다.");
         }
 
     },
