@@ -15,6 +15,7 @@ var main = {
         const findUserIdBtn = document.getElementById("find-userId");
         const findPasswordBtn = document.getElementById("find-password");
         const memberRoleEditBtn = document.getElementById("member-role-edit");
+        const adminMemberDeleteBtn = document.getElementById("admin-member-delete");
 
         if (signUpSaveBtn !== null) {
             signUpSaveBtn.addEventListener("click", () => {
@@ -67,6 +68,12 @@ var main = {
         if (memberRoleEditBtn !== null) {
             memberRoleEditBtn.addEventListener("click", () => {
                 _this.memberRoleEdit();
+            });
+        }
+
+        if (adminMemberDeleteBtn !== null) {
+            adminMemberDeleteBtn.addEventListener("click", () => {
+                _this.adminDelete();
             });
         }
     },
@@ -253,57 +260,49 @@ var main = {
                     alert("이미 있는 번호입니다.");
                 } else {
                     alert("인증번호가 발송됐습니다.");
+                    let display = document.getElementById("send-SMS-time");
+                    let leftSec = 120;
+
+                    if (this.isRunning) {
+                        clearInterval(this.timer)
+                        display.innerText = "";
+                        this.startTimer(leftSec, display);
+                    } else {
+                        this.startTimer(leftSec, display);
+                    }
                 }
             }).catch((e) => {
                 console.error(e);
             });
         }
-
-        let display = document.getElementById("send-SMS-time");
-        let leftSec = 10;
-
-        if (this.isRunning) {
-            clearInterval(this.timer)
-            display.innerText = "";
-            this.startTimer(leftSec, display);
-        } else {
-            this.startTimer(leftSec, display);
-        }
-
     },
 
     timer : null,
     isRunning : false,
+    isPaused : false,
 
     startTimer: function (count, display) {
         let minutes, seconds;
-        const signUpForm = document.getElementById("sign-up-add-form");
-        let formData = new FormData(signUpForm);
+        this.isPaused = false;
 
         this.timer = setInterval(function () {
-            console.log("timer 실행")
-            count--;
-            minutes = parseInt(count / 60, 10);
-            seconds = parseInt(count % 60, 10);
+            if (!this.isPaused) {
+                count--;
+                minutes = parseInt(count / 60, 10);
+                seconds = parseInt(count % 60, 10);
 
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            display.innerText = minutes + ":" + seconds;
+                display.innerText = minutes + ":" + seconds;
 
-            if (count === 0) {
-                clearInterval(this.timer);
-                alert("인증번호 시간 초과");
-                display.innerText = "시간초과";
-                this.isRunning = false;
-                window.location.reload();
-                axios({
-                    method: "get",
-                    url: "/delete-certified-number",
-                    data: formData
-                }).catch((e) => {
-                    console.error(e);
-                });
+                if (count === 0) {
+                    clearInterval(this.timer);
+                    alert("인증번호 시간 초과");
+                    this.isPaused = true;
+                    this.isRunning = false;
+                    display.innerText = "시간초과";
+                }
             }
 
         }, 1000);
@@ -462,8 +461,6 @@ var main = {
     delete: function () {
         const memberId = document.getElementById("memberId")
 
-        console.log(memberId);
-
         axios({
             method: "delete",
             url: "/member/withdrawal",
@@ -476,6 +473,37 @@ var main = {
         }).catch((error) => {
             console.log(error);
         })
+    },
+
+    adminDelete: function () {
+        const userId = document.getElementById("userId");
+
+        const userIdValid = document.getElementById("member-role-edit-userId-valid");
+
+        validation.removeValidation(userIdValid);
+
+
+        axios({
+            method: "delete",
+            url: "/admin/withdrawal",
+            params: {
+                userId: userId.value
+            }
+        }).then((resp) => {
+            let check = resp.data;
+            if (check) {
+                alert("회원 탈퇴가 완료됐습니다.");
+            } else {
+                alert("존재하지 않는 아이디 입니다.");
+            }
+        }).catch((error) => {
+            console.log(error);
+        })
+
+        if (userId.value === "") {
+            userId.classList.add("valid-custom");
+            validation.addValidation(userIdValid, "아이디를 입력해주세요.");
+        }
     },
 
     findUserId: function () {
