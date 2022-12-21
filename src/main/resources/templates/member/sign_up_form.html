@@ -9,16 +9,12 @@
 </head>
 <link rel="stylesheet" th:href="@{../css/argon.css}">
 <body id="main-body" class="bg-default">
-<!-- Navbar -->
 <nav th:replace="layout/navbar :: common_navbar"></nav>
-<!-- Header -->
 <section class="header">
     <div class="header py-5">
 
     </div>
 </section>
-<!-- Page content -->
-<!-- Table -->
 <section class="sign-up">
     <div class="container-fluid mt--8 pb-5">
         <div class="row justify-content-center">
@@ -53,7 +49,7 @@
                                     <input class="form-control" placeholder="비밀번호를 입력해주세요." type="password"
                                            th:field="*{password}">
                                 </div>
-                                <div id="sign-up-password-valid" class="my-1 valid-custom"></div>
+                                <div id="sign-up-password-valid" class="my-1 valid-custom">특수문자,문자,숫자 포함 형태의 8~15자리 이내의 암호여야 합니다.</div>
                             </div>
                             <div class="form-group">
                                 <small>비밀번호 확인</small>
