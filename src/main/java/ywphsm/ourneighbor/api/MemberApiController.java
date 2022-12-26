@@ -2,7 +2,6 @@ package ywphsm.ourneighbor.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ywphsm.ourneighbor.controller.form.EditForm;
 import ywphsm.ourneighbor.controller.form.PasswordEditForm;
@@ -12,19 +11,17 @@ import ywphsm.ourneighbor.domain.member.Member;
 
 import ywphsm.ourneighbor.domain.member.Role;
 
-import ywphsm.ourneighbor.service.MemberReviewService;
-import ywphsm.ourneighbor.service.MemberService;
+import ywphsm.ourneighbor.service.member.MemberReviewService;
+import ywphsm.ourneighbor.service.member.MemberService;
 import ywphsm.ourneighbor.service.ValidationService;
-import ywphsm.ourneighbor.service.login.SessionConst;
+import ywphsm.ourneighbor.service.member.login.SessionConst;
 import ywphsm.ourneighbor.service.store.StoreService;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import java.io.IOException;
-import java.util.Optional;
 import java.util.Random;
 
 @Slf4j
@@ -39,25 +36,11 @@ public class MemberApiController {
 
     private final ValidationService validationService;
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResult illegalExHandle(IllegalArgumentException e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("BAD", e.getMessage());
-    }
-    @ExceptionHandler
-    public ResponseEntity<ErrorResult> userExHandle(UserException e) {
-        log.error("[exceptionHandle] ex", e);
-        ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
-        return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
-    }
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResult exHandle(Exception e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("EX", "내부 오류");
-    }
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> parent of dea9619 (6)
     @PutMapping("/user/like")
     public String likeAdd(boolean likeStatus, Long memberId, Long storeId) {
         log.info("likeStatus={}", likeStatus);
