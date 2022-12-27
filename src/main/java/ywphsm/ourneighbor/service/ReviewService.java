@@ -22,12 +22,10 @@ import ywphsm.ourneighbor.repository.hashtag.HashtagRepository;
 import ywphsm.ourneighbor.repository.member.MemberRepository;
 import ywphsm.ourneighbor.repository.review.ReviewRepository;
 import ywphsm.ourneighbor.repository.store.StoreRepository;
-import ywphsm.ourneighbor.service.store.StoreService;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import static ywphsm.ourneighbor.domain.hashtag.HashtagOfStore.linkHashtagAndStore;
 import static ywphsm.ourneighbor.domain.hashtag.HashtagUtil.*;
@@ -49,29 +47,23 @@ public class ReviewService {
 
     @Transactional
     public Long save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
-        Store linkedStore = storeRepository.findById(dto.getStoreId()).orElseThrow(
-                () -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + dto.getStoreId()));
         Member linkedMember = memberRepository.findById(dto.getMemberId()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 회원입니다. id = " + dto.getMemberId()));
 
-        Review review = dto.toEntity(linkedStore, linkedMember);
-        linkedStore.addReview(review);
-        linkedStore.updateRatingAverage(ratingAverage(linkedStore, linkedStore.getReviewList().size()));
+        Review review = dto.toEntity();
+        Store linkedStore = updateStoreRating(dto.getStoreId(), review, true);
+        review.setStore(linkedStore);
+        review.setMember(linkedMember);
         linkedMember.addReview(review);
 
-        log.info("dto.getFile = {}", dto.getFile());
         if (dto.getFile() != null) {
             List<UploadFile> newUploadFiles = awsS3FileStore.storeFiles(dto.getFile());
             review.addFile(newUploadFiles);
         }
 
         if (!hashtag.isEmpty()) {
-            Store findStore = storeRepository.findById(dto.getStoreId()).orElseThrow(
-                    () -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + dto.getStoreId()));
-
             List<String> hashtagNameList = getHashtagNameList(hashtag);
-
-            saveHashtagLinkedStore(findStore, hashtagNameList);
+            saveHashtagLinkedStore(linkedStore, hashtagNameList);
         }
 
         return reviewRepository.save(review).getId();
@@ -80,19 +72,17 @@ public class ReviewService {
     @Transactional
     public Long delete(Long storeId, Long reviewId) {
         Review review = findOne(reviewId);
-        Store store = storeRepository.findById(storeId).orElseThrow(
-                () -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + storeId));
-        store.minusRatingTotal(review.getRating());
+//        Store store = storeRepository.findByIdWithOptimisticLock(storeId);
 
         review.getFileList().stream()
                 .map(UploadFile::getStoredFileName).forEach(awsS3FileStore::deleteFile);
 
-        double count = 0;
-        if (store.getReviewList().size() > 0) {
-            count = store.getReviewList().size() - 1;
-        }
+//        double count = 0;
+//        if (store.getReviewList().size() > 0) {
+//            count = store.getReviewList().size() - 1;
+//        }
 
-        store.updateRatingAverage(ratingAverage(store, count));
+        updateStoreRating(storeId, review, false);
         entityManager.flush();
         entityManager.clear();
 
@@ -127,16 +117,35 @@ public class ReviewService {
         return dateDifference(reviewMemberDTOS);
     }
 
-    public double ratingAverage(Store store, double count) {
+    public Store updateStoreRating(Long storeId, Review review, boolean saveOrDelete) {
+        Store store = storeRepository.findByIdWithOptimisticLock(storeId);
+        double count = store.getReviewList().size();
+
+        if (saveOrDelete) {
+            store.increaseRatingTotal(review.getRating());
+        } else {
+            store.decreaseRatingTotal(review.getRating());
+            if (count > 0) {
+                count = store.getReviewList().size() - 1;
+            }
+        }
 
         if (store.getReviewList().size() == 0) {
-            return 0;
+            store.updateRatingAverage(0);
+            store.addReview(review);
+            storeRepository.saveAndFlush(store);
+            return store;
         }
 
         double ratingTotal = store.getRatingTotal();
         double average = ratingTotal / count;
+        double reviewAverage = Math.round(average * 10) / 10.0;
 
-        return Math.round(average * 10) / 10.0;
+        store.updateRatingAverage(reviewAverage);
+        store.addReview(review);
+        storeRepository.saveAndFlush(store);
+        return store;
+
     }
 
     private void saveHashtagLinkedStore(Store store, List<String> hashtagNameList) {

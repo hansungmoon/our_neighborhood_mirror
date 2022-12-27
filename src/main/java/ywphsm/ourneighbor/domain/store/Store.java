@@ -146,7 +146,6 @@ public class Store extends BaseEntity {
     }
 
     public void addReview(Review review) {
-        this.ratingTotal += review.getRating();
         review.setStore(this);
         reviewList.add(review);
     }
@@ -182,8 +181,12 @@ public class Store extends BaseEntity {
         this.status = status;
     }
 
-    public void minusRatingTotal(Integer rating) {
+    public void decreaseRatingTotal(Integer rating) {
         this.ratingTotal -= rating;
+    }
+
+    public void increaseRatingTotal(Integer rating) {
+        this.ratingTotal += rating;
     }
 
     public void updateRatingAverage(double ratingAverage) {

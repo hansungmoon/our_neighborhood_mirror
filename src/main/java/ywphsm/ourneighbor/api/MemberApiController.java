@@ -36,11 +36,8 @@ public class MemberApiController {
 
     private final ValidationService validationService;
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> parent of dea9619 (6)
     @PutMapping("/user/like")
     public String likeAdd(boolean likeStatus, Long memberId, Long storeId) {
         log.info("likeStatus={}", likeStatus);
