@@ -66,6 +66,9 @@ public class Store extends BaseEntity {
 
     private String parkDetail;
 
+    @Version
+    private Long version;
+
 
     /*
         임베디드 타입

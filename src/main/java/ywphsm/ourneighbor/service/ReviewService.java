@@ -46,12 +46,15 @@ public class ReviewService {
     private final EntityManager entityManager;
 
     @Transactional
-    public Long save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
+    public void save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
         Member linkedMember = memberRepository.findById(dto.getMemberId()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 회원입니다. id = " + dto.getMemberId()));
+        Store linkedStore = storeRepository.findWithOptimisticLockById(dto.getStoreId()).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + dto.getStoreId()));;
 
         Review review = dto.toEntity();
-        Store linkedStore = updateStoreRating(dto.getStoreId(), review, true);
+        linkedStore = updateStoreRating(linkedStore, review, true);
+        linkedStore.addReview(review);
         review.setStore(linkedStore);
         review.setMember(linkedMember);
         linkedMember.addReview(review);
@@ -66,23 +69,19 @@ public class ReviewService {
             saveHashtagLinkedStore(linkedStore, hashtagNameList);
         }
 
-        return reviewRepository.save(review).getId();
+        reviewRepository.save(review);
     }
 
     @Transactional
     public Long delete(Long storeId, Long reviewId) {
-        Review review = findOne(reviewId);
-//        Store store = storeRepository.findByIdWithOptimisticLock(storeId);
+        Review review = findById(reviewId);
+        Store store = storeRepository.findWithOptimisticLockById(storeId).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + storeId));
 
         review.getFileList().stream()
                 .map(UploadFile::getStoredFileName).forEach(awsS3FileStore::deleteFile);
 
-//        double count = 0;
-//        if (store.getReviewList().size() > 0) {
-//            count = store.getReviewList().size() - 1;
-//        }
-
-        updateStoreRating(storeId, review, false);
+        updateStoreRating(store, review, false);
         entityManager.flush();
         entityManager.clear();
 
@@ -93,7 +92,38 @@ public class ReviewService {
         return reviewId;
     }
 
-    public Review findOne(Long reviewId) {
+    public Store updateStoreRating(Store store, Review review, boolean saveOrDelete) {
+
+        double count = store.getReviewList().size();
+
+        if (saveOrDelete) {
+            store.increaseRatingTotal(review.getRating());
+            count ++;
+        } else {
+            store.decreaseRatingTotal(review.getRating());
+            if (count > 0) {
+                count = store.getReviewList().size() - 1;
+            }
+        }
+
+        if (count == 0) {
+            store.updateRatingAverage(0);
+            storeRepository.saveAndFlush(store);
+            return store;
+        }
+
+        double ratingTotal = store.getRatingTotal();
+        double average = ratingTotal / count;
+        double reviewAverage = Math.round(average * 10) / 10.0;
+
+        store.updateRatingAverage(reviewAverage);
+
+        storeRepository.saveAndFlush(store);
+        return store;
+
+    }
+
+    public Review findById(Long reviewId) {
         return reviewRepository.findById(reviewId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 리뷰입니다. id = " + reviewId));
     }
@@ -117,36 +147,7 @@ public class ReviewService {
         return dateDifference(reviewMemberDTOS);
     }
 
-    public Store updateStoreRating(Long storeId, Review review, boolean saveOrDelete) {
-        Store store = storeRepository.findByIdWithOptimisticLock(storeId);
-        double count = store.getReviewList().size();
 
-        if (saveOrDelete) {
-            store.increaseRatingTotal(review.getRating());
-        } else {
-            store.decreaseRatingTotal(review.getRating());
-            if (count > 0) {
-                count = store.getReviewList().size() - 1;
-            }
-        }
-
-        if (store.getReviewList().size() == 0) {
-            store.updateRatingAverage(0);
-            store.addReview(review);
-            storeRepository.saveAndFlush(store);
-            return store;
-        }
-
-        double ratingTotal = store.getRatingTotal();
-        double average = ratingTotal / count;
-        double reviewAverage = Math.round(average * 10) / 10.0;
-
-        store.updateRatingAverage(reviewAverage);
-        store.addReview(review);
-        storeRepository.saveAndFlush(store);
-        return store;
-
-    }
 
     private void saveHashtagLinkedStore(Store store, List<String> hashtagNameList) {
         for (String name : hashtagNameList) {
