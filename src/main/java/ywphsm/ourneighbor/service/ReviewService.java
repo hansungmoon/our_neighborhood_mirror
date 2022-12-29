@@ -49,11 +49,10 @@ public class ReviewService {
     public void save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
         Member linkedMember = memberRepository.findById(dto.getMemberId()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 회원입니다. id = " + dto.getMemberId()));
-        Store linkedStore = storeRepository.findWithOptimisticLockById(dto.getStoreId()).orElseThrow(
-                () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + dto.getStoreId()));;
+
 
         Review review = dto.toEntity();
-        linkedStore = updateStoreRating(linkedStore, review, true);
+        Store linkedStore = updateStoreRating(dto.getStoreId(), review, true);
         linkedStore.addReview(review);
         review.setStore(linkedStore);
         review.setMember(linkedMember);
@@ -75,13 +74,10 @@ public class ReviewService {
     @Transactional
     public Long delete(Long storeId, Long reviewId) {
         Review review = findById(reviewId);
-        Store store = storeRepository.findWithOptimisticLockById(storeId).orElseThrow(
-                () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + storeId));
-
         review.getFileList().stream()
                 .map(UploadFile::getStoredFileName).forEach(awsS3FileStore::deleteFile);
 
-        updateStoreRating(store, review, false);
+        Store store = updateStoreRating(storeId, review, false);
         entityManager.flush();
         entityManager.clear();
 
@@ -92,7 +88,10 @@ public class ReviewService {
         return reviewId;
     }
 
-    public Store updateStoreRating(Store store, Review review, boolean saveOrDelete) {
+    @Transactional
+    public Store updateStoreRating(Long storeId, Review review, boolean saveOrDelete) {
+        Store store = storeRepository.findWithOptimisticLockById(storeId).orElseThrow(
+                () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + storeId));
 
         double count = store.getReviewList().size();
 

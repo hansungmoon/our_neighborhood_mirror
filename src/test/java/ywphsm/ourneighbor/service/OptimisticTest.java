@@ -25,7 +25,7 @@ public class OptimisticTest {
     private StoreRepository storeRepository;
 
     @Test
-    public void 동시에_100개의요청() throws InterruptedException, IOException, ParseException {
+    public void 동시에_100개의요청() throws InterruptedException {
         ReviewDTO.Add dto = ReviewDTO.Add.builder()
                 .content("1")
                 .rating(1)
@@ -33,27 +33,25 @@ public class OptimisticTest {
                 .memberId(37001L)
                 .build();
 
-        int numberOfThreads = 3;
+        int threadCount = 10;
+        ExecutorService executorService = Executors.newFixedThreadPool(32);
+        CountDownLatch latch = new CountDownLatch(threadCount);
 
-        ExecutorService executorService = Executors.newFixedThreadPool(numberOfThreads);
-
-        Future<?> future = executorService.submit(
-                () -> reviewService.save(dto, null));
-        Future<?> future2 = executorService.submit(
-                () -> reviewService.save(dto, null));
-        Future<?> future3 = executorService.submit(
-                () -> reviewService.save(dto, null));
-
-        Exception result = new Exception();
-
-        try {
-            future.get();
-            future2.get();
-            future3.get();
-        } catch (ExecutionException e) {
-            result = (Exception) e.getCause();
+        for (int i = 0; i < threadCount; i++) {
+            executorService.submit(() -> {
+                try {
+                    reviewService.updateStoreRating(dto.getStoreId(), dto.toEntity(), true);
+                } finally {
+                    latch.countDown();
+                }
+            });
         }
 
-        assertTrue(result instanceof OptimisticLockingFailureException);
+        latch.await();
+
+        Store store = storeRepository.findById(40016L).orElseThrow();
+
+        // 100 - (100 * 1) = 0
+        assertEquals(1, store.getRatingTotal());
     }
 }
