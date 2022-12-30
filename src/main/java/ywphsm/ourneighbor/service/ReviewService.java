@@ -77,7 +77,7 @@ public class ReviewService {
         review.getFileList().stream()
                 .map(UploadFile::getStoredFileName).forEach(awsS3FileStore::deleteFile);
 
-        Store store = updateStoreRating(storeId, review, false);
+        updateStoreRating(storeId, review, false);
         entityManager.flush();
         entityManager.clear();
 
