@@ -90,7 +90,7 @@ public class ReviewService {
 
     @Transactional
     public Store updateStoreRating(Long storeId, Review review, boolean saveOrDelete) {
-        Store store = storeRepository.findWithOptimisticLockById(storeId).orElseThrow(
+        Store store = storeRepository.findWithPessimisticLockById(storeId).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 가게입니다. id = " + storeId));
 
         double count = store.getReviewList().size();
