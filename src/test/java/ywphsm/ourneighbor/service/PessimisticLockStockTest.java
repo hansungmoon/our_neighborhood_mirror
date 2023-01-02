@@ -23,7 +23,7 @@ public class PessimisticLockStockTest {
     StoreRepository storeRepository;
 
     @Test
-    public void decrease_test() {
+    public void updateRating_test() {
         ReviewDTO.Add dto = ReviewDTO.Add.builder()
                 .memberId(37001L)
                 .storeId(40016L)
@@ -40,7 +40,7 @@ public class PessimisticLockStockTest {
     }
 
     @Test
-    public void 동시에_100명이_주문() throws InterruptedException {
+    public void 동시에_100명() throws InterruptedException {
         int threadCount = 100;
         ExecutorService executorService = Executors.newFixedThreadPool(32);
         CountDownLatch latch = new CountDownLatch(threadCount);
