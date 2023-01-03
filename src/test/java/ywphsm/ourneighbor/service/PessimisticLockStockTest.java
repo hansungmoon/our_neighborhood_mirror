@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ywphsm.ourneighbor.domain.dto.ReviewDTO;
+import ywphsm.ourneighbor.domain.member.MemberOfStore;
 import ywphsm.ourneighbor.domain.store.Store;
+import ywphsm.ourneighbor.repository.member.MemberOfStoreRepository;
 import ywphsm.ourneighbor.repository.store.StoreRepository;
 
+import java.util.Optional;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,6 +24,9 @@ public class PessimisticLockStockTest {
 
     @Autowired
     StoreRepository storeRepository;
+
+    @Autowired
+    MemberOfStoreRepository memberOfStoreRepository;
 
     @Test
     public void updateRating_test() {
