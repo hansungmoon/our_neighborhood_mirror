@@ -107,6 +107,7 @@ public class ReviewService {
 
         if (count == 0) {
             store.updateRatingAverage(0);
+            store.updateRatingTotal(0);
             storeRepository.saveAndFlush(store);
             return store;
         }
