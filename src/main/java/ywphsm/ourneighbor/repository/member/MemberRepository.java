@@ -16,6 +16,5 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberRep
 
     Optional<Member> findByPhoneNumber(String phoneNumber);
 
-    //탈퇴예정 시간이 현재시간을 지난 회원을 모두 조회
-    List<Member> findAllByWithdrawalTimeIsBefore(LocalDateTime now);
+
 }

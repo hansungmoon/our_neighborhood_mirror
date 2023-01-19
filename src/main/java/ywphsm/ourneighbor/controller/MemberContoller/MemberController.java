@@ -25,8 +25,6 @@ public class MemberController {
 
     private final RequestCache requestCache = new HttpSessionRequestCache();
 
-    private final MemberServiceDemoImpl memberServiceDemo;
-
     @GetMapping("/login")
     public String login(@ModelAttribute(name = "loginForm") LoginForm loginForm,
                         @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member member,
