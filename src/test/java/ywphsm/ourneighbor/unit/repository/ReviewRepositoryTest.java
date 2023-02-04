@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
+import ywphsm.ourneighbor.domain.dto.ReviewMemberDTO;
 import ywphsm.ourneighbor.domain.embedded.Address;
 import ywphsm.ourneighbor.domain.embedded.BusinessTime;
 import ywphsm.ourneighbor.domain.file.UploadFile;
@@ -210,5 +211,17 @@ public class ReviewRepositoryTest {
         List<String> imageUrls = reviewRepository.reviewImageUrl(review.getId());
 
         assertThat(imageUrls.size()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("리뷰 이미지 가져오기")
+    void should_findReview_When_MemberId() {
+        List<Review> reviewList = reviewRepository.findByContent("리뷰내용1");
+
+        Review review = reviewList.get(0);
+
+        List<ReviewMemberDTO> reviewMemberDTOS = reviewRepository.myReview(review.getMember().getId());
+
+        assertThat(reviewMemberDTOS.size()).isEqualTo(6);
     }
 }
