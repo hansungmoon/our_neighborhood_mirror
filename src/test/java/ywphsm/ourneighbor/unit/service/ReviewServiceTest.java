@@ -1,6 +1,7 @@
 package ywphsm.ourneighbor.unit.service;
 
 import org.json.simple.parser.ParseException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -43,25 +44,42 @@ public class ReviewServiceTest {
     @InjectMocks
     ReviewService reviewService;
 
+//    @BeforeEach
+//    void beforeEach() {
+//        Store store = Store.builder()
+//                .name("매장")
+//                .build();
+//
+//        storeRepository.save(store);
+//
+//        Member member = Member.builder()
+//                .username("회원")
+//                .build();
+//
+//        memberRepository.save(member);
+//    }
+
     @Test
     @DisplayName("리뷰 저장")
     void should_SaveReview() throws IOException, ParseException {
         // given
         Store store = Store.builder()
                 .name("매장")
+                .id(1L)
                 .build();
 
+//        setField(store, "id", 1L);
         store = storeRepository.save(store);
         Long mockStoreId = store.getId();
-//        setField(store, "id", mockStoreId);
 
         Member member = Member.builder()
                 .username("회원")
+                .id(1L)
                 .build();
 
+//        setField(member, "id", 1L);
         member = memberRepository.save(member);
         Long mockMemberId = member.getId();
-//        setField(member, "id", mockMemberId);
 
         ReviewDTO.Add dto = ReviewDTO.Add.builder()
                 .content("리뷰내용")
