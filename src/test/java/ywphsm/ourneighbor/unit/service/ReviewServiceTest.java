@@ -51,21 +51,20 @@ public class ReviewServiceTest {
         // given
         Store store = Store.builder()
                 .name("매장")
-                .id(1L)
                 .build();
 
-//        setField(store, "id", 1L);
-        store = storeRepository.save(store);
-        Long mockStoreId = store.getId();
+        Long mockStoreId = 1L;
+
+        setField(store, "id", mockStoreId);
 
         Member member = Member.builder()
                 .username("회원")
                 .id(1L)
                 .build();
 
-//        setField(member, "id", 1L);
-        member = memberRepository.save(member);
-        Long mockMemberId = member.getId();
+        Long mockMemberId = 1L;
+
+        setField(member, "id", mockMemberId);
 
         ReviewDTO.Add dto = ReviewDTO.Add.builder()
                 .content("리뷰내용")
@@ -75,7 +74,7 @@ public class ReviewServiceTest {
                 .build();
 
         given(memberRepository.findById(mockMemberId)).willReturn(Optional.of(member));
-        given(storeRepository.findById(mockStoreId)).willReturn(Optional.of(store));
+        given(storeRepository.findWithOptimisticLockById(mockStoreId)).willReturn(Optional.of(store));
         given(reviewRepository.save(any())).willReturn(dto.toEntity());
 
         // when
@@ -84,6 +83,8 @@ public class ReviewServiceTest {
         // then
         assertThat(dto.getContent()).isEqualTo(review.getContent());
         assertThat(dto.getRating()).isEqualTo(review.getRating());
+        then(storeRepository).should().findWithOptimisticLockById(mockStoreId);
+        then(memberRepository).should().findById(mockMemberId);
         then(reviewRepository).should().save(any());
     }
 }
