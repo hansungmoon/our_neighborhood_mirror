@@ -44,20 +44,6 @@ public class ReviewServiceTest {
     @InjectMocks
     ReviewService reviewService;
 
-//    @BeforeEach
-//    void beforeEach() {
-//        Store store = Store.builder()
-//                .name("매장")
-//                .build();
-//
-//        storeRepository.save(store);
-//
-//        Member member = Member.builder()
-//                .username("회원")
-//                .build();
-//
-//        memberRepository.save(member);
-//    }
 
     @Test
     @DisplayName("리뷰 저장")
