@@ -46,7 +46,7 @@ public class ReviewService {
     private final EntityManager entityManager;
 
     @Transactional
-    public void save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
+    public Review save(ReviewDTO.Add dto, String hashtag) throws IOException, ParseException {
         Member linkedMember = memberRepository.findById(dto.getMemberId()).orElseThrow(
                 () -> new IllegalArgumentException("존재하지 않는 회원입니다. id = " + dto.getMemberId()));
 
@@ -68,7 +68,7 @@ public class ReviewService {
             saveHashtagLinkedStore(linkedStore, hashtagNameList);
         }
 
-        reviewRepository.save(review);
+        return reviewRepository.save(review);
     }
 
     @Transactional
@@ -100,9 +100,7 @@ public class ReviewService {
             count ++;
         } else {
             store.decreaseRatingTotal(review.getRating());
-            if (count > 0) {
-                count = store.getReviewList().size() - 1;
-            }
+            count = store.getReviewList().size() - 1;
         }
 
         if (count == 0) {

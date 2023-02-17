@@ -7,11 +7,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 import ywphsm.ourneighbor.domain.dto.ReviewDTO;
 import ywphsm.ourneighbor.domain.dto.hashtag.HashtagDTO;
+import ywphsm.ourneighbor.domain.file.AwsS3FileStore;
 import ywphsm.ourneighbor.domain.file.UploadFile;
 import ywphsm.ourneighbor.domain.hashtag.Hashtag;
 import ywphsm.ourneighbor.domain.member.Member;
@@ -32,8 +34,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
+import static org.mockito.BDDMockito.*;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 
 @ExtendWith(MockitoExtension.class)
@@ -50,6 +51,10 @@ public class ReviewServiceTest {
 
     @InjectMocks
     ReviewService reviewService;
+
+    @Spy
+    @InjectMocks
+    AwsS3FileStore awsS3FileStore;
 
 
     @Test
@@ -117,9 +122,6 @@ public class ReviewServiceTest {
 
         setField(dto, "reviewId", mockReviewId);
 
-//        List<MultipartFile> file = new ArrayList<>();
-//        file.add(new MockMultipartFile("file", "test.png", "image/png", new FileInputStream("C:/Users/HOME/Desktop/JAVA/menu_file/5cf53790-54a5-4c5f-9709-0394d58cec94.png")));
-
         Review entity = dto.toEntity();
 
         UploadFile uploadFile1 = new UploadFile("업로드명1", "저장명1", "URL1");
@@ -129,6 +131,7 @@ public class ReviewServiceTest {
 
         given(reviewRepository.findById(mockReviewId)).willReturn(Optional.of(entity));
         given(storeRepository.findWithOptimisticLockById(mockStoreId)).willReturn(Optional.of(store));
+        willDoNothing().given(awsS3FileStore).deleteFile(uploadFile1.getStoredFileName());
 
         // when
         Long reviewId = reviewService.delete(mockStoreId, mockReviewId);
