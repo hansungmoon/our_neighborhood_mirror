@@ -154,4 +154,47 @@ public class ReviewServiceTest {
         assertThatThrownBy(() -> reviewService.findById(mockReviewId)).isInstanceOf(IllegalArgumentException.class);
         then(reviewRepository).should().findById(mockReviewId);
     }
+
+    @Test
+    @DisplayName("리뷰 등록시 별점 업데이트")
+    void should_UpdateRating_When_BySaveReview() throws IOException {
+        // given
+        Store store1 = Store.builder()
+                .name("매장")
+                .build();
+
+        Long mockStoreId = 2L;
+
+        setField(store1, "id", mockStoreId);
+
+        Store store2 = Store.builder()
+                .id(mockStoreId)
+                .name("매장")
+                .build();
+
+        setField(store2, "ratingTotal", 5);
+
+        ReviewDTO.Add dto = ReviewDTO.Add.builder()
+                .content("리뷰내용")
+                .rating(5)
+                .storeId(mockStoreId)
+                .build();
+
+        Long mockReviewId = 2L;
+
+        setField(dto, "reviewId", mockReviewId);
+
+        Review entity = dto.toEntity();
+
+        given(storeRepository.findWithOptimisticLockById(mockStoreId)).willReturn(Optional.of(store1));
+        given(storeRepository.saveAndFlush(any())).willReturn(store2);
+
+        // when
+        Store result = reviewService.updateStoreRating(mockStoreId, entity, true);
+
+        // then
+        assertThat(store2.getRatingTotal()).isEqualTo(result.getRatingTotal());
+        then(storeRepository).should().findWithOptimisticLockById(mockStoreId);
+        then(storeRepository).should().saveAndFlush(any());
+    }
 }
