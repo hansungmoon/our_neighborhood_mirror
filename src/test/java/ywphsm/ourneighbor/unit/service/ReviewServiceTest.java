@@ -9,9 +9,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Slice;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 import ywphsm.ourneighbor.domain.dto.ReviewDTO;
+import ywphsm.ourneighbor.domain.dto.ReviewMemberDTO;
 import ywphsm.ourneighbor.domain.dto.hashtag.HashtagDTO;
 import ywphsm.ourneighbor.domain.file.AwsS3FileStore;
 import ywphsm.ourneighbor.domain.file.UploadFile;
@@ -157,7 +159,7 @@ public class ReviewServiceTest {
 
     @Test
     @DisplayName("리뷰 등록시 별점 업데이트")
-    void should_UpdateRating_When_BySaveReview() throws IOException {
+    void should_UpdateRating_When_BySaveReview() {
         // given
         Store store1 = Store.builder()
                 .name("매장")
@@ -196,5 +198,39 @@ public class ReviewServiceTest {
         assertThat(store2.getRatingTotal()).isEqualTo(result.getRatingTotal());
         then(storeRepository).should().findWithOptimisticLockById(mockStoreId);
         then(storeRepository).should().saveAndFlush(any());
+
     }
+
+    @Test
+    @DisplayName("이미지URL 가져오기")
+    void should_FindImgURL_When_ByReviewId() {
+        // given
+        ReviewMemberDTO dto = ReviewMemberDTO.builder()
+                .storeName("가게")
+                .build();
+
+        Long mockReviewId = 3L;
+        setField(dto, "reviewId", mockReviewId);
+
+        List<String> imgUrl = new ArrayList<>();
+        imgUrl.add("URL1");
+        imgUrl.add("URL2");
+
+        dto.setUploadImgUrl(imgUrl);
+
+        List<ReviewMemberDTO> dtoList = new ArrayList<>();
+        dtoList.add(dto);
+
+        given(reviewRepository.reviewImageUrl(mockReviewId)).willReturn(imgUrl);
+
+        // when
+        ReviewMemberDTO reviewMemberDTO = reviewService.findImg(dtoList).get(0);
+
+        // then
+        assertThat(reviewMemberDTO.getUploadImgUrl().size()).isEqualTo(imgUrl.size());
+        then(reviewRepository).should().reviewImageUrl(mockReviewId);
+
+    }
+
+
 }
