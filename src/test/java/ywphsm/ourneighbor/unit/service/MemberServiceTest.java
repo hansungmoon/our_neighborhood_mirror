@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -79,5 +80,17 @@ public class MemberServiceTest {
         // then
         then(awsS3FileStore).should().storeFile(dto.getFile());
         then(memberRepository).should().save(any());
+    }
+
+    @Test
+    @DisplayName("존재하지 않는 회원 memberId 조회 시 예외 발생")
+    void should_ThrowException_When_ExistsNotMemberById() {
+        // given
+        Long mockMemberId = 1L;
+        given(memberRepository.findById(1L)).willThrow(new IllegalArgumentException());
+
+        // then
+        assertThatThrownBy(() -> memberService.findById(mockMemberId)).isInstanceOf(IllegalArgumentException.class);
+        then(memberRepository).should().findById(mockMemberId);
     }
 }
